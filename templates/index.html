@@ -1,512 +1,215 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Blue Moon - Responsive Admin Dashboard</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-    <meta name="description" content="Blue Moon - Responsive Admin Dashboard" />
-    <meta name="keywords" content="Notifications, Admin, Dashboard, Bootstrap3, Sass, transform, CSS3, HTML5, Web design, UI Design, Responsive Dashboard, Responsive Admin, Admin Theme, Best Admin UI, Bootstrap Theme, Wrapbootstrap, Bootstrap, bootstrap.gallery" />
-    <meta name="author" content="Bootstrap Gallery" />
-    <link rel="shortcut icon" href="/static/img/favicon.ico">
-    
-    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/static/css/new.css" rel="stylesheet">
-    <link href="/static/css/charts-graphs.css" rel="stylesheet">
+{% extends "base.html" %}
+
+{% block title %}AR Manager - Dashboard{% endblock %}
+
+{% block css %}
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/new.css" rel="stylesheet"> 
+    <link href="css/charts-graphs.css" rel="stylesheet">
     <!-- Datepicker CSS -->
-    <link rel="stylesheet" type="text/css" href="/static/css/datepicker.css">
+    <link rel="stylesheet" type="text/css" href="css/datepicker.css">
 
-    <link href="/static/fonts/font-awesome.min.css" rel="stylesheet">
+    <link href="fonts/font-awesome.min.css" rel="stylesheet">
+{% endblock %}
 
-    <!-- HTML5 shiv and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="/static/js/html5shiv.js"></script>
-      <script src="/static/js/respond.min.js"></script>
-    <![endif]-->
-  </head>
-
-  <body>
-
-    <!-- Header Start -->
-    <header>
-      <a href="index.html" class="logo">
-        <img src="/static/img/logo.png" alt="Logo"/>
-      </a>
-      <div class="pull-right">
-        <ul id="mini-nav" class="clearfix">
-          <li class="list-box user-profile">
-            <a id="drop7" href="#" role="button" class="dropdown-toggle user-avtar" data-toggle="dropdown">
-              <img src="/static/img/user5.png" alt="Bluemoon User">
-            </a>
-            <ul class="dropdown-menu server-activity">
-              <li>
-                <p><i class="fa fa-cog text-info"></i> Account Settings</p>
-              </li>
-              <li>
-                <div class="demo-btn-group clearfix">
-                  <button href="#" class="btn btn-danger">
-                    Logout
-                  </button>
-                </div>
-              </li>
-            </ul>
-          </li>
-        </ul>
-      </div>
-    </header>
-    <!-- Header End -->
-
-    <!-- Main Container start -->
-    <div class="dashboard-container">
-
-      <div class="container">
-        <!-- Top Nav Start -->
-        <div id='cssmenu'>
+{% block top_nav %}
+	<div id='cssmenu'>
+      <ul>
+        <li class='active'>
+          <a href='#'>
+            <i class="fa fa-dashboard"></i>
+            Dashboard
+          </a>
+        </li>
+        <li class=''>
+          <a href='models.html'><i class="fa fa-puzzle-piece"></i>Models</a>
+        </li>
+        <li class=''>
+          <a href='#'><i class="fa fa-user"></i>Account</a>
           <ul>
-            <li class='active'>
-              <a href='#'>
-                <i class="fa fa-dashboard"></i>
-                Dashboard
-              </a>
-            </li>
-            <li class=''>
-              <a href='tables.html'><i class="fa fa-puzzle-piece"></i>Models</a>
-            </li>
-            <li class=''>
-              <a href='#'><i class="fa fa-user"></i>Account</a>
-              <ul>
-                <li><a href='my-account.html'>My Account</a></li>
-                <li><a href='edit-profile.html'>Edit Profile</a></li>
-              </ul>
-            </li>
-            <li class=''>
-              <a href='help.html'><i class="fa fa-file-text"></i>Help</a>
-            </li>
+            <li><a href='my-account.html'>My Account</a></li>
+            <li><a href='edit-profile.html'>Edit Profile</a></li>
           </ul>
-        </div>
-        <!-- Top Nav End -->
+        </li>
+        <li class=''>
+          <a href='help.html'><i class="fa fa-file-text"></i>Help</a>
+        </li>
+      </ul>
+    </div>
+{% endblock %}
 
-        <!-- Sub Nav End -->
-        <div class="sub-nav hidden-sm hidden-xs">
-          <ul>
-            <li><a href="" class="heading">Dashboard</a></li>
-          </ul>
-          <div class="custom-search hidden-sm hidden-xs">
-            <input type="text" class="search-query" placeholder="Search here ...">
-            <i class="fa fa-search"></i>
-          </div>
-        </div>
-        <!-- Sub Nav End -->
-
-        <!-- Dashboard Wrapper Start -->
-        <div class="dashboard-wrapper-lg">
-          
-          <!-- Row starts -->
-          <div class="row">
-            <div class="col-lg-3 col-md-3 col-sm-6">
-              <div class="mini-widget">
-                <div class="mini-widget-heading clearfix">
-                  <div class="pull-left">Daily Visits</div>
-                </div>
-                <div class="mini-widget-body clearfix">
-                  <div class="pull-left">
-                    <i class="fa fa-eye"></i>
-                  </div>
-                  <div class="pull-right number">3757</div>
-                </div>
-<!--                 <div class="mini-widget-footer center-align-text">
-                  <span>Better than last week</span>
-                </div> -->
-              </div>
-            </div>
-            <div class="col-lg-3 col-md-3 col-sm-6">
-              <div class="mini-widget">
-                <div class="mini-widget-heading clearfix">
-                  <div class="pull-left">Total Visits</div>
-                </div>
-                <div class="mini-widget-body clearfix">
-                  <div class="pull-left">
-                    <i class="fa fa-globe"></i>
-                  </div>
-                  <div class="pull-right number">73780</div>
-                </div>
-<!--                 <div class="mini-widget-footer center-align-text">
-                  <span>Better than last week</span>
-                </div> -->
-              </div>
-            </div>
-            <div class="col-lg-3 col-md-3 col-sm-6">
-              <div class="mini-widget">
-                <div class="mini-widget-heading clearfix">
-                  <div class="pull-left">Comments</div>
-                </div>
-                <div class="mini-widget-body clearfix">
-                  <div class="pull-left">
-                    <i class="fa fa-comments"></i>
-                  </div>
-                  <div class="pull-right number">12658</div>
-                </div>
-<!--                 <div class="mini-widget-footer center-align-text">
-                  <span>Better than last week</span>
-                </div> -->
-              </div>
-            </div>
-            <div class="col-lg-3 col-md-3 col-sm-6">
-              <div class="mini-widget">
-                <div class="mini-widget-heading clearfix">
-                  <div class="pull-left">Likes</div>
-                </div>
-                <div class="mini-widget-body clearfix">
-                  <div class="pull-left">
-                    <i class="fa fa-thumbs-up"></i>
-                  </div>
-                  <div class="pull-right number">1135</div>
-                </div>
-<!--                 <div class="mini-widget-footer center-align-text">
-                  <span>Better than last week</span>
-                </div> -->
-              </div>
-            </div>
-          </div>
-          <!-- Row ends -->
-
-          <!-- Row Start -->
-          <div class="row">
-            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-              <div class="widget">
-                <div class="widget-header">
-                  <div class="title">
-                    Monthly Visits
-                  </div>
-                </div>
-                <div class="widget-body">
-                  <div id="area-chart" class="chart-height-md"></div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-              <div class="widget">
-                <div class="widget-header">
-                  <div class="title">
-                    Regional Ranking
-                  </div>
-                </div>
-                <div class="widget-body">
-                  <div id="mob-desktop" class="chart-height-md"></div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-              <div class="widget">
-                <div class="widget-header">
-                  <div class="title">
-                    Recent Comments
-                  </div>
-                </div>
-                <div class="widget-body">
-                  <div class="wrapper">
-                    <div id="scrollbar">
-                      <div class="scrollbar">
-                        <div class="track">
-                          <div class="thumb">
-                            <div class="end">
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="viewport">
-                        <div class="overview">
-                          <div class="featured-articles-container">
-                            <div class="articles">
-                              <a href="#">
-                                <span class="label-bullet">
-                                  &nbsp;
-                                </span>
-                                Hosting Made For WordPress
-                              </a>
-                              <a href="#">
-                                <span class="label-bullet">
-                                  &nbsp;
-                                </span>
-                                Reinvent cutting-edge
-                              </a>
-                              <a href="#">
-                                <span class="label-bullet">
-                                  &nbsp;
-                                </span>
-                                partnerships models 24/7
-                              </a>
-                              <a href="#">
-                                <span class="label-bullet">
-                                  &nbsp;
-                                </span>
-                                Eyeballs frictionless
-                              </a>
-                              <a href="#">
-                                <span class="label-bullet">
-                                  &nbsp;
-                                </span>
-                                Empower deliver innovate
-                              </a>
-                              <a href="#">
-                                <span class="label-bullet">
-                                  &nbsp;
-                                </span>
-                                Portals technologies
-                              </a>
-                              <a href="#">
-                                <span class="label-bullet">
-                                  &nbsp;
-                                </span>
-                                Collaborative innovate
-                              </a>
-                              <a href="#">
-                                <span class="label-bullet">
-                                  &nbsp;
-                                </span>
-                                Mashups experiences plug
-                              </a>
-                              <a href="#">
-                                <span class="label-bullet">
-                                  &nbsp;
-                                </span>
-                                Portals technologies
-                              </a>
-                              <a href="#">
-                                <span class="label-bullet">
-                                  &nbsp;
-                                </span>
-                                Collaborative innovate
-                              </a>
-                              <a href="#">
-                                <span class="label-bullet">
-                                  &nbsp;
-                                </span>
-                                Mashups experiences plug
-                              </a>
-                              <a href="#">
-                                <span class="label-bullet">
-                                  &nbsp;
-                                </span>
-                                B2B plug and play
-                              </a>
-                              <a href="#">
-                                <span class="label-bullet">
-                                  &nbsp;
-                                </span>
-                                Need some interesting
-                              </a>
-                              <a href="#">
-                                <span class="label-bullet">
-                                  &nbsp;
-                                </span>
-                                Portals technologies
-                              </a>
-                              <a href="#">
-                                <span class="label-bullet">
-                                  &nbsp;
-                                </span>
-                                Collaborative innovate
-                              </a>
-                              <a href="#">
-                                <span class="label-bullet">
-                                  &nbsp;
-                                </span>
-                                Portals technologies
-                              </a>
-                              <a href="#">
-                                <span class="label-bullet">
-                                  &nbsp;
-                                </span>
-                                Collaborative innovate
-                              </a>
-                              <a href="#">
-                                <span class="label-bullet">
-                                  &nbsp;
-                                </span>
-                                Mashups experiences plug
-                              </a>
-                              <a href="#">
-                                <span class="label-bullet">
-                                  &nbsp;
-                                </span>
-                                B2B plug and play
-                              </a>
-                              <a href="#">
-                                <span class="label-bullet">
-                                  &nbsp;
-                                </span>
-                                Need some interesting
-                              </a>
-                              <a href="#">
-                                <span class="label-bullet">
-                                  &nbsp;
-                                </span>
-                                Portals technologies
-                              </a>
-                              <a href="#">
-                                <span class="label-bullet">
-                                  &nbsp;
-                                </span>
-                                Collaborative innovate
-                              </a>
-                              <a href="#">
-                                <span class="label-bullet">
-                                  &nbsp;
-                                </span>
-                                Mashups experiences plug
-                              </a>
-                              <a href="#">
-                                <span class="label-bullet">
-                                  &nbsp;
-                                </span>
-                                Need some interesting
-                              </a>
-                              <a href="#">
-                                <span class="label-bullet">
-                                  &nbsp;
-                                </span>
-                                Portals technologies
-                              </a>
-                              <a href="#">
-                                <span class="label-bullet">
-                                  &nbsp;
-                                </span>
-                                Collaborative innovate
-                              </a>
-                              <a href="#">
-                                <span class="label-bullet">
-                                  &nbsp;
-                                </span>
-                                Mashups experiences plug
-                              </a>
-                              <a href="#">
-                                <span class="label-bullet">
-                                  &nbsp;
-                                </span>
-                                B2B plug and play
-                              </a>
-                              <a href="#">
-                                <span class="label-bullet">
-                                  &nbsp;
-                                </span>
-                                Need some interesting
-                              </a>
-                              <a href="#">
-                                <span class="label-bullet">
-                                  &nbsp;
-                                </span>
-                                Portals technologies
-                              </a>
-                              <a href="#">
-                                <span class="label-bullet">
-                                  &nbsp;
-                                </span>
-                                Collaborative innovate
-                              </a>
-                              <a href="#">
-                                <span class="label-bullet">
-                                  &nbsp;
-                                </span>
-                                Portals technologies
-                              </a>
-                              <a href="#">
-                                <span class="label-bullet">
-                                  &nbsp;
-                                </span>
-                                Collaborative innovate
-                              </a>
-                              <a href="#">
-                                <span class="label-bullet">
-                                  &nbsp;
-                                </span>
-                                Mashups experiences plug
-                              </a>
-                              <a href="#">
-                                <span class="label-bullet">
-                                  &nbsp;
-                                </span>
-                                B2B plug and play
-                              </a>
-                              <a href="#">
-                                <span class="label-bullet">
-                                  &nbsp;
-                                </span>
-                                Need some interesting
-                              </a>
-                              <a href="#">
-                                <span class="label-bullet">
-                                  &nbsp;
-                                </span>
-                                Portals technologies
-                              </a>
-                              <a href="#">
-                                <span class="label-bullet">
-                                  &nbsp;
-                                </span>
-                                Collaborative innovate
-                              </a>
-                              <a href="#">
-                                <span class="label-bullet">
-                                  &nbsp;
-                                </span>
-                                Mashups experiences plug
-                              </a>
-                            </div>
-                            
-                          </div>
-                          
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-          </div>
-          </div>
-          <!-- Row End -->
-
-          <!-- Row Start -->
-          <div class="row">
-          
-          </div>
-          <!-- Row End -->
-
-        </div>
-        <!-- Dashboard Wrapper End -->
-
-        <footer>
-          <p>© AR 2016</p>
-        </footer>
-
+{% block sub_nav %}
+	<div class="sub-nav hidden-sm hidden-xs">
+      <ul>
+        <li><a href="" class="heading">Dashboard</a></li>
+      </ul>
+      <div class="custom-search hidden-sm hidden-xs">
+        <input type="text" class="search-query" placeholder="Search here ...">
+        <i class="fa fa-search"></i>
       </div>
     </div>
-    <!-- Main Container end -->
+{% endblock %}
 
-    <script src="/static/js/jquery.js"></script>
-    <script src="/static/js/bootstrap.min.js"></script>
-    <script src="/static/js/jquery.scrollUp.js"></script>
+{% block main %}
+	<!-- Row starts -->
+	<div class="row">
+	    <div class="col-lg-3 col-md-3 col-sm-6">
+	      <div class="mini-widget">
+	        <div class="mini-widget-heading clearfix">
+	          <div class="pull-left">Daily Visits</div>
+	        </div>
+	        <div class="mini-widget-body clearfix">
+	          <div class="pull-left">
+	            <i class="fa fa-eye"></i>
+	          </div>
+	          <div class="pull-right number">{{ info.daily }}</div>
+	        </div>
+	<!--                 <div class="mini-widget-footer center-align-text">
+	          <span>Better than last week</span>
+	        </div> -->
+	      </div>
+	    </div>
+	    <div class="col-lg-3 col-md-3 col-sm-6">
+	      <div class="mini-widget">
+	        <div class="mini-widget-heading clearfix">
+	          <div class="pull-left">Total Visits</div>
+	        </div>
+	        <div class="mini-widget-body clearfix">
+	          <div class="pull-left">
+	            <i class="fa fa-globe"></i>
+	          </div>
+	          <div class="pull-right number">{{ info.total }}</div>
+	        </div>
+	<!--                 <div class="mini-widget-footer center-align-text">
+	          <span>Better than last week</span>
+	        </div> -->
+	      </div>
+	    </div>
+	    <div class="col-lg-3 col-md-3 col-sm-6">
+	      <div class="mini-widget">
+	        <div class="mini-widget-heading clearfix">
+	          <div class="pull-left">Comments</div>
+	        </div>
+	        <div class="mini-widget-body clearfix">
+	          <div class="pull-left">
+	            <i class="fa fa-comments"></i>
+	          </div>
+	          <div class="pull-right number">{{ info.comments }}</div>
+	        </div>
+	<!--                 <div class="mini-widget-footer center-align-text">
+	          <span>Better than last week</span>
+	        </div> -->
+	      </div>
+	    </div>
+	    <div class="col-lg-3 col-md-3 col-sm-6">
+	      <div class="mini-widget">
+	        <div class="mini-widget-heading clearfix">
+	          <div class="pull-left">Likes</div>
+	        </div>
+	        <div class="mini-widget-body clearfix">
+	          <div class="pull-left">
+	            <i class="fa fa-thumbs-up"></i>
+	          </div>
+	          <div class="pull-right number">{{ info.likes }}</div>
+	        </div>
+	<!--                 <div class="mini-widget-footer center-align-text">
+	          <span>Better than last week</span>
+	        </div> -->
+	      </div>
+	    </div>
+	  </div>
+	  <!-- Row ends -->
+
+	  <!-- Row Start -->
+	  <div class="row">
+	    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+	      <div class="widget">
+	        <div class="widget-header">
+	          <div class="title">
+	            Monthly Visits
+	          </div>
+	        </div>
+	        <div class="widget-body">
+	          <div id="monthly-visits" class="chart-height-lg"></div>
+	        </div>
+	      </div>
+	    </div>
+	    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+	      <div class="widget">
+	        <div class="widget-header">
+	          <div class="title">
+	            Regional Ranking
+	          </div>
+	        </div>
+	        <div class="widget-body">
+	          <div id="region-rank" class="chart-height-lg"></div>
+	        </div>
+	      </div>
+	    </div>
+	    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+	      <div class="widget">
+	        <div class="widget-header">
+	          <div class="title">
+	            Recent Comments
+	          </div>
+	        </div>
+	        <div class="widget-body">
+	          <div class="wrapper">
+	            <div id="scrollbar">
+	              <div class="scrollbar">
+	                <div class="track">
+	                  <div class="thumb">
+	                    <div class="end">
+	                    </div>
+	                  </div>
+	                </div>
+	              </div>
+	              <div class="viewport">
+	                <div class="overview">
+	                  <div class="featured-articles-container">
+	                    <div class="articles">
+	                    {% for comment in comments_list %}
+							{% include "comment.html" %}
+						{% endfor %}
+	                    </div>
+	                  </div>
+	                </div>
+	              </div>
+	            </div>
+	          </div>
+	        </div>
+	      </div>
+	  </div>
+  </div>
+  <!-- Row End -->
+{% endblock %}
+
+{% block js %}
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.scrollUp.js"></script>
 
     <!-- Tiny Scrollbar JS -->
-    <script src="/static/js/tiny-scrollbar.js"></script>
+    <script src="js/tiny-scrollbar.js"></script>
     
     <!-- jQuery UI JS -->
-    <script src="/static/js/jquery-ui-v1.10.3.js"></script>
+    <script src="js/jquery-ui-v1.10.3.js"></script>
 
     <!-- Just Gage -->
-    <script src="/static/js/justgage/justgage.js"></script>
-    <script src="/static/js/justgage/raphael.2.1.0.min.js"></script>
+    <script src="js/justgage/justgage.js"></script>
+    <script src="js/justgage/raphael.2.1.0.min.js"></script>
 
     <!-- Flot Charts -->
-    <script src="/static/js/flot/jquery.flot.js"></script>
-    <script src="/static/js/flot/jquery.flot.orderBar.min.js"></script>
-    <script src="/static/js/flot/jquery.flot.stack.min.js"></script>
-    <script src="/static/js/flot/jquery.flot.pie.min.js"></script>
-    <script src="/static/js/flot/jquery.flot.tooltip.min.js"></script>
-    <script src="/static/js/flot/jquery.flot.resize.min.js"></script>
+    <script src="js/flot/jquery.flot.js"></script>
+    <script src="js/flot/jquery.flot.orderBar.min.js"></script>
+    <script src="js/flot/jquery.flot.stack.min.js"></script>
+    <script src="js/flot/jquery.flot.pie.min.js"></script>
+    <script src="js/flot/jquery.flot.tooltip.min.js"></script>
+    <script src="js/flot/jquery.flot.resize.min.js"></script>
 
     <!-- Custom JS -->
-    <script src="/static/js/menu.js"></script>
-    <script src="/static/js/custom-index2.js"></script>
+    <script src="js/menu.js"></script>
+    <script src="js/custom-index2.js"></script>
     
     <script type="text/javascript">
       //ScrollUp
@@ -528,6 +231,4 @@
       
       $('#scrollbar-two').tinyscrollbar();
     </script>
-
-  </body>
-</html>
+{% endblock %}
