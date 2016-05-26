@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 from django.contrib.auth.models import User
 from django.db import models
@@ -15,6 +16,8 @@ class Bundle(models.Model):
         return self.name
 
     class Meta:
+        verbose_name = 'AR模型'
+        verbose_name_plural = verbose_name
         db_table = 'bundle'
 
 class Comment(models.Model):
@@ -27,6 +30,8 @@ class Comment(models.Model):
         return self.content
 
     class Meta:
+        verbose_name = '评论'
+        verbose_name_plural = verbose_name
         db_table = 'comment'
 
 class CommentLocation(models.Model):
@@ -37,6 +42,8 @@ class CommentLocation(models.Model):
         return self.location
 
     class Meta:
+        verbose_name = '评论的地理位置'
+        verbose_name_plural = verbose_name
         db_table = 'comment_location'
 
 class Scan(models.Model):
@@ -47,6 +54,8 @@ class Scan(models.Model):
         return self.id_bundle
 
     class Meta:
+        verbose_name = '扫描记录'
+        verbose_name_plural = verbose_name
         db_table = 'scan'
 
 class ScanLocation(models.Model):
@@ -57,5 +66,7 @@ class ScanLocation(models.Model):
         return self.location
 
     class Meta:
+        verbose_name = '扫描的地理位置'
+        verbose_name_plural = verbose_name
         db_table = 'scan_location'
 
