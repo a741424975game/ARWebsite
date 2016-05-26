@@ -1,0 +1,115 @@
+{% extends "base.html" %}
+
+{% block title %}AR Manager - Create Model{% endblock %}
+
+{% block css %}
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="css/new.css" rel="stylesheet">
+    <!-- Important. For Theming change primary-color variable in main.css  -->
+
+    <link href="fonts/font-awesome.min.css" rel="stylesheet">
+{% endblock %}
+
+{% block top_nav %}
+	<div id='cssmenu'>
+      <ul>
+        <li class=''>
+          <a href='index.html'>
+            <i class="fa fa-dashboard"></i>
+            Dashboard
+          </a>
+        </li>
+        <li class='active'>
+          <a href='#'><i class="fa fa-puzzle-piece"></i>Models</a>
+        </li>
+        <li class=''>
+          <a href='#'><i class="fa fa-user"></i>Account</a>
+          <ul>
+            <li><a href='my-account.html'>My Account</a></li>
+            <li><a href='edit-profile.html'>Edit Profile</a></li>
+          </ul>
+        </li>
+        <li class=''>
+          <a href='help.html'><i class="fa fa-file-text"></i>Help</a>
+        </li>
+      </ul>
+    </div>
+{% endblock %}
+
+{% block sub_nav %}
+	<div class="sub-nav hidden-sm hidden-xs">
+      <ul>
+        <li><a href="" class="heading">Models</a></li>
+      </ul>
+      <div class="custom-search hidden-sm hidden-xs">
+        <input type="text" class="search-query" placeholder="Search here ...">
+        <i class="fa fa-search"></i>
+      </div>
+    </div>
+{% endblock %}
+
+{% block main %}
+	<!-- Row Start -->
+	<div class="row">
+	  <div class="col-lg-12 col-md-12">
+	    <div class="widget">
+	      <div class="widget-header">
+	        <div class="title">
+	          Create Model
+	          <span class="mini-title">
+	            Fill the form to create new Model
+	          </span>
+	        </div>
+	      </div>
+	      <div class="widget-body">
+            <form class="form-horizontal no-margin">
+              <div class="form-group">
+                <label for="modelName" class="col-sm-2 control-label">Model Name</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="modelName" placeholder="Model Name">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="note" class="col-sm-2 control-label">Note</label>
+                <div class="col-sm-10">
+                  <textarea id="note" class="form-control" placeholder="Note"></textarea>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="modelFile" class="col-sm-2 control-label">Select Model</label>
+                <div class="col-sm-10">
+              		<input type="file" id="modelFile" class="form-control">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="imageTarget" class="col-sm-2 control-label">Image Target</label>
+                <div class="col-sm-10">
+              		<input type="file" id="imageTarget" class="form-control">
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                  <div class="checkbox">
+                    <label>
+                      <input type="checkbox"> Yes! I would like to use the QRCode as image target.
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                  <button type="submit" class="btn btn-info">Create Model</button>
+                </div>
+              </div>
+            </form>
+          </div>
+	    </div>
+	  </div>
+	</div>
+	<!-- Row End -->
+{% endblock %}
+
+{% block js %}
+
+{% endblock %}
