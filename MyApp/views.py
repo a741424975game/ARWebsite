@@ -17,7 +17,7 @@ def index(request):
 
 
 # 注册
-def doRegister(request):
+def do_register(request):
     try:
         if request.method == 'POST':
             registerForm = RegisterForm(request.POST)
@@ -42,7 +42,7 @@ def doRegister(request):
 
 
 # 登陆
-def doLogin(request):
+def do_login(request):
     try:
         if request.method == 'POST':
             loginForm = LoginForm(request.POST)
@@ -67,7 +67,7 @@ def doLogin(request):
     return render(request, 'login.html', locals())
 
 
-def addModel(request):
+def add_model(request):
     try:
         if request.method == 'POST':
             uploadForm = UploadForm(request.POST, request.FILES)
@@ -87,5 +87,31 @@ def addModel(request):
         logger.error(e)
     return render(request, 'add-model.html', locals())
 
-def model(request):
+
+def models(request):
+    # models_list = {
+    #     "model": {
+    #         "name": "test",
+    #         "visits": "999",
+    #         "comments": "999",
+    #         "likes": "999",
+    #         "datetime": "2016/05/27",
+    #     },
+    # }
+    models_list = User.objects.get(username=request.user if request.user.is_authenticated() else None).bundle_set.all()
+
     return render(request, 'models.html', locals())
+
+def view_model(request):
+    return render(request, 'view-model.html', locals())
+
+def my_account(request):
+    return render(request, 'my-account.html', locals())
+
+
+def edit_profile(request):
+    return render(request, 'edit-profile.html', locals())
+
+
+def help_page(request):
+    return render(request, 'help.html', locals())

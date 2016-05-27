@@ -17,12 +17,16 @@ from django.conf.urls import url
 from django.contrib import admin
 from MyApp.views import *
 
-urlpatterns = [
+urlpatterns = (
     url(r'^admin/', admin.site.urls),
-    url(r'^$',index,name='index'),
-    url(r'index.html$',index,name='index'),
-    url(r'register.html$',doRegister,name='register'),
-    url(r'login.html$',doLogin,name='login'),
-    url(r'add-model.html$',addModel,name='addModel'),
-    url(r'models.html$',model,name='model'),
-]
+    url(r'^$', index, name='index'),
+    url(r'index.html$', index, name='index'),
+    url(r'register.html$', do_register, name='do_register'),
+    url(r'login.html$', do_login, name='do_login'),
+    url(r'add-model.html$', add_model, name='add_mode'),
+    url(r'models.html$', models, name='model'),
+    url(r'my-account.html$', my_account, name='my_account'),
+    url(r'edit-profile.html$', edit_profile, name='edit_profile'),
+    url(r'help.html$', help_page, name='help_page'),
+    url(r'view-model.html$', view_model, name='view_model'),
+)
