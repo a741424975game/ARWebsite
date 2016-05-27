@@ -8,6 +8,7 @@ from django.contrib.auth.hashers import make_password
 from models import  *
 from forms import *
 
+# 输出日志信息
 logger = logging.getLogger('MyApp.views')
 
 def index(request):
@@ -66,3 +67,6 @@ def doLogin(request):
     except Exception as e:
         logger.error(e)
     return render(request, 'login.html', locals())
+
+def addModel(request):
+    return render(request,'add-model.html',locals())

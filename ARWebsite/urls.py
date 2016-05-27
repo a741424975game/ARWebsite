@@ -22,4 +22,5 @@ urlpatterns = [
     url(r'^$',index,name='index'),
     url(r'register$',doRegister,name='register'),
     url(r'login$',doLogin,name='login'),
+    url(r'addModel',addModel,name='addModel'),
 ]
