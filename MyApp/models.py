@@ -2,11 +2,13 @@
 from __future__ import unicode_literals
 from django.contrib.auth.models import User
 from django.db import models
-import django.utils.timezone as timezone
 
 class Bundle(models.Model):
     id_user = models.ForeignKey(User, models.DO_NOTHING, db_column='id_User', blank=True, null=True,verbose_name='用户名')  # Field name made lowercase.
     config_info = models.TextField(blank=True,null=True,verbose_name='AR模型的配置信息')
+    QRcode = models.ImageField(blank=True,null=True,verbose_name='二维码',upload_to='./uploads/QRCodes')
+    model = models.FileField(blank=True,null=True,verbose_name='模型文件',upload_to='./uploads/bundles')
+    imageTarget = models.ImageField(blank=True,null=True,verbose_name='AR显示目标图片',upload_to='./uploads/imageTargets')
     name = models.TextField(blank=True, null=True,verbose_name='名字')
     like = models.IntegerField(blank=True, null=True,verbose_name='点赞数量',default=0)
     scan_times = models.IntegerField(blank=True, null=True,verbose_name='扫描次数',default=0)

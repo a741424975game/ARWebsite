@@ -3,12 +3,12 @@
 {% block title %}AR Manager - Models{% endblock %}
 
 {% block css %}
-	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="/static/css/bootstrap.min.css" rel="stylesheet">
 
-    <link href="css/new.css" rel="stylesheet">
+    <link href="/static/css/new.css" rel="stylesheet">
     <!-- Important. For Theming change primary-color variable in main.css  -->
 
-    <link href="fonts/font-awesome.min.css" rel="stylesheet">
+    <link href="/static/fonts/font-awesome.min.css" rel="stylesheet">
 {% endblock %}
 
 {% block top_nav %}
@@ -65,7 +65,7 @@
 	      <div class="widget-body">
 	        <div class="col-lg-12 col-md-12">
 	          <div class="btn-group">
-	            <a href="#"><button type="button" class="btn btn-success" data-original-title="" title="">Add</button></a>
+	            <a href="add-model.html"><button type="button" class="btn btn-success" data-original-title="" title="">Add</button></a>
 	          </div>
 	          <div class="btn-group">
 	            <a href="#"><button type="button" class="btn btn-danger" data-original-title="" title="">Delete</button></a>
@@ -112,13 +112,13 @@
 {% endblock %}
 
 {% block js %}
-    <script src="js/jquery.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/jquery.scrollUp.js"></script>
-    <script src="js/jquery.dataTables.js"></script>
+    <script src="/static/js/jquery.js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
+    <script src="/static/js/jquery.scrollUp.js"></script>
+    <script src="/static/js/jquery.dataTables.js"></script>
 
     <!-- Custom JS -->
-    <script src="js/menu.js"></script>
+    <script src="/static/js/menu.js"></script>
     
     <script type="text/javascript">
       //ScrollUp

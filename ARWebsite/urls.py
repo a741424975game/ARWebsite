@@ -20,7 +20,9 @@ from MyApp.views import *
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$',index,name='index'),
-    url(r'register$',doRegister,name='register'),
-    url(r'login$',doLogin,name='login'),
-    url(r'addModel',addModel,name='addModel'),
+    url(r'index.html$',index,name='index'),
+    url(r'register.html$',doRegister,name='register'),
+    url(r'login.html$',doLogin,name='login'),
+    url(r'add-model.html$',addModel,name='addModel'),
+    url(r'models.html$',model,name='model'),
 ]

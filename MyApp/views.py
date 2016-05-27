@@ -69,4 +69,8 @@ def doLogin(request):
     return render(request, 'login.html', locals())
 
 def addModel(request):
+    uploadForm = UploadForm()
     return render(request,'add-model.html',locals())
+
+def model(request):
+    return render(request,'models.html',locals())
