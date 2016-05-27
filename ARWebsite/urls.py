@@ -19,5 +19,7 @@ from MyApp.views import *
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$',index,name='index')
+    url(r'^$',index,name='index'),
+    url(r'register$',doRegister,name='register'),
+    url(r'login$',doLogin,name='login'),
 ]

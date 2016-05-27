@@ -7,14 +7,14 @@
     <meta name="description" content="Blue Moon - Responsive Admin Dashboard" />
     <meta name="keywords" content="Notifications, Admin, Dashboard, Bootstrap3, Sass, transform, CSS3, HTML5, Web design, UI Design, Responsive Dashboard, Responsive Admin, Admin Theme, Best Admin UI, Bootstrap Theme, Wrapbootstrap, Bootstrap, bootstrap.gallery" />
     <meta name="author" content="Bootstrap Gallery" />
-    <link rel="shortcut icon" href="img/favicon.ico">
+    <link rel="shortcut icon" href="/static/img/favicon.ico">
     
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
 
-    <link href="css/new.css" rel="stylesheet">
+    <link href="/static/css/new.css" rel="stylesheet">
     <!-- Important. For Theming change primary-color variable in main.css  -->
 
-    <link href="fonts/font-awesome.min.css" rel="stylesheet">
+    <link href="/static/fonts/font-awesome.min.css" rel="stylesheet">
 
     <!-- HTML5 shiv and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -34,11 +34,12 @@
         <div class="row">
           <div class="col-lg-4 col-md-4 col-md-offset-4">
             <div class="sign-in-container">
-              <form action="invoice.html" class="login-wrapper" method="post">
+              <form class="login-wrapper" method="post">
+                {% csrf_token %}
                 <div class="header">
                   <div class="row">
                     <div class="col-md-12 col-lg-12">
-                      <h3>Login<img src="img/logo1.png" alt="Logo" class="pull-right"></h3>
+                      <h3>Login<img src="/static/img/logo1.png" alt="Logo" class="pull-right"></h3>
                       <p>Fill out the form below to login.</p>
                     </div>
                   </div>
@@ -46,11 +47,12 @@
                 <div class="content">
                   <div class="form-group">
                     <label for="userName">User Name</label>
-                    <input type="text" class="form-control" id="userName" placeholder="User Name">
+                    {{ loginForm.username }}
                   </div>
                   <div class="form-group">
                     <label for="Password1">Password</label>
-                    <input type="password" class="form-control" id="Password1" placeholder="Password">
+                    {{ loginForm.password }}
+                      <span>{{ loginFailed }}</span>
                   </div>
                 </div>
                 <div class="actions">
@@ -68,8 +70,8 @@
     </div>
     <!-- Main Container end -->
 
-    <script src="js/jquery.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+    <script src="/static/js/jquery.js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
 
   </body>
 </html>
