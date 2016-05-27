@@ -63,29 +63,34 @@
 	        </div>
 	      </div>
 	      <div class="widget-body">
-            <form class="form-horizontal no-margin">
+            <form class="form-horizontal no-margin" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
               <div class="form-group">
                 <label for="modelName" class="col-sm-2 control-label">Model Name</label>
                 <div class="col-sm-10">
                   {{ uploadForm.modelName }}
+                    <span>{{ uploadForm.modelName.errors }}</span>
                 </div>
               </div>
               <div class="form-group">
                 <label for="note" class="col-sm-2 control-label">Note</label>
                 <div class="col-sm-10">
                   {{ uploadForm.note }}
+                    <span>{{ uploadForm.note.errors }}</span>
                 </div>
               </div>
               <div class="form-group">
                 <label for="modelFile" class="col-sm-2 control-label">Select Model</label>
                 <div class="col-sm-10">
               		{{ uploadForm.model }}
+                    <span>{{ uploadForm.model.errors }}</span>
                 </div>
               </div>
               <div class="form-group">
                 <label for="imageTarget" class="col-sm-2 control-label">Image Target</label>
                 <div class="col-sm-10">
               		{{ uploadForm.imageTarget }}
+                    <span>{{ uploadForm.imageTarget.errors }}</span>
                 </div>
               </div>
               <div class="form-group">
@@ -111,5 +116,43 @@
 {% endblock %}
 
 {% block js %}
+    <script src="/static/js/jquery.js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
+    <script src="/static/js/jquery.scrollUp.js"></script>
 
+    <!-- Custom JS -->
+    <script src="/static/js/menu.js"></script>
+
+    <script type="text/javascript">
+      //ScrollUp
+      $(function () {
+        $.scrollUp({
+          scrollName: 'scrollUp', // Element ID
+          topDistance: '300', // Distance from top before showing element (px)
+          topSpeed: 300, // Speed back to top (ms)
+          animation: 'fade', // Fade, slide, none
+          animationInSpeed: 400, // Animation in speed (ms)
+          animationOutSpeed: 400, // Animation out speed (ms)
+          scrollText: 'Top', // Text for element
+          activeOverlay: false, // Set CSS color to display scrollUp active point, e.g '#00FFFF'
+        });
+      });
+
+      //Tooltip
+      $('a').tooltip('hide');
+
+      //Popover
+      $('.popover-pop').popover('hide');
+
+      //Dropdown
+      $('.dropdown-toggle').dropdown();
+
+      //Data Tables
+      $(document).ready(function () {
+        $('#data-table').dataTable({
+          "sPaginationType": "full_numbers"
+        });
+      });
+
+    </script>
 {% endblock %}
