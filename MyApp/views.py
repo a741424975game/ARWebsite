@@ -6,9 +6,9 @@ from django.http import HttpResponse
 from django.contrib.auth import logout, login, authenticate
 from django.contrib.auth.hashers import make_password
 from MyApp.qrCode import generate_qrcode
+from MyApp.handle import *
+import json
 from forms import *
-
-
 
 # 输出日志信息
 logger = logging.getLogger('MyApp.views')
@@ -61,7 +61,7 @@ def do_login(request):
                         "loginForm": loginForm,
                         "loginFailed": "账户或密码错误",
                     })
-                return redirect('index')
+                return redirect('index.html')
         else:
             loginForm = LoginForm()
     except Exception as e:
@@ -71,20 +71,26 @@ def do_login(request):
 
 def add_model(request):
     try:
-        if request.method == 'POST':
-            uploadForm = UploadForm(request.POST, request.FILES)
-            if uploadForm.is_valid():
-                bundle = Bundle.objects.create(id_user=request.user if request.user.is_authenticated() else None,
-                                               name=uploadForm.cleaned_data["modelName"],
-                                               model=uploadForm.cleaned_data["model"],
-                                               imageTarget=uploadForm.cleaned_data["imageTarget"],
-                                               note=uploadForm.cleaned_data["note"],
-                                               )
-                bundle.save()
-                api = settings.SITE_URL + 'arConfigInfo-api?bundle_id=' + str(bundle.id)
-                generate_qrcode(api, str(bundle.QRCode)[8:])
+        if request.user.is_authenticated():
+            if request.method == 'POST':
+                uploadForm = UploadForm(request.POST, request.FILES)
+                if uploadForm.is_valid():
+                    bundle = Bundle.objects.create(id_user=request.user,
+                                                   name=uploadForm.cleaned_data["modelName"],
+                                                   model=uploadForm.cleaned_data["model"],
+                                                   note=uploadForm.cleaned_data["note"],
+                                                   )
+                    api = api_url_maker(str(bundle.id))  # 自定义的方法
+                    generate_qrcode(api, str(bundle.QRCode)[8:])  # 去除路径只保留文件名
+                    bundle.imageTarget = bundle.QRCode
+                    config_info_json_data = ar_config_info_handle(bundle.imageTarget, bundle.model)
+                    bundle.config_info = config_info_json_data
+                    bundle.save()
+                    return redirect('view-model.html?bundle_id=' + str(bundle.id))
+            else:
+                uploadForm = UploadForm()
         else:
-            uploadForm = UploadForm()
+            return redirect('login.html')
     except Exception as e:
         logger.error(e)
     return render(request, 'add-model.html', locals())
@@ -92,15 +98,31 @@ def add_model(request):
 
 def models(request):
     try:
-        models_list = User.objects.get(
-            username=request.user if request.user.is_authenticated() else None
-        ).bundle_set.all()
+        if request.user.is_authenticated():
+            models_list = User.objects.get(
+                username=request.user
+            ).bundle_set.all()
+        else:
+            return redirect('login.html')
     except Exception as e:
         logger(e)
     return render(request, 'models.html', locals())
 
 
 def view_model(request):
+    try:
+        if request.user.is_authenticated():
+            bundle_id = request.GET.get('bundle_id')
+            if bundle_id is not None and Bundle.objects.filter(id=bundle_id):
+                model = Bundle.objects.get(id=bundle_id)
+                qrCodePath = str(model.QRCode)
+                imageTargetPath = str(model.imageTarget)
+            else:
+                redirect('404.html')
+        else:
+            redirect('login.html')
+    except Exception as e:
+        logger(e)
     return render(request, 'view-model.html', locals())
 
 
@@ -126,4 +148,3 @@ def ar_config_info_api(request):
     except Exception as e:
         logger(e)
     return HttpResponse('error')
-

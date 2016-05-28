@@ -64,4 +64,4 @@ class UploadForm(forms.Form):
 
     model = forms.FileField()
 
-    imageTarget = forms.ImageField()
+    # imageTarget = forms.ImageField()
