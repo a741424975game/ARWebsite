@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 """ARWebsite URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
@@ -14,19 +16,25 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 from django.conf.urls import url
+from django.conf.urls.static import static
+from django.conf import settings
 from django.contrib import admin
 from MyApp.views import *
 
-urlpatterns = (
-    url(r'^admin/', admin.site.urls),
-    url(r'^$', index, name='index'),
-    url(r'index.html$', index, name='index'),
-    url(r'register.html$', do_register, name='do_register'),
-    url(r'login.html$', do_login, name='do_login'),
-    url(r'add-model.html$', add_model, name='add_mode'),
-    url(r'models.html$', models, name='model'),
-    url(r'my-account.html$', my_account, name='my_account'),
-    url(r'edit-profile.html$', edit_profile, name='edit_profile'),
-    url(r'help.html$', help_page, name='help_page'),
-    url(r'view-model.html$', view_model, name='view_model'),
-)
+urlpatterns = [
+    url(r"^admin/", admin.site.urls),  # admin 管理界面
+    url(r'^$', index, name='index'),  # 首页
+    url(r'^index.html$', index, name='index'),  # 首页
+    url(r'^register.html$', do_register, name='do_register'),  # 注册页面
+    url(r'^login.html$', do_login, name='do_login'),  # 登陆页面
+    url(r'^add-model.html$', add_model, name='add_mode'),  # 增加AR模型页面
+    url(r'^models.html$', models, name='model'),  # AR模型列表页面
+    url(r'^my-account.html$', my_account, name='my_account'),  # 账户信息页面
+    url(r'^edit-profile.html$', edit_profile, name='edit_profile'),  # 账户管理页面
+    url(r'^help.html$', help_page, name='help_page'),  # 帮助页面
+    url(r'^view-model.html$', view_model, name='view_model'),  # 查看AR模型详细信息页面
+    url(r'^arConfigInfo-api$', ar_config_info_api, name='api'),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)   # 设置访问静态文件
+
+
+
