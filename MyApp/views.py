@@ -17,6 +17,7 @@ def index(request):
     try:
         if not request.user.is_authenticated():
             return redirect('login.html')
+
     except Exception as e:
         logger.error(e)
     return render(request, 'index.html', locals())
@@ -60,12 +61,12 @@ def do_login(request):
                 if user is not None:
                     user.backend = 'django.contrib.auth.backends.ModelBackend'  # 指定默认的登录验证方式
                     login(request, user)
-                else:
-                    return render(request, 'login.html', {
-                        "loginForm": loginForm,
-                        "loginFailed": "账户或密码错误",
-                    })
-                return redirect('index.html')
+                    return redirect('index.html')
+            else:
+                return render(request, 'login.html', {
+                    "loginForm": loginForm,
+                    "loginFailed": "账户或密码错误",
+                })
         else:
             loginForm = LoginForm()
     except Exception as e:

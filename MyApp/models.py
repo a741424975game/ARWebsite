@@ -14,7 +14,7 @@ class Bundle(models.Model):
     imageTarget = models.ImageField(blank=True, null=True, verbose_name='AR显示目标图片', upload_to='imageTargets')
     name = models.TextField(blank=True, null=True, verbose_name='名字')
     likes = models.IntegerField(blank=True, null=True, verbose_name='点赞数量', default=0)
-    scan_times = models.IntegerField(blank=True, null=True, verbose_name='扫描次数', default=0)
+    scan_times = models.IntegerField(blank=True, null=True, verbose_name='扫描次数', default=0, )
     comments = models.IntegerField(blank=True, null=True, verbose_name='评论数', default=0)
     upload_datetime = models.DateTimeField(blank=True, null=True, verbose_name='上传时间', auto_now_add=True)
     last_edit_datetime = models.DateTimeField(blank=True, null=True, verbose_name='最后一次编辑时间', auto_now=True)
@@ -36,6 +36,11 @@ class Comment(models.Model):
                                             blank=True, null=True, verbose_name='地区')  # Field name made lowercase.
     content = models.TextField(blank=True, null=True, verbose_name='内容')
     datetime = models.DateTimeField(blank=True, null=True, verbose_name='时间', auto_now_add=True)
+
+    def save(self, * args, ** kwargs):
+        super(self.__class__, self).save(*args, **kwargs)
+        self.id_bundle.comments = self.id_bundle.comment_set.count()
+        self.id_bundle.save()
 
     def __unicode__(self):
         return self.id_bundle.name
@@ -66,6 +71,11 @@ class Scan(models.Model):
     id_scan_location = models.ForeignKey('ScanLocation', models.DO_NOTHING, db_column='id_Scan_Location', blank=True,
                                          null=True, verbose_name='地区')  # Field name made lowercase.
     datetime = models.DateTimeField(blank=True, null=True, verbose_name='时间', auto_now_add=True)
+
+    def save(self, * args, ** kwargs):
+        super(self.__class__, self).save(*args, **kwargs)
+        self.id_bundle.scan_times = self.id_bundle.scan_set.count()
+        self.id_bundle.save()
 
     def __unicode__(self):
         return self.id_bundle.name
