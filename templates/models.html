@@ -5,10 +5,11 @@
 {% block css %}
 	<link href="/static/css/bootstrap.min.css" rel="stylesheet">
 
-    <link href="/static/css/new.css" rel="stylesheet">
-    <!-- Important. For Theming change primary-color variable in main.css  -->
+  <link href="/static/css/new.css" rel="stylesheet">
+  <link href="/static/css/alertify.core.css" rel="stylesheet" id="toggleCSS">
+  <!-- Important. For Theming change primary-color variable in main.css  -->
 
-    <link href="/static/fonts/font-awesome.min.css" rel="stylesheet">
+  <link href="/static/fonts/font-awesome.min.css" rel="stylesheet">
 {% endblock %}
 
 {% block top_nav %}
@@ -68,7 +69,7 @@
 	            <a href="add-model.html"><button type="button" class="btn btn-success" data-original-title="" title="">Add</button></a>
 	          </div>
 	          <div class="btn-group">
-	            <a href="#"><button type="button" class="btn btn-danger" data-original-title="" title="">Delete</button></a>
+	            <a href="#" id="deleteAll"><button type="button" class="btn btn-danger" data-original-title="" title="">Delete</button></a>
 	          </div>
 	        </div>
 	        <hr />
@@ -117,8 +118,11 @@
     <script src="/static/js/jquery.scrollUp.js"></script>
     <script src="/static/js/jquery.dataTables.js"></script>
 
+    <script type="text/javascript" src="/static/js/alertify.min.js"></script>
+
     <!-- Custom JS -->
     <script src="/static/js/menu.js"></script>
+    <script src="/static/js/check.js"></script>
     
     <script type="text/javascript">
       //ScrollUp

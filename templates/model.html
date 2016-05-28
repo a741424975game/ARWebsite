@@ -1,6 +1,7 @@
 <tr>
 	<td>
 		<input type="checkbox" class="no-margin" />
+		<span class="hidden">{{ model.id }}</span>
 	</td>
 	<td>
 		<span class="name">
@@ -23,7 +24,7 @@
 		<a href="view-model.html?bundle_id={{ model.id }}" class="btn btn-info btn-xs" data-original-title="" title="">
 		  View
 		</a>
-		<a href="delete.html?bundle_id={{ model.id }}" class="btn btn-danger btn-xs" data-original-title="" title="">
+		<a href="delete.html?bundle_id={{ model.id }}" class="btn btn-danger btn-xs deleteOne" data-original-title="" title="">
 		  Delete
 		</a>
 	</td>
