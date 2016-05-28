@@ -7,7 +7,6 @@ from django.contrib.auth import logout, login, authenticate
 from django.contrib.auth.hashers import make_password
 from MyApp.qrCode import generate_qrcode
 from MyApp.handle import *
-import json
 from forms import *
 
 # 输出日志信息
@@ -15,6 +14,11 @@ logger = logging.getLogger('MyApp.views')
 
 
 def index(request):
+    try:
+        if not request.user.is_authenticated():
+            return redirect('login.html')
+    except Exception as e:
+        logger.error(e)
     return render(request, 'index.html', locals())
 
 
@@ -69,6 +73,16 @@ def do_login(request):
     return render(request, 'login.html', locals())
 
 
+# 注销
+def do_logout(request):
+    try:
+        logout(request)
+    except Exception as e:
+        logger.error(e)
+    return redirect('login.html')
+
+
+# 添加模型
 def add_model(request):
     try:
         if request.user.is_authenticated():
@@ -96,6 +110,29 @@ def add_model(request):
     return render(request, 'add-model.html', locals())
 
 
+# 删除模型
+def delete_model(request):
+    try:
+        if request.user.is_authenticated():
+            bundle_id = request.GET.get('bundle_id')
+            if bundle_id is not None and Bundle.objects.filter(id=bundle_id):
+                model = Bundle.objects.get(id=bundle_id)
+                comments = Bundle.objects.get(id=bundle_id).comment_set.all()
+                Scans = Bundle.objects.get(id=bundle_id).scan_set.all()
+                model.model.delete(save=True)
+                model.QRCode.delete(save=True)
+                model.imageTarget.delete(save=True)
+                Scans.delete()
+                comments.delete()
+                model.delete()
+            else:
+                return redirect('login.html')
+    except Exception as e:
+        logger.error(e)
+    return redirect('models.html')
+
+
+# 展示模型列表
 def models(request):
     try:
         if request.user.is_authenticated():
@@ -105,7 +142,7 @@ def models(request):
         else:
             return redirect('login.html')
     except Exception as e:
-        logger(e)
+        logger.error(e)
     return render(request, 'models.html', locals())
 
 
@@ -115,29 +152,33 @@ def view_model(request):
             bundle_id = request.GET.get('bundle_id')
             if bundle_id is not None and Bundle.objects.filter(id=bundle_id):
                 model = Bundle.objects.get(id=bundle_id)
-                qrCodePath = str(model.QRCode)
-                imageTargetPath = str(model.imageTarget)
+                qrCodePath = model.QRCode.url
+                imageTargetPath = model.imageTarget.url
             else:
                 redirect('404.html')
         else:
             redirect('login.html')
     except Exception as e:
-        logger(e)
+        logger.error(e)
     return render(request, 'view-model.html', locals())
 
 
+# 用户账户
 def my_account(request):
     return render(request, 'my-account.html', locals())
 
 
+# 编辑账户
 def edit_profile(request):
     return render(request, 'edit-profile.html', locals())
 
 
+# 帮助页面
 def help_page(request):
     return render(request, 'help.html', locals())
 
 
+# AR模型api
 def ar_config_info_api(request):
     try:
         bundle_id = request.GET.get('bundle_id')
@@ -146,5 +187,5 @@ def ar_config_info_api(request):
             config_info = bundle.config_info
             return HttpResponse(config_info)
     except Exception as e:
-        logger(e)
+        logger.error(e)
     return HttpResponse('error')
