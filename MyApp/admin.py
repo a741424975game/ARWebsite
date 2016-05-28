@@ -7,18 +7,35 @@ class BundleAdmin(admin.ModelAdmin):
     readonly_fields = ('upload_datetime', 'last_edit_datetime')
 
 
+class CommentStatisticsAdmin(admin.ModelAdmin):
+    list_display = ('datetime', 'id_bundle', 'amount',)
+    readonly_fields = ('datetime',)
+
+class CommentLocationAdmin(admin.ModelAdmin):
+    list_display = ('id_location', 'id_bundle', 'amount',)
+
 class CommentAdmin(admin.ModelAdmin):
-    list_display = ('id_bundle', 'datetime',)
+    list_display = ('id_bundle','id_location', 'datetime',)
     readonly_fields = ('datetime',)
 
 
+class ScanStatisticsAdmin(admin.ModelAdmin):
+    list_display = ('datetime', 'id_bundle', 'amount',)
+    readonly_fields = ('datetime',)
+
+class ScanLocationAdmin(admin.ModelAdmin):
+    list_display = ('id_location', 'id_bundle', 'amount',)
+
 class ScanAdmin(admin.ModelAdmin):
-    list_display = ('id_bundle', 'datetime',)
+    list_display = ('id_bundle', 'id_location', 'datetime',)
     readonly_fields = ('datetime',)
 
 
 admin.site.register(Bundle, BundleAdmin)
+admin.site.register(CommentStatistics, CommentStatisticsAdmin)
 admin.site.register(Comment, CommentAdmin)
-admin.site.register(CommentLocation)
+admin.site.register(CommentLocation, CommentLocationAdmin)
+admin.site.register(ScanStatistics, ScanStatisticsAdmin)
 admin.site.register(Scan, ScanAdmin)
-admin.site.register(ScanLocation)
+admin.site.register(ScanLocation, ScanLocationAdmin)
+admin.site.register(Locations)

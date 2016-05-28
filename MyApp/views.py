@@ -13,6 +13,8 @@ from forms import *
 logger = logging.getLogger('MyApp.views')
 
 
+# 需要将所有数据库操作整理
+
 def index(request):
     try:
         if not request.user.is_authenticated():
@@ -116,15 +118,17 @@ def delete_model(request):
     try:
         if request.user.is_authenticated():
             bundle_id = request.GET.get('bundle_id')
-            if bundle_id is not None and Bundle.objects.filter(id=bundle_id):
+            if bundle_id is not None and Bundle.objects.filter(id=bundle_id):  # 需要整理
                 model = Bundle.objects.get(id=bundle_id)
-                comments = Bundle.objects.get(id=bundle_id).comment_set.all()
-                Scans = Bundle.objects.get(id=bundle_id).scan_set.all()
+                Bundle.objects.get(id=bundle_id).comment_set.all().delete()
+                Bundle.objects.get(id=bundle_id).commentstatistics_set.all().delete()
+                Bundle.objects.get(id=bundle_id).commentlocation_set.all().delete()
+                Bundle.objects.get(id=bundle_id).scan_set.all().delete()
+                Bundle.objects.get(id=bundle_id).scanstatistics_set.all().delete()
+                Bundle.objects.get(id=bundle_id).scanlocation_set.all().delete()
                 model.model.delete(save=True)
                 model.QRCode.delete(save=True)
                 model.imageTarget.delete(save=True)
-                Scans.delete()
-                comments.delete()
                 model.delete()
             else:
                 return redirect('login.html')
