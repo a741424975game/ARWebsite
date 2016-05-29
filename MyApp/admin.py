@@ -4,27 +4,31 @@ from MyApp.models import *
 
 class BundleAdmin(admin.ModelAdmin):
     list_display = ('name', 'upload_datetime',)
-    readonly_fields = ('upload_datetime', 'last_edit_datetime')
+    readonly_fields = ('likes', 'scan_times', 'comments', 'upload_datetime', 'last_edit_datetime')
 
 
 class CommentStatisticsAdmin(admin.ModelAdmin):
     list_display = ('datetime', 'id_bundle', 'amount',)
-    readonly_fields = ('datetime',)
+    readonly_fields = ('datetime', 'amount',)
+
 
 class CommentLocationAdmin(admin.ModelAdmin):
     list_display = ('id_location', 'id_bundle', 'amount',)
+    readonly_fields = ('amount',)
 
 class CommentAdmin(admin.ModelAdmin):
-    list_display = ('id_bundle','id_location', 'datetime',)
+    list_display = ('id_bundle', 'id_location', 'datetime',)
     readonly_fields = ('datetime',)
 
 
 class ScanStatisticsAdmin(admin.ModelAdmin):
     list_display = ('datetime', 'id_bundle', 'amount',)
-    readonly_fields = ('datetime',)
+    readonly_fields = ('datetime', 'amount',)
+
 
 class ScanLocationAdmin(admin.ModelAdmin):
     list_display = ('id_location', 'id_bundle', 'amount',)
+    readonly_fields = ('amount',)
 
 class ScanAdmin(admin.ModelAdmin):
     list_display = ('id_bundle', 'id_location', 'datetime',)

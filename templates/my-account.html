@@ -98,19 +98,25 @@
                         User Name
                       </dt>
                       <dd>
-                        {{ user.name }}
+                        {{ request.user.username }}
                       </dd>
                       <dt  class="text-info">
                         Email
                       </dt>
                       <dd>
-                        {{ user.email }}
+                        {{ request.user.email }}
                       </dd>
                       <dt  class="text-info">
                         Registration Date
                       </dt>
                       <dd>
-                        {{ user.datetime }}
+                        {{ request.user.date_joined }}
+                      </dd>
+                      <dt  class="text-info">
+                        Last Login
+                      </dt>
+                      <dd>
+                        {{ request.user.last_login }}
                       </dd>
                     </dl>
                   </div>

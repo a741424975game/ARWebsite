@@ -4,6 +4,7 @@ from django.conf import settings
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth import logout, login, authenticate
+from django.utils import timezone
 from django.contrib.auth.hashers import make_password
 from MyApp.qrCode import generate_qrcode
 from MyApp.handle import *
@@ -19,7 +20,24 @@ def index(request):
     try:
         if not request.user.is_authenticated():
             return redirect('login.html')
-
+        daily_visits = 0
+        monthly_visits = 0
+        total_visits = 0
+        comments_amount = 0
+        likes = 0
+        for bundle in User.objects.get(username=request.user.username).bundle_set.all():
+            if bundle is not None:
+                likes += bundle.likes
+                scan_statistics = bundle.scanstatistics_set.all()
+                comments_statistics = bundle.commentstatistics_set.all()
+                for each_statistics in scan_statistics:
+                    if each_statistics.datetime.month == timezone.localtime(timezone.now()).month:
+                        monthly_visits += each_statistics.amount
+                        if each_statistics.datetime.day == timezone.localtime(timezone.now()).day:
+                            daily_visits += each_statistics.amount
+                    total_visits += each_statistics.amount
+                for each_statistics in comments_statistics:
+                    comments_amount += each_statistics.amount
     except Exception as e:
         logger.error(e)
     return render(request, 'index.html', locals())
