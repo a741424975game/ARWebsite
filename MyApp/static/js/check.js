@@ -86,7 +86,7 @@ $(function () {
   	// 删除全部
   	function deleteBundles() {
   		var url = "delete.html?bundles_id=";
-  		url = url + delete_list.join("&");
+  		url = url + delete_list.join("&bundles_id=");
   		// console.log(url);
   		window.location.href = url;
   	}
