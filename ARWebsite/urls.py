@@ -34,7 +34,8 @@ urlpatterns = [
     url(r'^edit-profile.html$', edit_profile, name='edit_profile'),  # 账户管理页面
     url(r'^help.html$', help_page, name='help_page'),  # 帮助页面
     url(r'^view-model.html$', view_model, name='view_model'),  # 查看AR模型详细信息页面
-    url(r'^arConfigInfo-api$', ar_config_info_api, name='api'),
+    url(r'^arConfigInfo-api$', ar_config_info_api, name='api'),# 扫描后通过这个api 获得AR模型配置
+    url(r'^test$', test, name='test'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)   # 设置访问静态文件
 
 

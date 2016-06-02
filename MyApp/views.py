@@ -1,14 +1,14 @@
 # -*- coding: utf-8 -*-
 import logging
-from django.conf import settings
+import requests
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth import logout, login, authenticate
-from django.utils import timezone
 from django.contrib.auth.hashers import make_password
 from MyApp.qrCode import generate_qrcode
 from MyApp.handle import *
 from forms import *
+
 
 # 输出日志信息
 logger = logging.getLogger('MyApp.views')
@@ -136,6 +136,7 @@ def delete_model(request):
     try:
         if request.user.is_authenticated():
             bundle_id = request.GET.get('bundle_id')
+            bundles_id = request.GET.getlist('bundles_id')
             if bundle_id is not None and Bundle.objects.filter(id=bundle_id):  # 需要整理
                 model = Bundle.objects.get(id=bundle_id)
                 Bundle.objects.get(id=bundle_id).comment_set.all().delete()
@@ -148,6 +149,20 @@ def delete_model(request):
                 model.QRCode.delete(save=True)
                 model.imageTarget.delete(save=True)
                 model.delete()
+            elif bundles_id is not None:
+                for bundle_id in bundles_id:
+                    if bundle_id is not None and Bundle.objects.filter(id=bundle_id):  # 需要整理
+                        model = Bundle.objects.get(id=bundle_id)
+                        Bundle.objects.get(id=bundle_id).comment_set.all().delete()
+                        Bundle.objects.get(id=bundle_id).commentstatistics_set.all().delete()
+                        Bundle.objects.get(id=bundle_id).commentlocation_set.all().delete()
+                        Bundle.objects.get(id=bundle_id).scan_set.all().delete()
+                        Bundle.objects.get(id=bundle_id).scanstatistics_set.all().delete()
+                        Bundle.objects.get(id=bundle_id).scanlocation_set.all().delete()
+                        model.model.delete(save=True)
+                        model.QRCode.delete(save=True)
+                        model.imageTarget.delete(save=True)
+                        model.delete()
             else:
                 return redirect('login.html')
     except Exception as e:
@@ -212,3 +227,10 @@ def ar_config_info_api(request):
     except Exception as e:
         logger.error(e)
     return HttpResponse('error')
+
+
+def test(request):
+    url = 'http://ip.taobao.com/service/getIpInfo.php?ip=' + request.META.get('REMOTE_ADDR', None)
+    response = requests.get(url)
+    data = response.json()
+    return HttpResponse(data['data']['region']+data['data']['city'])
