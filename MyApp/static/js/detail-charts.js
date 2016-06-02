@@ -655,7 +655,10 @@ function areaVisits() {
                     option.series[0].mapType = "china";
                     map.setOption(option);
                     map.on("mapselectchanged", function (param) {
-                        showMap(2, param.name);
+						if (param.name != "南海诸岛")
+                        {
+                            showMap(2, param.name);
+                        }
                     });
                 });
             } else {
@@ -680,13 +683,6 @@ function visitsRank() {
     var option = {
         tooltip: {
             show:true,
-        },
-        legend: {
-            data:[
-                {
-                    name:'Visits',
-                },
-            ],
         },
         xAxis: {
             data: ["北京","上海","广东","澳门","福建","珠海"]
