@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}AR Manager - Models{% endblock %}
+{% block title %}AR Manager - {{model.name}}{% endblock %}
 
 {% block css %}
 	<link href="/static/css/bootstrap.min.css" rel="stylesheet">
@@ -159,11 +159,11 @@
         <div class="widget">
           <div class="widget-header">
             <div class="title">
-              Visits vs Likes
+              Daily Visits vs Comments
             </div>
           </div>
           <div class="widget-body">
-            <div id="area-chart" class="chart-height-lg"></div>
+            <div id="daily_visits_comments_charts" class="chart-height-lg"></div>
           </div>
         </div>
       </div>
@@ -171,11 +171,11 @@
         <div class="widget">
           <div class="widget-header">
             <div class="title">
-              World Map
+              Area Visits
             </div>
           </div>
           <div class="widget-body">
-            <div id="world" class="chart-height-lg"></div>
+            <div id="visits_china_map" class="chart-height-lg"></div>
           </div>
         </div>
       </div>
@@ -191,7 +191,7 @@
             </div>
           </div>
           <div class="widget-body">
-            <div id="vertical-chart" class="chart-height-lg"></div>
+            <div id="visits_comments_likes_charts" class="chart-height-lg"></div>
           </div>
         </div>
       </div>
@@ -199,11 +199,11 @@
         <div class="widget">
           <div class="widget-header">
             <div class="title">
-              Monthly Visits
+              Monthly Visits vs Comments
             </div>
           </div>
           <div class="widget-body">
-            <div id="area-chart" class="chart-height-lg"></div>
+            <div id="monthly_visits_comments_charts" class="chart-height-lg"></div>
           </div>
         </div>
       </div>
@@ -215,11 +215,11 @@
         <div class="widget">
           <div class="widget-header">
             <div class="title">
-              Monthly Comments
+              Area Visits Rank
             </div>
           </div>
           <div class="widget-body">
-            <div id="area-chart" class="chart-height-lg"></div>
+            <div id="visits_ranking" class="chart-height-lg"></div>
           </div>
         </div>
       </div>
@@ -268,35 +268,21 @@
     <script src="/static/js/bootstrap.min.js"></script>
     <script src="/static/js/jquery.scrollUp.js"></script>
 
+    <!-- ECharts -->
+    <script src="/static/js/echarts.min.js"></script>
+    <script src="/static/js/shine.js"></script>
+    <script src="/static/js/china.js"></script>
+
     <!-- Tiny Scrollbar JS -->
     <script src="/static/js/tiny-scrollbar.js"></script>
 
     <!-- jQuery UI JS -->
     <script src="/static/js/jquery-ui-v1.10.3.js"></script>
 
-    <!-- Flot Charts -->
-    <script src="/static/js/flot/jquery.flot.js"></script>
-    <script src="/static/js/flot/jquery.flot.orderBar.min.js"></script>
-    <script src="/static/js/flot/jquery.flot.stack.min.js"></script>
-    <script src="/static/js/flot/jquery.flot.pie.min.js"></script>
-    <script src="/static/js/flot/jquery.flot.tooltip.min.js"></script>
-    <script src="/static/js/flot/jquery.flot.resize.min.js"></script>
-
-    <!-- Maps JS -->
-    <script src="/static/js/jqvmap/jquery.vmap.js"></script>
-    <script src="/static/js/jqvmap/maps/jquery.vmap.russia.js"></script>
-    <script src="/static/js/jqvmap/maps/jquery.vmap.usa.js"></script>
-    <script src="/static/js/jqvmap/maps/jquery.vmap.world.js"></script>
-    <script src="/static/js/jqvmap/maps/jquery.vmap.germany.js"></script>
-    <script src="/static/js/jqvmap/data/jquery.vmap.sampledata.js"></script>
-
     <!-- Custom JS -->
     <script src="/static/js/menu.js"></script>
 
-    <script src="/static/js/flot/custom/area.js"></script>
-    <script src="/static/js/flot/custom/vertical.js"></script>
-
-    <script src="/static/js/custom-maps.js"></script>
+    <script src="/static/js/detail-charts.js"></script>
     
     <script type="text/javascript">
       //ScrollUp
