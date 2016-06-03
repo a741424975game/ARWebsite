@@ -169,10 +169,13 @@ class ScanLocation(models.Model):
 
 
 class Locations(models.Model):
-    location = models.TextField(blank=True, null=True, verbose_name='地区')
+    province = models.CharField(max_length=30, blank=True, null=True, verbose_name='省级')
+    city = models.CharField(max_length=30, blank=True, null=True, verbose_name='市级')
+    county = models.CharField(max_length=30, blank=True, null=True, verbose_name='县级')
 
     def __unicode__(self):
-        return self.location
+            return self.province + self.city + self.county
+
 
     class Meta:
         verbose_name = '地理位置'
