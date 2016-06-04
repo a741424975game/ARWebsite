@@ -1,10 +1,12 @@
 # -*- coding: utf-8 -*-
 
 import qrcode
+from django.conf import settings
 from PIL import Image
 
+
 # 二维码生成函数
-def generate_qrcode(data,imageName):
+def generate_qrcode(data, imageName):
     qr = qrcode.QRCode(
         version=4,
         error_correction=qrcode.constants.ERROR_CORRECT_H,
@@ -17,7 +19,7 @@ def generate_qrcode(data,imageName):
     img = qr.make_image()
     img = img.convert("RGBA")
 
-    icon = Image.open('MyApp\\static\\img\\ARLogo.png') # 二维码logo
+    icon = Image.open(settings.QRCODE_LOGO)  # 二维码logo
 
     img_w, img_h = img.size
     factor = 4
@@ -35,4 +37,4 @@ def generate_qrcode(data,imageName):
     h = int((img_h - icon_h) / 2)
     img.paste(icon, (w, h), icon)
 
-    img.save('uploads\\QRCodes\\' + imageName)
+    img.save(settings.QRCODE_PATH + imageName)
