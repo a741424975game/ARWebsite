@@ -1,10 +1,4 @@
-MyApp/migrations/0009_auto_20160527_1633.pyc
-*.py
-MyApp/migrations/0002_auto_20160527_1308.pyc
-*.pyc
 log/all.log
 log/error.log
 *.log
 *.pyc
-*.pyc
-MyApp/views.pyc
