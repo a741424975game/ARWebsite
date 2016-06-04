@@ -160,7 +160,7 @@ class ScanLocation(models.Model):
     amount = models.IntegerField(blank=True, null=True, verbose_name='数量', default=1)
 
     def __unicode__(self):
-        return self.id_location.location
+        return self.id_location.province + self.id_location.city + self.id_location.county
 
     class Meta:
         verbose_name = '扫描的地理位置'

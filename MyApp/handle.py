@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from django.conf import settings
 import json
 
@@ -30,3 +31,13 @@ def ar_config_info_handle(target_image, prefab):
 
     return jsonData
 
+
+def location_handle(data):
+    data['data']['region'] = data['data']['region'].replace(u'省', '')
+    data['data']['region'] = data['data']['region'].replace(u'市', '')
+    data['data']['region'] = data['data']['region'].replace(u'特别行政区', '')
+    data['data']['city'] = data['data']['city'].replace(u'北京市', '')
+    data['data']['city'] = data['data']['city'].replace(u'天津市', '')
+    data['data']['city'] = data['data']['city'].replace(u'重庆市', '')
+    data['data']['city'] = data['data']['city'].replace(u'上海市', '')
+    return data

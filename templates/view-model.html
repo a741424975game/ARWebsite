@@ -164,6 +164,11 @@
           </div>
           <div class="widget-body">
             <div id="daily_visits_comments_charts" class="chart-height-lg"></div>
+              <script>
+                  var recently_days = {{ dailyVC.recently_days|safe }};
+                  var recently_visits_amount = {{ dailyVC.recently_visits_amount|safe }};
+                  var recently_comments_amount = {{ dailyVC.recently_comments_amount|safe }};
+              </script>
           </div>
         </div>
       </div>
@@ -176,6 +181,10 @@
           </div>
           <div class="widget-body">
             <div id="visits_china_map" class="chart-height-lg"></div>
+              <script>
+                    var areaVisits_data = {{ areaVisits.area_visits|safe }};
+                    var max_areaVisits = {{ areaVisits.max|safe }};
+              </script>
           </div>
         </div>
       </div>
