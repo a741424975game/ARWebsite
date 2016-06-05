@@ -5,15 +5,8 @@ function monthlyVisits() {
         tooltip: {
             show:true,
         },
-        legend: {
-            data:[
-                {
-                    name:'Visits',
-                },
-            ],
-        },
         xAxis: {
-            data: ["2016/06/01","2016/06/02","2016/06/03","2016/06/04","2016/06/05","2016/06/06"]
+            data: recently_months,
         },
         yAxis: {},
         toolbox: {
@@ -36,7 +29,7 @@ function monthlyVisits() {
                                 }
                         }
             },
-            data: [5, 20, 36, 10, 10, 20],
+            data: recently_months_visits_amount,
         },
         ],
         color:['#8ECF67'],
@@ -53,7 +46,7 @@ function regionRank() {
             show:true,
         },
         xAxis: {
-            data: ["北京","上海","广东","澳门","福建","珠海"]
+            data: area_visits_ranking,
         },
         yAxis: {},
         series: [{
@@ -68,7 +61,7 @@ function regionRank() {
                                 }
                         }
             },
-            data: [10, 9, 8, 7, 6, 5],
+            data: area_visits_ranking_data,
         }
         ],
         color:['#1E91CF'],

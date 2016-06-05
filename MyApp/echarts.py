@@ -139,3 +139,64 @@ class MonthlyVC:
         self.recently_months_comments_amount = json.dumps(self.recently_months_comments_amount)
 
 
+# 所有模型最近月访问量
+class MonthlyVisits:
+    recently_months = []
+
+    recently_months_visits_amount = [0, 0, 0, 0, 0, 0]
+
+    def __init__(self, username):
+        self.recently_months = []
+        self.recently_months_visits_amount = [0, 0, 0, 0, 0, 0]
+        date = datetime.datetime.today()
+        self.recently_months.append(date)
+        for i in range(0, 5):
+            date = date - datetime.timedelta(days=monthrange(date.year, date.month)[1])
+            self.recently_months.append(date)
+        self.recently_months.reverse()
+        for bundle in User.objects.get(username=username).bundle_set.all():
+            scan_statistics = bundle.scanstatistics_set.all()
+            for each_scan in scan_statistics:
+                for i in range(0, 6):
+                    if each_scan.datetime.year == self.recently_months[i].year and each_scan.datetime.month == \
+                            self.recently_months[i].month:
+                        self.recently_months_visits_amount[i] += each_scan.amount
+        temp = []
+        for each_date in self.recently_months:
+            temp.append(str(each_date.year) + '-' + str(each_date.month))
+        self.recently_months = json.dumps(temp)
+        self.recently_months_visits_amount = json.dumps(self.recently_months_visits_amount)
+
+
+# 所有模型的区域访问量排行:
+class RegionRank:
+    area_visits_ranking = []
+
+    area_visits_ranking_data = []
+
+    def __init__(self, username):
+        self.area_visits_ranking = []
+        self.area_visits_ranking_data = []
+        province_visits_amount = {}
+        for bundle in User.objects.get(username=username).bundle_set.all():
+            scan_locations = bundle.scanlocation_set.all()
+            for each_location in scan_locations:
+                province = each_location.id_location.province
+                amount = each_location.amount
+                if province != '':
+                    if province_visits_amount.has_key(province):
+                        province_visits_amount[province] += amount
+                    else:
+                        province_visits_amount[province] = amount
+        if len(province_visits_amount) < 5:
+            temp = sorted(province_visits_amount.items(), key=lambda d: d[1], reverse=True)[
+                   0: len(province_visits_amount)]
+        else:
+            temp = sorted(province_visits_amount.items(), key=lambda d: d[1], reverse=True)[0:5]
+        for each_tuple in temp:
+            self.area_visits_ranking.append(each_tuple[0])
+            self.area_visits_ranking_data.append(each_tuple[1])
+        self.area_visits_ranking = json.dumps(self.area_visits_ranking)
+        self.area_visits_ranking_data = json.dumps(self.area_visits_ranking_data)
+
+

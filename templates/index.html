@@ -131,6 +131,10 @@
 	        </div>
 	        <div class="widget-body">
 	          <div id="monthly-visits" class="chart-height-lg"></div>
+                <script>
+                    var recently_months = {{ recently_months_visits.recently_months|safe }};
+                    var recently_months_visits_amount = {{ recently_months_visits.recently_months_visits_amount }};
+                </script>
 	        </div>
 	      </div>
 	    </div>
@@ -143,6 +147,10 @@
 	        </div>
 	        <div class="widget-body">
 	          <div id="region-rank" class="chart-height-lg"></div>
+                <script>
+                    var area_visits_ranking = {{ region_rank.area_visits_ranking|safe }};
+                    var area_visits_ranking_data = {{ region_rank.area_visits_ranking_data|safe }};
+                </script>
 	        </div>
 	      </div>
 	    </div>

@@ -29,19 +29,20 @@ def index(request):
         total_visits = 0
         comments_amount = 0
         likes = 0
+        recently_months_visits = MonthlyVisits(request.user.username)
+        region_rank = RegionRank(request.user.username)
         for bundle in User.objects.get(username=request.user.username).bundle_set.all():
-            if bundle is not None:
-                likes += bundle.likes
-                scan_statistics = bundle.scanstatistics_set.all()
-                comments_statistics = bundle.commentstatistics_set.all()
-                for each_statistics in scan_statistics:
-                    if each_statistics.datetime.month == timezone.localtime(timezone.now()).month:
-                        monthly_visits += each_statistics.amount
-                        if each_statistics.datetime.day == timezone.localtime(timezone.now()).day:
-                            daily_visits += each_statistics.amount
-                    total_visits += each_statistics.amount
-                for each_statistics in comments_statistics:
-                    comments_amount += each_statistics.amount
+            likes += bundle.likes
+            scan_statistics = bundle.scanstatistics_set.all()
+            comments_statistics = bundle.commentstatistics_set.all()
+            for each_statistics in scan_statistics:
+                if each_statistics.datetime.month == timezone.localtime(timezone.now()).month:
+                    monthly_visits += each_statistics.amount
+                    if each_statistics.datetime.day == timezone.localtime(timezone.now()).day:
+                        daily_visits += each_statistics.amount
+                total_visits += each_statistics.amount
+            for each_statistics in comments_statistics:
+                comments_amount += each_statistics.amount
     except Exception as e:
         logger.error(e)
     return render(request, 'index.html', locals())
@@ -228,7 +229,7 @@ def help_page(request):
 def ar_config_info_api(request):
     try:
         bundle_id = request.GET.get('bundle_id')
-        ip = request.GET.get('ip')  # request.META('REMOTE_ADDR')
+        ip = request.META('REMOTE_ADDR')
         if ip is not None and bundle_id is not None and Bundle.objects.filter(id=bundle_id):
             url = 'http://ip.taobao.com/service/getIpInfo.php?ip=' + ip
             response = requests.get(url)
@@ -257,3 +258,33 @@ def ar_config_info_api(request):
 # 404
 def page404(request):
     return render(request, '404.html')
+
+
+# test
+def api_test(request):
+    try:
+        bundle_id = request.GET.get('bundle_id')
+        ip = request.GET.get('ip')
+        if ip is not None and bundle_id is not None and Bundle.objects.filter(id=bundle_id):
+            url = 'http://ip.taobao.com/service/getIpInfo.php?ip=' + ip
+            response = requests.get(url)
+            data = location_handle(response.json())
+            if not Locations.objects.filter(province=data['data']['region'], city=data['data']['city'],
+                                            county=data['data']['county'], ):
+                location = Locations.objects.create(province=data['data']['region'],
+                                                    city=data['data']['city'],
+                                                    county=data['data']['county'],
+                                                    )
+                location.save()
+            else:
+                location = Locations.objects.get(province=data['data']['region'],
+                                                 city=data['data']['city'],
+                                                 county=data['data']['county'],
+                                                 )
+            bundle = Bundle.objects.get(id=bundle_id)
+            Scan.objects.create(id_bundle=bundle, id_location=location)
+            config_info = bundle.config_info
+            return HttpResponse(config_info)
+    except Exception as e:
+        logger.error(e)
+    return HttpResponse('error')
