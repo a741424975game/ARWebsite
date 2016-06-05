@@ -266,7 +266,7 @@ def ar_comment_api(request):
         bundle_id = request.GET.get('bundle_id')
         comment = request.GET.get('comment')
         ip = request.META['REMOTE_ADDR']
-        if ip is not None and comment is not None and bundle_id is not None and Bundle.objects.filter(id=bundle_id):
+        if ip is not None and comment and bundle_id is not None and Bundle.objects.filter(id=bundle_id):
             url = 'http://ip.taobao.com/service/getIpInfo.php?ip=' + ip
             response = requests.get(url)
             data = location_handle(response.json())

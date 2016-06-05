@@ -14,7 +14,7 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 import os
 
 # 网站的基本信息配置
-SITE_URL = 'http://a741424975game.vicp.net:8000'
+SITE_URL = 'http://192.168.1.104:8000'
 # QRCODE_LOGO = 'MyApp\\static\\img\\ARLogo.png'  # Windows
 # QRCODE_PATH = 'uploads\\QRCodes\\'  # Windows
 QRCODE_LOGO = 'MyApp/static/img/ARLogo.png'  # Unix
