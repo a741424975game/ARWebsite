@@ -2,11 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="31e73fe8-85ac-4ba5-aca6-24527e156189" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/ARWebsite.iml" afterPath="$PROJECT_DIR$/.idea/ARWebsite.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ARWebsite/urls.py" afterPath="$PROJECT_DIR$/ARWebsite/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MyApp/echarts.py" afterPath="$PROJECT_DIR$/MyApp/echarts.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MyApp/handle.py" afterPath="$PROJECT_DIR$/MyApp/handle.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MyApp/views.py" afterPath="$PROJECT_DIR$/MyApp/views.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/log/all.log" afterPath="$PROJECT_DIR$/log/all.log" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/log/error.log" afterPath="$PROJECT_DIR$/log/error.log" />
@@ -35,50 +33,34 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="echarts.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/MyApp/echarts.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="89" column="37" selection-start-line="89" selection-start-column="37" selection-end-line="89" selection-end-column="37" />
-              <folding>
-                <element signature="e#24#50#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/MyApp/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="416">
-              <caret line="82" column="41" selection-start-line="82" selection-start-column="41" selection-end-line="82" selection-end-column="41" />
+            <state relative-caret-position="331">
+              <caret line="282" column="8" selection-start-line="282" selection-start-column="8" selection-end-line="282" selection-end-column="8" />
               <folding>
                 <element signature="e#24#38#0" expanded="true" />
-                <element signature="e#488#533#0" expanded="false" />
-                <element signature="e#560#1794#0" expanded="false" />
-                <element signature="e#1832#2726#0" expanded="false" />
-                <element signature="e#11409#12877#0" expanded="false" />
-                <element signature="e#11422#12793#0" expanded="false" />
+                <element signature="e#505#550#0" expanded="false" />
+                <element signature="e#577#1811#0" expanded="false" />
+                <element signature="e#1849#2743#0" expanded="false" />
+                <element signature="e#2778#3767#0" expanded="false" />
+                <element signature="e#3954#5230#0" expanded="false" />
+                <element signature="e#5271#7367#0" expanded="false" />
+                <element signature="e#7404#7724#0" expanded="false" />
+                <element signature="e#7770#8478#0" expanded="false" />
+                <element signature="e#8795#10269#0" expanded="false" />
+                <element signature="e#12171#13639#0" expanded="false" />
+                <element signature="e#12184#13555#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="base.py" pinned="false" current-in-tab="false">
-        <entry file="file:///Library/Python/2.7/site-packages/django/core/handlers/base.py">
+      <file leaf-file-name="handle.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/MyApp/handle.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2413">
-              <caret line="146" column="0" selection-start-line="146" selection-start-column="0" selection-end-line="146" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/MyApp/models.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="370">
-              <caret line="53" column="4" selection-start-line="53" selection-start-column="4" selection-end-line="53" selection-end-column="11" />
+            <state relative-caret-position="741">
+              <caret line="40" column="48" selection-start-line="40" selection-start-column="48" selection-end-line="40" selection-end-column="48" />
               <folding />
             </state>
           </provider>
@@ -87,11 +69,9 @@
       <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ARWebsite/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="646">
-              <caret line="37" column="55" selection-start-line="37" selection-start-column="55" selection-end-line="37" selection-end-column="55" />
-              <folding>
-                <marker date="1465126063000" expanded="true" signature="818:2166" placeholder="..." />
-              </folding>
+            <state relative-caret-position="589">
+              <caret line="34" column="48" selection-start-line="34" selection-start-column="48" selection-end-line="34" selection-end-column="48" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -110,9 +90,10 @@
         <option value="$PROJECT_DIR$/log/all.log" />
         <option value="$PROJECT_DIR$/ARWebsite/settings.py" />
         <option value="$PROJECT_DIR$/MyApp/qrCode.py" />
+        <option value="$PROJECT_DIR$/MyApp/echarts.py" />
         <option value="$PROJECT_DIR$/ARWebsite/urls.py" />
         <option value="$PROJECT_DIR$/MyApp/views.py" />
-        <option value="$PROJECT_DIR$/MyApp/echarts.py" />
+        <option value="$PROJECT_DIR$/MyApp/handle.py" />
       </list>
     </option>
   </component>
@@ -127,6 +108,25 @@
     <option name="y" value="23" />
     <option name="width" value="1856" />
     <option name="height" value="1057" />
+  </component>
+  <component name="ProjectInspectionProfilesVisibleTreeState">
+    <entry key="Project Default">
+      <profile-state>
+        <expanded-state>
+          <State>
+            <id />
+          </State>
+          <State>
+            <id>Python</id>
+          </State>
+        </expanded-state>
+        <selected-state>
+          <State>
+            <id>PyStatementEffectInspection</id>
+          </State>
+        </selected-state>
+      </profile-state>
+    </entry>
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -153,6 +153,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -262,7 +263,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -513,8 +513,8 @@
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
-        <env name="DJANGO_SETTINGS_MODULE" value="ARWebsite.settings" />
         <env name="PYTHONUNBUFFERED" value="1" />
+        <env name="DJANGO_SETTINGS_MODULE" value="ARWebsite.settings" />
       </envs>
       <option name="SDK_HOME" value="/System/Library/Frameworks/Python.framework/Versions/2.7/bin/python2.7" />
       <option name="WORKING_DIRECTORY" value="" />
@@ -560,6 +560,7 @@
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="164" y="123" width="1656" height="857" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -571,7 +572,6 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="164" y="123" width="1656" height="857" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32910052" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -591,13 +591,6 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="python-line">
-          <url>file://$PROJECT_DIR$/MyApp/views.py</url>
-          <line>265</line>
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-      </breakpoints>
       <default-breakpoints>
         <breakpoint type="python-exception">
           <properties notifyOnTerminate="true" exception="BaseException">
@@ -605,16 +598,9 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="6" />
+      <option name="time" value="8" />
     </breakpoint-manager>
-    <watches-manager>
-      <configuration name="Python.DjangoServer">
-        <watch expression="self.recently_months" />
-        <watch expression="ScanStatistics.objects.filter(id_bundle=id_bundle)" />
-        <watch expression="CommentStatistics.objects.filter(id_bundle=id_bundle)" />
-        <watch expression="User.objects.get(username=username).bundle_set.all()" />
-      </configuration>
-    </watches-manager>
+    <watches-manager />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/log/all.log">
@@ -721,12 +707,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
           <caret line="150" column="32" selection-start-line="150" selection-start-column="32" selection-end-line="150" selection-end-column="32" />
-          <folding>
-            <element signature="n#!!block;n#dailyVC#0" expanded="false" />
-            <element signature="n#!!block;n#monthlyVC#0" expanded="false" />
-            <element signature="n#!!block;n#areaVisits#0" expanded="false" />
-            <element signature="n#!!block;n#visitsRank#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -758,9 +738,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="437">
           <caret line="63" column="43" selection-start-line="63" selection-start-column="43" selection-end-line="63" selection-end-column="43" />
-          <folding>
-            <element signature="n#!!block;n#monthlyVisits#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -778,11 +755,17 @@
           <caret line="258" column="4" selection-start-line="258" selection-start-column="4" selection-end-line="258" selection-end-column="18" />
           <folding>
             <element signature="e#24#38#0" expanded="true" />
-            <element signature="e#488#533#0" expanded="false" />
-            <element signature="e#560#1794#0" expanded="false" />
-            <element signature="e#1832#2726#0" expanded="false" />
-            <element signature="e#11409#12877#0" expanded="false" />
-            <element signature="e#11422#12793#0" expanded="false" />
+            <element signature="e#505#550#0" expanded="false" />
+            <element signature="e#577#1811#0" expanded="false" />
+            <element signature="e#1849#2743#0" expanded="false" />
+            <element signature="e#2778#3767#0" expanded="false" />
+            <element signature="e#3954#5230#0" expanded="false" />
+            <element signature="e#5271#7367#0" expanded="false" />
+            <element signature="e#7404#7724#0" expanded="false" />
+            <element signature="e#7770#8478#0" expanded="false" />
+            <element signature="e#8795#10269#0" expanded="false" />
+            <element signature="e#12171#13639#0" expanded="false" />
+            <element signature="e#12184#13555#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -799,9 +782,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="540">
           <caret line="37" column="25" selection-start-line="37" selection-start-column="25" selection-end-line="37" selection-end-column="38" />
-          <folding>
-            <marker date="1465126063000" expanded="true" signature="818:2166" placeholder="..." />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -821,11 +802,17 @@
           <caret line="119" column="0" selection-start-line="119" selection-start-column="0" selection-end-line="119" selection-end-column="0" />
           <folding>
             <element signature="e#24#38#0" expanded="true" />
-            <element signature="e#488#533#0" expanded="false" />
-            <element signature="e#560#1794#0" expanded="false" />
-            <element signature="e#1832#2726#0" expanded="false" />
-            <element signature="e#11409#12877#0" expanded="false" />
-            <element signature="e#11422#12793#0" expanded="false" />
+            <element signature="e#505#550#0" expanded="false" />
+            <element signature="e#577#1811#0" expanded="false" />
+            <element signature="e#1849#2743#0" expanded="false" />
+            <element signature="e#2778#3767#0" expanded="false" />
+            <element signature="e#3954#5230#0" expanded="false" />
+            <element signature="e#5271#7367#0" expanded="false" />
+            <element signature="e#7404#7724#0" expanded="false" />
+            <element signature="e#7770#8478#0" expanded="false" />
+            <element signature="e#8795#10269#0" expanded="false" />
+            <element signature="e#12171#13639#0" expanded="false" />
+            <element signature="e#12184#13555#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -904,13 +891,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MyApp/handle.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="1" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file:///Library/Python/2.7/site-packages/django/core/handlers/wsgi.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="399">
@@ -953,38 +933,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MyApp/qrCode.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="26" column="32" selection-start-line="26" selection-start-column="32" selection-end-line="26" selection-end-column="32" />
-          <folding>
-            <element signature="e#25#38#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ARWebsite/settings.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-304">
           <caret line="16" column="32" selection-start-line="16" selection-start-column="32" selection-end-line="16" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ARWebsite/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="646">
-          <caret line="37" column="55" selection-start-line="37" selection-start-column="55" selection-end-line="37" selection-end-column="55" />
-          <folding>
-            <marker date="1465126063000" expanded="true" signature="818:2166" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/MyApp/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="370">
-          <caret line="53" column="4" selection-start-line="53" selection-start-column="4" selection-end-line="53" selection-end-column="11" />
           <folding />
         </state>
       </provider>
@@ -997,28 +949,65 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MyApp/views.py">
+    <entry file="file://$PROJECT_DIR$/MyApp/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="416">
-          <caret line="82" column="41" selection-start-line="82" selection-start-column="41" selection-end-line="82" selection-end-column="41" />
-          <folding>
-            <element signature="e#24#38#0" expanded="true" />
-            <element signature="e#488#533#0" expanded="false" />
-            <element signature="e#560#1794#0" expanded="false" />
-            <element signature="e#1832#2726#0" expanded="false" />
-            <element signature="e#11409#12877#0" expanded="false" />
-            <element signature="e#11422#12793#0" expanded="false" />
-          </folding>
+        <state relative-caret-position="-694">
+          <caret line="53" column="4" selection-start-line="53" selection-start-column="4" selection-end-line="53" selection-end-column="11" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/MyApp/echarts.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
+        <state relative-caret-position="266">
           <caret line="89" column="37" selection-start-line="89" selection-start-column="37" selection-end-line="89" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MyApp/qrCode.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="494">
+          <caret line="26" column="32" selection-start-line="26" selection-start-column="32" selection-end-line="26" selection-end-column="32" />
           <folding>
-            <element signature="e#24#50#0" expanded="true" />
+            <element signature="e#25#38#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MyApp/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="331">
+          <caret line="282" column="8" selection-start-line="282" selection-start-column="8" selection-end-line="282" selection-end-column="8" />
+          <folding>
+            <element signature="e#24#38#0" expanded="true" />
+            <element signature="e#505#550#0" expanded="false" />
+            <element signature="e#577#1811#0" expanded="false" />
+            <element signature="e#1849#2743#0" expanded="false" />
+            <element signature="e#2778#3767#0" expanded="false" />
+            <element signature="e#3954#5230#0" expanded="false" />
+            <element signature="e#5271#7367#0" expanded="false" />
+            <element signature="e#7404#7724#0" expanded="false" />
+            <element signature="e#7770#8478#0" expanded="false" />
+            <element signature="e#8795#10269#0" expanded="false" />
+            <element signature="e#12171#13639#0" expanded="false" />
+            <element signature="e#12184#13555#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ARWebsite/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="589">
+          <caret line="34" column="48" selection-start-line="34" selection-start-column="48" selection-end-line="34" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MyApp/handle.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="741">
+          <caret line="40" column="48" selection-start-line="40" selection-start-column="48" selection-end-line="40" selection-end-column="48" />
+          <folding />
         </state>
       </provider>
     </entry>

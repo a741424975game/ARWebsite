@@ -5,8 +5,8 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth import logout, login, authenticate
 from django.contrib.auth.hashers import make_password
+from django.core.paginator import Paginator
 from MyApp.qrCode import generate_qrcode
-from MyApp.models import *
 from MyApp.handle import *
 from MyApp.echarts import *
 from forms import *
@@ -128,7 +128,7 @@ def add_model(request):
                     api = api_url_maker(str(bundle.id))  # 自定义的方法
                     generate_qrcode(api, str(bundle.QRCode)[8:])  # 去除路径只保留文件名
                     bundle.imageTarget = bundle.QRCode
-                    config_info_json_data = ar_config_info_handle(bundle.imageTarget, bundle.model)
+                    config_info_json_data = ar_config_info_handle(bundle)
                     bundle.config_info = config_info_json_data
                     bundle.save()
                     return redirect('view-model.html?bundle_id=' + str(bundle.id))
@@ -280,7 +280,29 @@ def ar_comment_api(request):
             return HttpResponse('error')
     except Exception as e:
         logger.error(e)
+        return HttpResponse('error')
     return HttpResponse('success')
+
+
+# 获取评论api
+def get_ar_comment_api(request):
+    try:
+        bundle_id = request.GET.get('bundle_id')
+        page = request.GET.get('page')
+        if page is not None and bundle_id is not None and Bundle.objects.filter(id=bundle_id):
+            comments = Bundle.objects.get(id=bundle_id).comment_set.all()
+            comments = Paginator(comments, 50)
+            comments = comments.page(page)
+            temp = []
+            for comment in comments.object_list:
+                temp.append(comment.content)
+            comments = json.dumps(temp)
+        else:
+            return HttpResponse('error')
+    except Exception as e:
+        logger.error(e)
+        return HttpResponse('error')
+    return HttpResponse(comments)
 
 
 # 404
