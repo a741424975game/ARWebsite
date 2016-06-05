@@ -86,7 +86,8 @@ class AreaVisits:
                        0: len(province_visits_amount)]
             else:
                 temp = sorted(province_visits_amount.items(), key=lambda d: d[1], reverse=True)[0:5]
-            self.max = temp[0][1]
+            if temp:
+                self.max = temp[0][1]
             for each_tuple in temp:
                 self.area_visits_ranking.append(each_tuple[0])
                 self.area_visits_ranking_data.append(each_tuple[1])

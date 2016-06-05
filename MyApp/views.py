@@ -6,6 +6,7 @@ from django.http import HttpResponse
 from django.contrib.auth import logout, login, authenticate
 from django.contrib.auth.hashers import make_password
 from MyApp.qrCode import generate_qrcode
+from MyApp.models import *
 from MyApp.handle import *
 from MyApp.echarts import *
 from forms import *
@@ -51,7 +52,9 @@ def index(request):
 # 注册
 def do_register(request):
     try:
-        if request.method == 'POST':
+        if request.user.is_authenticated():
+            return redirect('index.html')
+        elif request.method == 'POST':
             registerForm = RegisterForm(request.POST)
             # 注册
             if registerForm.is_valid():
@@ -76,7 +79,9 @@ def do_register(request):
 # 登陆
 def do_login(request):
     try:
-        if request.method == 'POST':
+        if request.user.is_authenticated():
+            return redirect('index.html')
+        elif request.method == 'POST':
             loginForm = LoginForm(request.POST)
             if loginForm.is_valid():
                 # 登录
@@ -253,6 +258,29 @@ def ar_config_info_api(request):
     except Exception as e:
         logger.error(e)
     return HttpResponse('error')
+
+
+# 评论api
+def ar_comment_api(request):
+    try:
+        bundle_id = request.GET.get('bundle_id')
+        comment = request.GET.get('comment')
+        ip = request.META['REMOTE_ADDR']
+        if ip is not None and comment is not None and bundle_id is not None and Bundle.objects.filter(id=bundle_id):
+            url = 'http://ip.taobao.com/service/getIpInfo.php?ip=' + ip
+            response = requests.get(url)
+            data = location_handle(response.json())
+            location = Locations.objects.get(province=data['data']['region'],
+                                             city=data['data']['city'],
+                                             county=data['data']['county'],
+                                             )
+            bundle = Bundle.objects.get(id=bundle_id)
+            Comment.objects.create(id_bundle=bundle, id_location=location, content=comment)
+        else:
+            return HttpResponse('error')
+    except Exception as e:
+        logger.error(e)
+    return HttpResponse('success')
 
 
 # 404

@@ -35,6 +35,7 @@ urlpatterns = [
                   url(r'^help.html$', help_page, name='help_page'),  # 帮助页面
                   url(r'^view-model.html$', view_model, name='view_model'),  # 查看AR模型详细信息页面
                   url(r'^arConfigInfo-api$', ar_config_info_api, name='api'),  # 扫描后通过这个api 获得AR模型配置
+                  url(r'arComment-api$', ar_comment_api, name='comment_api'),  # 用于提交评论
                   url(r'^404.html', page404, name='404'),  # 404
                   url(r'api-test', api_test, name='api_test'),  # 用于产生测试数据
               ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)  # 设置访问静态文件
