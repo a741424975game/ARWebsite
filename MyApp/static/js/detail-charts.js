@@ -81,7 +81,7 @@ function monthlyVC() {
             ],
         },
         xAxis: {
-            data: ["2016/01","2016/02","2016/03","2016/04","2016/05","2016/06"]
+            data: recently_months,
         },
         yAxis: {},
         toolbox: {
@@ -104,7 +104,7 @@ function monthlyVC() {
                                 }
                         }
             },
-            data: [300, 150, 220, 250, 190, 200],
+            data: recently_months_visits_amount,
         },
                 {
             name: 'Comments',
@@ -118,7 +118,7 @@ function monthlyVC() {
                                 }
                         }
             },
-            data: [250, 125, 110, 200, 170, 150],
+            data: recently_comments_amount,
         },
         ],
         color:['#8ECF67','#1E91CF'],
@@ -654,7 +654,7 @@ function visitsRank() {
             show:true,
         },
         xAxis: {
-            data: ["北京","上海","广东","澳门","福建","珠海"]
+            data: area_visits_ranking,
         },
         yAxis: {},
         series: [{
@@ -669,7 +669,7 @@ function visitsRank() {
                                 }
                         }
             },
-            data: [10, 9, 8, 7, 6, 5],
+            data: area_visits_ranking_data,
         }
         ],
         color:['#1E91CF'],

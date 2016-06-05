@@ -22,8 +22,8 @@ from MyApp.views import *
 
 urlpatterns = [
     url(r"^admin/", admin.site.urls),  # admin 管理界面
-    url(r'^$', index, name='index'),  # 首页
-    url(r'^index.html$', index, name='index'),  # 首页
+    url(r'^$', home, name='home'),  # 首页
+    url(r'^index.html$', index, name='index'),  # 管理首页
     url(r'^register.html$', do_register, name='register'),  # 注册页面
     url(r'^login.html$', do_login, name='login'),  # 登陆页面
     url(r'^logout.html$', do_logout, name='logout'),    # 注销

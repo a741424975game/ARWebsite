@@ -10,12 +10,15 @@ from MyApp.handle import *
 from MyApp.echarts import *
 from forms import *
 
-
 # 输出日志信息
 logger = logging.getLogger('MyApp.views')
 
 
 # 需要将所有数据库操作整理
+
+def home(request):
+    return render(request, 'home.html', locals())
+
 
 def index(request):
     try:
@@ -195,6 +198,7 @@ def view_model(request):
                 qrCodePath = model.QRCode.url
                 imageTargetPath = model.imageTarget.url
                 dailyVC = DailyVC(bundle_id)
+                monthlyVC = MonthlyVC(bundle_id)
                 areaVisits = AreaVisits(bundle_id)
             else:
                 redirect('404.html')

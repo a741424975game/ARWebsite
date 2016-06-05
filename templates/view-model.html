@@ -213,6 +213,11 @@
           </div>
           <div class="widget-body">
             <div id="monthly_visits_comments_charts" class="chart-height-lg"></div>
+              <script>
+                 var recently_months = {{ monthlyVC.recently_months|safe }};
+                 var recently_months_visits_amount = {{ monthlyVC.recently_months_visits_amount|safe }};
+                 var recently_months_comments_amount = {{ monthlyVC.recently_months_comments_amount|safe }};
+              </script>
           </div>
         </div>
       </div>
@@ -229,6 +234,10 @@
           </div>
           <div class="widget-body">
             <div id="visits_ranking" class="chart-height-lg"></div>
+              <script>
+                  var area_visits_ranking = {{ areaVisits.area_visits_ranking|safe }};
+                  var area_visits_ranking_data = {{ areaVisits.area_visits_ranking_data|safe  }};
+              </script>
           </div>
         </div>
       </div>
