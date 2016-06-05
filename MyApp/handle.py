@@ -18,6 +18,16 @@ def get_ar_comment_api_url_maker(bundle_id):
     return url
 
 
+def ar_like_api_url_maker(bundle_id):
+    url = settings.SITE_URL + '/arLike-api?bundle_id=' + bundle_id
+    return url
+
+
+def get_ar_like_api_url_maker(bundle_id):
+    url = settings.SITE_URL + '/arLike-get-api?bundle_id=' + bundle_id
+    return url
+
+
 def target_image_url_maker(target_image):
     url = settings.SITE_URL + target_image.url
     return url
@@ -29,16 +39,21 @@ def prefab_url_maker(prefab):
 
 
 def ar_config_info_handle(bundle):
+    bundle_id = str(bundle.id)
     target_image_url = target_image_url_maker(bundle.imageTarget)
     prefab_url = prefab_url_maker(bundle.model)
-    ar_comment_api_url = ar_comment_api_url_maker(str(bundle.id))
-    get_ar_comment_api_url = get_ar_comment_api_url_maker(str(bundle.id))
+    ar_comment_api_url = ar_comment_api_url_maker(bundle_id)
+    get_ar_comment_api_url = get_ar_comment_api_url_maker(bundle_id)
+    ar_like_api_url = ar_like_api_url_maker(bundle_id)
+    get_ar_like_api_url = get_ar_like_api_url_maker(bundle_id)
 
     data = {
         'targetImageUrl': target_image_url,
         'prefabUrl': prefab_url,
         'commentApi': ar_comment_api_url,
-        'getCommentApi': get_ar_comment_api_url,
+        'getCommentsApi': get_ar_comment_api_url,
+        'likeApi': ar_like_api_url,
+        'getLikesApi': get_ar_like_api_url,
     }
 
     jsonData = json.dumps(data)

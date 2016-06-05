@@ -234,7 +234,7 @@ def help_page(request):
 def ar_config_info_api(request):
     try:
         bundle_id = request.GET.get('bundle_id')
-        ip = request.META('REMOTE_ADDR')
+        ip = request.META['REMOTE_ADDR']
         if ip is not None and bundle_id is not None and Bundle.objects.filter(id=bundle_id):
             url = 'http://ip.taobao.com/service/getIpInfo.php?ip=' + ip
             response = requests.get(url)
@@ -303,6 +303,37 @@ def get_ar_comment_api(request):
         logger.error(e)
         return HttpResponse('error')
     return HttpResponse(comments)
+
+
+# 点赞api
+def ar_like_api(request):
+    try:
+        bundle_id = request.GET.get('bundle_id')
+        if bundle_id is not None and Bundle.objects.filter(id=bundle_id):
+            bundle = Bundle.objects.get(id=bundle_id)
+            bundle.likes += 1
+            bundle.save()
+        else:
+            return HttpResponse('error')
+    except Exception as e:
+        logger.error(e)
+        return HttpResponse('error')
+    return HttpResponse('success')
+
+
+# 获取点赞数api
+def get_ar_like_api(request):
+    try:
+        bundle_id = request.GET.get('bundle_id')
+        if bundle_id is not None and Bundle.objects.filter(id=bundle_id):
+            bundle = Bundle.objects.get(id=bundle_id)
+            likes = bundle.likes
+        else:
+            return HttpResponse('error')
+    except Exception as e:
+        logger.error(e)
+        return HttpResponse('error')
+    return HttpResponse(likes)
 
 
 # 404
