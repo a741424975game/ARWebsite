@@ -14,7 +14,11 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 import os
 
 # 网站的基本信息配置
-SITE_URL = 'http://localhost:8000'
+SITE_URL = 'http://a741424975game.vicp.net:8000'
+# QRCODE_LOGO = 'MyApp\\static\\img\\ARLogo.png'  # Windows
+# QRCODE_PATH = 'uploads\\QRCodes\\'  # Windows
+QRCODE_LOGO = 'MyApp/static/img/ARLogo.png'  # Unix
+QRCODE_PATH = 'uploads/QRCodes/'  # Unix
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -29,7 +33,6 @@ SECRET_KEY = 'aw7k^+24sy8o67tde+%^+lzs1i!y#y9i#ke41e@aw*er-2&b&h'
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
 
 # Application definition
 
@@ -75,7 +78,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'ARWebsite.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
 
@@ -89,7 +91,6 @@ DATABASES = {
         'PORT': '3306',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/1.9/ref/settings/#auth-password-validators
@@ -109,20 +110,18 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/1.9/topics/i18n/
 
 LANGUAGE_CODE = 'zh-Hans'
 
-TIME_ZONE = 'Asia/ShangHai'
+TIME_ZONE = 'Asia/Shanghai'
 
 USE_I18N = True
 
 USE_L10N = True
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
@@ -131,7 +130,7 @@ STATIC_URL = '/static/'
 
 MEDIA_URL = '/uploads/'
 
-MEDIA_ROOT = os.path.join(BASE_DIR,  'uploads')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads')
 
 # 自定义日志输出信息
 LOGGING = {
@@ -139,7 +138,8 @@ LOGGING = {
     'disable_existing_loggers': True,
     'formatters': {
         'standard': {
-            'format': '%(asctime)s [%(threadName)s:%(thread)d] [%(name)s:%(lineno)d] [%(module)s:%(funcName)s] [%(levelname)s]- %(message)s'}  #日志格式
+            'format': '%(asctime)s [%(threadName)s:%(thread)d] [%(name)s:%(lineno)d] [%(module)s:%(funcName)s] [%(levelname)s]- %(message)s'}
+    # 日志格式
     },
     'filters': {
     },
@@ -148,44 +148,44 @@ LOGGING = {
             'level': 'ERROR',
             'class': 'django.utils.log.AdminEmailHandler',
             'include_html': True,
-            },
+        },
         'default': {
-            'level':'DEBUG',
-            'class':'logging.handlers.RotatingFileHandler',
-            'filename': 'log/all.log',     #日志输出文件
-            'maxBytes': 1024*1024*5,                  #文件大小
-            'backupCount': 5,                         #备份份数
-            'formatter':'standard',                   #使用哪种formatters日志格式
+            'level': 'DEBUG',
+            'class': 'logging.handlers.RotatingFileHandler',
+            'filename': 'log/all.log',  # 日志输出文件
+            'maxBytes': 1024 * 1024 * 5,  # 文件大小
+            'backupCount': 5,  # 备份份数
+            'formatter': 'standard',  # 使用哪种formatters日志格式
         },
         'error': {
-            'level':'ERROR',
-            'class':'logging.handlers.RotatingFileHandler',
+            'level': 'ERROR',
+            'class': 'logging.handlers.RotatingFileHandler',
             'filename': 'log/error.log',
-            'maxBytes':1024*1024*5,
+            'maxBytes': 1024 * 1024 * 5,
             'backupCount': 5,
-            'formatter':'standard',
-            },
-        'console':{
+            'formatter': 'standard',
+        },
+        'console': {
             'level': 'DEBUG',
             'class': 'logging.StreamHandler',
             'formatter': 'standard'
         },
         'request_handler': {
-            'level':'DEBUG',
-            'class':'logging.handlers.RotatingFileHandler',
+            'level': 'DEBUG',
+            'class': 'logging.handlers.RotatingFileHandler',
             'filename': 'log/script.log',
-            'maxBytes': 1024*1024*5,
+            'maxBytes': 1024 * 1024 * 5,
             'backupCount': 5,
-            'formatter':'standard',
-            },
+            'formatter': 'standard',
+        },
         'scprits_handler': {
-            'level':'DEBUG',
-            'class':'logging.handlers.RotatingFileHandler',
-            'filename':'log/script.log',
-            'maxBytes': 1024*1024*5,
+            'level': 'DEBUG',
+            'class': 'logging.handlers.RotatingFileHandler',
+            'filename': 'log/script.log',
+            'maxBytes': 1024 * 1024 * 5,
             'backupCount': 5,
-            'formatter':'standard',
-            }
+            'formatter': 'standard',
+        }
     },
     'loggers': {
         'django': {
@@ -197,7 +197,7 @@ LOGGING = {
             'handlers': ['request_handler'],
             'level': 'DEBUG',
             'propagate': False,
-            },
+        },
         'scripts': {
             'handlers': ['scprits_handler'],
             'level': 'INFO',

@@ -160,7 +160,7 @@ class ScanLocation(models.Model):
     amount = models.IntegerField(blank=True, null=True, verbose_name='数量', default=1)
 
     def __unicode__(self):
-        return self.id_location.location
+        return self.id_location.province + self.id_location.city + self.id_location.county
 
     class Meta:
         verbose_name = '扫描的地理位置'
@@ -169,10 +169,13 @@ class ScanLocation(models.Model):
 
 
 class Locations(models.Model):
-    location = models.TextField(blank=True, null=True, verbose_name='地区')
+    province = models.CharField(max_length=30, blank=True, null=True, verbose_name='省级')
+    city = models.CharField(max_length=30, blank=True, null=True, verbose_name='市级')
+    county = models.CharField(max_length=30, blank=True, null=True, verbose_name='县级')
 
     def __unicode__(self):
-        return self.location
+            return self.province + self.city + self.county
+
 
     class Meta:
         verbose_name = '地理位置'

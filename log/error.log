@@ -1,0 +1,6 @@
+2016-06-04 16:17:06,839 [Thread-45:123145323335680] [MyApp.views:131] [views:add_model] [ERROR]- [Errno 2] No such file or directory: 'MyApp\\static\\img\\ARLogo.png'
+2016-06-04 17:51:40,043 [Thread-63:123145323335680] [MyApp.views:131] [views:add_model] [ERROR]- [Errno 2] No such file or directory: 'MyApp\\static\\img\\ARLogo.png'
+2016-06-04 17:54:23,451 [Thread-101:123145323335680] [MyApp.views:203] [views:view_model] [ERROR]- The 'imageTarget' attribute has no file associated with it.
+2016-06-04 18:00:40,253 [Thread-8:123145323335680] [MyApp.views:131] [views:add_model] [ERROR]- global name 'QRCODE_LOGO' is not defined
+2016-06-04 18:00:45,418 [Thread-10:123145323335680] [MyApp.views:203] [views:view_model] [ERROR]- The 'imageTarget' attribute has no file associated with it.
+2016-06-04 18:07:43,593 [Thread-13:123145323335680] [MyApp.views:131] [views:add_model] [ERROR]- [Errno 2] No such file or directory: 'uploads/QRCodes/1198dc07-2a3c-11e6-aa91-ac87a316b12fqrcode.png'

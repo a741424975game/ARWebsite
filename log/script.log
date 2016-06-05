@@ -1,0 +1,234 @@
+2016-06-04 16:17:11,640 [Thread-46:123145323335680] [django.request:284] [base:handle_uncaught_exception] [ERROR]- Internal Server Error: /models.html
+Traceback (most recent call last):
+  File "/Library/Python/2.7/site-packages/django/core/handlers/base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Library/Python/2.7/site-packages/django/core/handlers/base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/mac/Desktop/ARProject/ARWebsite/MyApp/views.py", line 185, in models
+    return render(request, 'models.html', locals())
+  File "/Library/Python/2.7/site-packages/django/shortcuts.py", line 67, in render
+    template_name, context, request=request, using=using)
+  File "/Library/Python/2.7/site-packages/django/template/loader.py", line 97, in render_to_string
+    return template.render(context, request)
+  File "/Library/Python/2.7/site-packages/django/template/backends/django.py", line 95, in render
+    return self.template.render(context)
+  File "/Library/Python/2.7/site-packages/django/template/base.py", line 206, in render
+    return self._render(context)
+  File "/Library/Python/2.7/site-packages/django/template/base.py", line 197, in _render
+    return self.nodelist.render(context)
+  File "/Library/Python/2.7/site-packages/django/template/base.py", line 992, in render
+    bit = node.render_annotated(context)
+  File "/Library/Python/2.7/site-packages/django/template/base.py", line 959, in render_annotated
+    return self.render(context)
+  File "/Library/Python/2.7/site-packages/django/template/loader_tags.py", line 173, in render
+    return compiled_parent._render(context)
+  File "/Library/Python/2.7/site-packages/django/template/base.py", line 197, in _render
+    return self.nodelist.render(context)
+  File "/Library/Python/2.7/site-packages/django/template/base.py", line 992, in render
+    bit = node.render_annotated(context)
+  File "/Library/Python/2.7/site-packages/django/template/base.py", line 959, in render_annotated
+    return self.render(context)
+  File "/Library/Python/2.7/site-packages/django/template/loader_tags.py", line 69, in render
+    result = block.nodelist.render(context)
+  File "/Library/Python/2.7/site-packages/django/template/base.py", line 992, in render
+    bit = node.render_annotated(context)
+  File "/Library/Python/2.7/site-packages/django/template/base.py", line 959, in render_annotated
+    return self.render(context)
+  File "/Library/Python/2.7/site-packages/django/template/defaulttags.py", line 220, in render
+    nodelist.append(node.render_annotated(context))
+  File "/Library/Python/2.7/site-packages/django/template/base.py", line 959, in render_annotated
+    return self.render(context)
+  File "/Library/Python/2.7/site-packages/django/template/loader_tags.py", line 209, in render
+    return template.render(context)
+  File "/Library/Python/2.7/site-packages/django/template/base.py", line 208, in render
+    return self._render(context)
+  File "/Library/Python/2.7/site-packages/django/template/base.py", line 197, in _render
+    return self.nodelist.render(context)
+  File "/Library/Python/2.7/site-packages/django/template/base.py", line 992, in render
+    bit = node.render_annotated(context)
+  File "/Library/Python/2.7/site-packages/django/template/base.py", line 959, in render_annotated
+    return self.render(context)
+  File "/Library/Python/2.7/site-packages/django/template/base.py", line 1049, in render
+    return render_value_in_context(output, context)
+  File "/Library/Python/2.7/site-packages/django/template/base.py", line 1024, in render_value_in_context
+    value = template_localtime(value, use_tz=context.use_tz)
+  File "/Library/Python/2.7/site-packages/django/utils/timezone.py", line 293, in template_localtime
+    return localtime(value) if should_convert else value
+  File "/Library/Python/2.7/site-packages/django/utils/timezone.py", line 306, in localtime
+    timezone = get_current_timezone()
+  File "/Library/Python/2.7/site-packages/django/utils/timezone.py", line 197, in get_current_timezone
+    return getattr(_active, "value", get_default_timezone())
+  File "/Library/Python/2.7/site-packages/django/utils/lru_cache.py", line 124, in wrapper
+    result = user_function(*args, **kwds)
+  File "/Library/Python/2.7/site-packages/django/utils/timezone.py", line 177, in get_default_timezone
+    return pytz.timezone(settings.TIME_ZONE)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/pytz/__init__.py", line 180, in timezone
+    raise UnknownTimeZoneError(zone)
+UnknownTimeZoneError: 'Asia/ShangHai'
+2016-06-04 16:17:11,979 [Thread-47:123145323335680] [django.request:182] [base:get_response] [WARNING]- Not Found: /favicon.ico
+2016-06-04 16:17:17,832 [Thread-48:123145323335680] [django.request:284] [base:handle_uncaught_exception] [ERROR]- Internal Server Error: /models.html
+Traceback (most recent call last):
+  File "/Library/Python/2.7/site-packages/django/core/handlers/base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Library/Python/2.7/site-packages/django/core/handlers/base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/mac/Desktop/ARProject/ARWebsite/MyApp/views.py", line 185, in models
+    return render(request, 'models.html', locals())
+  File "/Library/Python/2.7/site-packages/django/shortcuts.py", line 67, in render
+    template_name, context, request=request, using=using)
+  File "/Library/Python/2.7/site-packages/django/template/loader.py", line 97, in render_to_string
+    return template.render(context, request)
+  File "/Library/Python/2.7/site-packages/django/template/backends/django.py", line 95, in render
+    return self.template.render(context)
+  File "/Library/Python/2.7/site-packages/django/template/base.py", line 206, in render
+    return self._render(context)
+  File "/Library/Python/2.7/site-packages/django/template/base.py", line 197, in _render
+    return self.nodelist.render(context)
+  File "/Library/Python/2.7/site-packages/django/template/base.py", line 992, in render
+    bit = node.render_annotated(context)
+  File "/Library/Python/2.7/site-packages/django/template/base.py", line 959, in render_annotated
+    return self.render(context)
+  File "/Library/Python/2.7/site-packages/django/template/loader_tags.py", line 173, in render
+    return compiled_parent._render(context)
+  File "/Library/Python/2.7/site-packages/django/template/base.py", line 197, in _render
+    return self.nodelist.render(context)
+  File "/Library/Python/2.7/site-packages/django/template/base.py", line 992, in render
+    bit = node.render_annotated(context)
+  File "/Library/Python/2.7/site-packages/django/template/base.py", line 959, in render_annotated
+    return self.render(context)
+  File "/Library/Python/2.7/site-packages/django/template/loader_tags.py", line 69, in render
+    result = block.nodelist.render(context)
+  File "/Library/Python/2.7/site-packages/django/template/base.py", line 992, in render
+    bit = node.render_annotated(context)
+  File "/Library/Python/2.7/site-packages/django/template/base.py", line 959, in render_annotated
+    return self.render(context)
+  File "/Library/Python/2.7/site-packages/django/template/defaulttags.py", line 220, in render
+    nodelist.append(node.render_annotated(context))
+  File "/Library/Python/2.7/site-packages/django/template/base.py", line 959, in render_annotated
+    return self.render(context)
+  File "/Library/Python/2.7/site-packages/django/template/loader_tags.py", line 209, in render
+    return template.render(context)
+  File "/Library/Python/2.7/site-packages/django/template/base.py", line 208, in render
+    return self._render(context)
+  File "/Library/Python/2.7/site-packages/django/template/base.py", line 197, in _render
+    return self.nodelist.render(context)
+  File "/Library/Python/2.7/site-packages/django/template/base.py", line 992, in render
+    bit = node.render_annotated(context)
+  File "/Library/Python/2.7/site-packages/django/template/base.py", line 959, in render_annotated
+    return self.render(context)
+  File "/Library/Python/2.7/site-packages/django/template/base.py", line 1049, in render
+    return render_value_in_context(output, context)
+  File "/Library/Python/2.7/site-packages/django/template/base.py", line 1024, in render_value_in_context
+    value = template_localtime(value, use_tz=context.use_tz)
+  File "/Library/Python/2.7/site-packages/django/utils/timezone.py", line 293, in template_localtime
+    return localtime(value) if should_convert else value
+  File "/Library/Python/2.7/site-packages/django/utils/timezone.py", line 306, in localtime
+    timezone = get_current_timezone()
+  File "/Library/Python/2.7/site-packages/django/utils/timezone.py", line 197, in get_current_timezone
+    return getattr(_active, "value", get_default_timezone())
+  File "/Library/Python/2.7/site-packages/django/utils/lru_cache.py", line 124, in wrapper
+    result = user_function(*args, **kwds)
+  File "/Library/Python/2.7/site-packages/django/utils/timezone.py", line 177, in get_default_timezone
+    return pytz.timezone(settings.TIME_ZONE)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/pytz/__init__.py", line 180, in timezone
+    raise UnknownTimeZoneError(zone)
+UnknownTimeZoneError: 'Asia/ShangHai'
+2016-06-04 16:17:22,432 [Thread-50:123145331748864] [django.request:284] [base:handle_uncaught_exception] [ERROR]- Internal Server Error: /admin/
+Traceback (most recent call last):
+  File "/Library/Python/2.7/site-packages/django/core/handlers/base.py", line 174, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Library/Python/2.7/site-packages/django/core/handlers/base.py", line 172, in get_response
+    response = response.render()
+  File "/Library/Python/2.7/site-packages/django/template/response.py", line 160, in render
+    self.content = self.rendered_content
+  File "/Library/Python/2.7/site-packages/django/template/response.py", line 137, in rendered_content
+    content = template.render(context, self._request)
+  File "/Library/Python/2.7/site-packages/django/template/backends/django.py", line 95, in render
+    return self.template.render(context)
+  File "/Library/Python/2.7/site-packages/django/template/base.py", line 206, in render
+    return self._render(context)
+  File "/Library/Python/2.7/site-packages/django/template/base.py", line 197, in _render
+    return self.nodelist.render(context)
+  File "/Library/Python/2.7/site-packages/django/template/base.py", line 992, in render
+    bit = node.render_annotated(context)
+  File "/Library/Python/2.7/site-packages/django/template/base.py", line 959, in render_annotated
+    return self.render(context)
+  File "/Library/Python/2.7/site-packages/django/template/loader_tags.py", line 173, in render
+    return compiled_parent._render(context)
+  File "/Library/Python/2.7/site-packages/django/template/base.py", line 197, in _render
+    return self.nodelist.render(context)
+  File "/Library/Python/2.7/site-packages/django/template/base.py", line 992, in render
+    bit = node.render_annotated(context)
+  File "/Library/Python/2.7/site-packages/django/template/base.py", line 959, in render_annotated
+    return self.render(context)
+  File "/Library/Python/2.7/site-packages/django/template/loader_tags.py", line 173, in render
+    return compiled_parent._render(context)
+  File "/Library/Python/2.7/site-packages/django/template/base.py", line 197, in _render
+    return self.nodelist.render(context)
+  File "/Library/Python/2.7/site-packages/django/template/base.py", line 992, in render
+    bit = node.render_annotated(context)
+  File "/Library/Python/2.7/site-packages/django/template/base.py", line 959, in render_annotated
+    return self.render(context)
+  File "/Library/Python/2.7/site-packages/django/template/defaulttags.py", line 425, in render
+    tzinfo = timezone.get_current_timezone() if settings.USE_TZ else None
+  File "/Library/Python/2.7/site-packages/django/utils/timezone.py", line 197, in get_current_timezone
+    return getattr(_active, "value", get_default_timezone())
+  File "/Library/Python/2.7/site-packages/django/utils/lru_cache.py", line 124, in wrapper
+    result = user_function(*args, **kwds)
+  File "/Library/Python/2.7/site-packages/django/utils/timezone.py", line 177, in get_default_timezone
+    return pytz.timezone(settings.TIME_ZONE)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/pytz/__init__.py", line 180, in timezone
+    raise UnknownTimeZoneError(zone)
+UnknownTimeZoneError: 'Asia/ShangHai'
+2016-06-04 17:48:32,749 [Thread-8:123145327542272] [django.request:284] [base:handle_uncaught_exception] [ERROR]- Internal Server Error: /admin/login/
+Traceback (most recent call last):
+  File "/Library/Python/2.7/site-packages/django/core/handlers/base.py", line 174, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Library/Python/2.7/site-packages/django/core/handlers/base.py", line 172, in get_response
+    response = response.render()
+  File "/Library/Python/2.7/site-packages/django/template/response.py", line 160, in render
+    self.content = self.rendered_content
+  File "/Library/Python/2.7/site-packages/django/template/response.py", line 137, in rendered_content
+    content = template.render(context, self._request)
+  File "/Library/Python/2.7/site-packages/django/template/backends/django.py", line 95, in render
+    return self.template.render(context)
+  File "/Library/Python/2.7/site-packages/django/template/base.py", line 206, in render
+    return self._render(context)
+  File "/Library/Python/2.7/site-packages/django/template/base.py", line 197, in _render
+    return self.nodelist.render(context)
+  File "/Library/Python/2.7/site-packages/django/template/base.py", line 992, in render
+    bit = node.render_annotated(context)
+  File "/Library/Python/2.7/site-packages/django/template/base.py", line 959, in render_annotated
+    return self.render(context)
+  File "/Library/Python/2.7/site-packages/django/template/loader_tags.py", line 173, in render
+    return compiled_parent._render(context)
+  File "/Library/Python/2.7/site-packages/django/template/base.py", line 197, in _render
+    return self.nodelist.render(context)
+  File "/Library/Python/2.7/site-packages/django/template/base.py", line 992, in render
+    bit = node.render_annotated(context)
+  File "/Library/Python/2.7/site-packages/django/template/base.py", line 959, in render_annotated
+    return self.render(context)
+  File "/Library/Python/2.7/site-packages/django/template/loader_tags.py", line 173, in render
+    return compiled_parent._render(context)
+  File "/Library/Python/2.7/site-packages/django/template/base.py", line 197, in _render
+    return self.nodelist.render(context)
+  File "/Library/Python/2.7/site-packages/django/template/base.py", line 992, in render
+    bit = node.render_annotated(context)
+  File "/Library/Python/2.7/site-packages/django/template/base.py", line 959, in render_annotated
+    return self.render(context)
+  File "/Library/Python/2.7/site-packages/django/template/defaulttags.py", line 425, in render
+    tzinfo = timezone.get_current_timezone() if settings.USE_TZ else None
+  File "/Library/Python/2.7/site-packages/django/utils/timezone.py", line 197, in get_current_timezone
+    return getattr(_active, "value", get_default_timezone())
+  File "/Library/Python/2.7/site-packages/django/utils/lru_cache.py", line 124, in wrapper
+    result = user_function(*args, **kwds)
+  File "/Library/Python/2.7/site-packages/django/utils/timezone.py", line 177, in get_default_timezone
+    return pytz.timezone(settings.TIME_ZONE)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/pytz/__init__.py", line 180, in timezone
+    raise UnknownTimeZoneError(zone)
+UnknownTimeZoneError: 'Asia/ShangHai'
+2016-06-04 17:54:06,522 [Thread-94:123145323335680] [django.request:182] [base:get_response] [WARNING]- Not Found: /uploads/QRCodes/d73b6c07-2a39-11e6-9bfe-ac87a316b12fqrcode.png
+2016-06-04 17:54:23,495 [Thread-102:123145323335680] [django.request:182] [base:get_response] [WARNING]- Not Found: /uploads/QRCodes/d73b6c07-2a39-11e6-9bfe-ac87a316b12fqrcode.png
+2016-06-04 18:00:45,486 [Thread-11:123145323335680] [django.request:182] [base:get_response] [WARNING]- Not Found: /uploads/QRCodes/260ff9d9-2a3b-11e6-8376-ac87a316b12fqrcode.png
+2016-06-04 18:02:43,933 [Thread-27:123145323335680] [django.request:182] [base:get_response] [WARNING]- Not Found: /uploads/QRCodes/6d122c97-2a3b-11e6-ad46-ac87a316b12fqrcode.png
+2016-06-04 18:04:51,758 [Thread-36:123145327542272] [django.request:182] [base:get_response] [WARNING]- Not Found: /uploads/QRCodes/6d122c97-2a3b-11e6-ad46-ac87a316b12fqrcode.png

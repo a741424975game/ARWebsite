@@ -7,6 +7,7 @@ from django.contrib.auth import logout, login, authenticate
 from django.contrib.auth.hashers import make_password
 from MyApp.qrCode import generate_qrcode
 from MyApp.handle import *
+from MyApp.echarts import *
 from forms import *
 
 
@@ -184,6 +185,7 @@ def models(request):
     return render(request, 'models.html', locals())
 
 
+# 展示模型详细信息和数据
 def view_model(request):
     try:
         if request.user.is_authenticated():
@@ -192,6 +194,8 @@ def view_model(request):
                 model = Bundle.objects.get(id=bundle_id)
                 qrCodePath = model.QRCode.url
                 imageTargetPath = model.imageTarget.url
+                dailyVC = DailyVC(bundle_id)
+                areaVisits = AreaVisits(bundle_id)
             else:
                 redirect('404.html')
         else:
@@ -220,17 +224,27 @@ def help_page(request):
 def ar_config_info_api(request):
     try:
         bundle_id = request.GET.get('bundle_id')
-        if bundle_id is not None and Bundle.objects.filter(id=bundle_id):
+        ip = request.GET.get('ip')  # request.META('REMOTE_ADDR')
+        if ip is not None and bundle_id is not None and Bundle.objects.filter(id=bundle_id):
+            url = 'http://ip.taobao.com/service/getIpInfo.php?ip=' + ip
+            response = requests.get(url)
+            data = location_handle(response.json())
+            if not Locations.objects.filter(province=data['data']['region'], city=data['data']['city'],
+                                            county=data['data']['county'], ):
+                location = Locations.objects.create(province=data['data']['region'],
+                                                    city=data['data']['city'],
+                                                    county=data['data']['county'],
+                                                    )
+                location.save()
+            else:
+                location = Locations.objects.get(province=data['data']['region'],
+                                                 city=data['data']['city'],
+                                                 county=data['data']['county'],
+                                                 )
             bundle = Bundle.objects.get(id=bundle_id)
+            Scan.objects.create(id_bundle=bundle, id_location=location)
             config_info = bundle.config_info
             return HttpResponse(config_info)
     except Exception as e:
         logger.error(e)
     return HttpResponse('error')
-
-
-def test(request):
-    url = 'http://ip.taobao.com/service/getIpInfo.php?ip=' + request.META.get('REMOTE_ADDR', None)
-    response = requests.get(url)
-    data = response.json()
-    return HttpResponse(data['data']['region']+data['data']['city'])
