@@ -1,9 +1,11 @@
+# -*- coding: utf-8 -*-
 from MyApp.models import *
-from  calendar import monthrange
+from calendar import monthrange
 import datetime
 import json
 
 
+# 单个模型最近访问和评论数量
 class DailyVC:
     recently_days = []
 
@@ -41,6 +43,7 @@ class DailyVC:
         self.recently_comments_amount = json.dumps(self.recently_comments_amount)
 
 
+# 单个模型区域访问量
 class AreaVisits:
     area_visits = {}
 
@@ -98,6 +101,7 @@ class AreaVisits:
             self.area_visits = []
 
 
+# 单个模型最近月访问和评论数量
 class MonthlyVC:
     recently_months = []
 
@@ -133,4 +137,5 @@ class MonthlyVC:
         self.recently_months = json.dumps(temp)
         self.recently_months_visits_amount = json.dumps(self.recently_months_visits_amount)
         self.recently_months_comments_amount = json.dumps(self.recently_months_comments_amount)
+
 

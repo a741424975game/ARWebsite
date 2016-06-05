@@ -201,6 +201,11 @@
           </div>
           <div class="widget-body">
             <div id="visits_comments_likes_charts" class="chart-height-lg"></div>
+              <script>
+                  var visits = {{ model.scan_times }}
+                  var comments = {{ model.comments }}
+                  var likes = {{ model.likes }}
+              </script>
           </div>
         </div>
       </div>

@@ -201,9 +201,9 @@ def view_model(request):
                 monthlyVC = MonthlyVC(bundle_id)
                 areaVisits = AreaVisits(bundle_id)
             else:
-                redirect('404.html')
+                return redirect('404.html')
         else:
-            redirect('login.html')
+            return redirect('login.html')
     except Exception as e:
         logger.error(e)
     return render(request, 'view-model.html', locals())
@@ -252,3 +252,8 @@ def ar_config_info_api(request):
     except Exception as e:
         logger.error(e)
     return HttpResponse('error')
+
+
+# 404
+def page404(request):
+    return render(request, '404.html')

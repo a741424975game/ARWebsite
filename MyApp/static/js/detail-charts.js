@@ -146,9 +146,9 @@ function overview() {
                 radius : '55%',
                 center: ['50%', '60%'],
                 data:[
-                    {value:335, name:'Visits'},
-                    {value:310, name:'Comments'},
-                    {value:234, name:'Likes'}
+                    {value:visits, name:'Visits'},
+                    {value:comments, name:'Comments'},
+                    {value:likes, name:'Likes'}
                 ],
                 itemStyle: {
                     emphasis: {
