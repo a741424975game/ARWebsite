@@ -30,12 +30,15 @@ def index(request):
         total_visits = 0
         comments_amount = 0
         likes = 0
+        comments_list = []
         recently_months_visits = MonthlyVisits(request.user.username)
         region_rank = RegionRank(request.user.username)
         for bundle in User.objects.get(username=request.user.username).bundle_set.all():
             likes += bundle.likes
             scan_statistics = bundle.scanstatistics_set.all()
             comments_statistics = bundle.commentstatistics_set.all()
+            comments_list += bundle.comment_set.all()
+            comments_list.sort(key=lambda comment: comment.datetime, reverse=True)
             for each_statistics in scan_statistics:
                 if each_statistics.datetime.month == timezone.localtime(timezone.now()).month:
                     monthly_visits += each_statistics.amount
@@ -201,6 +204,7 @@ def view_model(request):
             bundle_id = request.GET.get('bundle_id')
             if bundle_id is not None and Bundle.objects.filter(id=bundle_id):
                 model = Bundle.objects.get(id=bundle_id)
+                comments_list = Bundle.objects.get(id=bundle_id).comment_set.all().order_by('-datetime')
                 qrCodePath = model.QRCode.url
                 imageTargetPath = model.imageTarget.url
                 dailyVC = DailyVC(bundle_id)
