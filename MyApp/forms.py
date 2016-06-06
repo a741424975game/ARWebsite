@@ -60,7 +60,7 @@ class UploadForm(forms.Form):
                                 max_length=30, error_messages={"required": "modelName 不能为空",})
 
     note = forms.CharField(widget=forms.Textarea(
-        attrs={"class": "form-control", "id": "modelName", "type": "text", "placeholder": "Model Name",}))
+        attrs={"class": "form-control", "id": "modelName", "type": "text", "placeholder": "Descriptions", }))
 
     model = forms.FileField()
 
