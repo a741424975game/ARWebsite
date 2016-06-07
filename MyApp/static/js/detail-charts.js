@@ -599,7 +599,7 @@ function areaVisits() {
                     },
 					itemStyle:{
 						normal:{
-						  areaColor:'#A0D3E6'
+						  areaColor:'#CEE7F0'
 						}
 					},
                     roam: true,
