@@ -118,7 +118,7 @@ function monthlyVC() {
                                 }
                         }
             },
-            data: recently_comments_amount,
+            data: data:recently_months_comments_amount,
         },
         ],
         color:['#8ECF67','#1E91CF'],

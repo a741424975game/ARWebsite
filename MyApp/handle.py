@@ -65,8 +65,11 @@ def location_handle(data):
     data['data']['region'] = data['data']['region'].replace(u'省', '')
     data['data']['region'] = data['data']['region'].replace(u'市', '')
     data['data']['region'] = data['data']['region'].replace(u'特别行政区', '')
+    data['data']['city'] = data['data']['city'].replace(u'自治区', '')
+    data['data']['city'] = data['data']['city'].replace(u'上维吾尔自治区', '')
     data['data']['city'] = data['data']['city'].replace(u'北京市', '')
     data['data']['city'] = data['data']['city'].replace(u'天津市', '')
     data['data']['city'] = data['data']['city'].replace(u'重庆市', '')
     data['data']['city'] = data['data']['city'].replace(u'上海市', '')
+
     return data
