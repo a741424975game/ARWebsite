@@ -56,7 +56,7 @@ SUIT_CONFIG = {
 
         # Rename app and set icon
         {'app': 'auth', 'label': u'授权管理', 'icon': 'icon-lock'},
-        {'app': 'Myapp', 'label': u'ARManager', 'models': ('Bundle',)},
+        {'label': u'服务器负载情况', 'url': '/admin/server', 'icon': 'icon-leaf',},
     ),
 }
 

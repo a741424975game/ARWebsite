@@ -20,6 +20,7 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from MyApp.views import *
 
+
 urlpatterns = [
     url(r"^admin/", admin.site.urls),  # admin 管理界面
     url(r'^$', home, name='home'),  # 首页
@@ -41,4 +42,7 @@ urlpatterns = [
     url(r'arLike-get-api$', get_ar_like_api, name='like_get_api'),  # 用于获取点赞数
     url(r'^404.html', page404, name='404'),  # 404
     url(r'api-test', api_test, name='api_test'),  # 用于产生测试数据
+    url(r'^admin/server$', server, name='server'),   # 服务器负载查看
+    url(r'^admin/server-info-api$', server_info_api, name='server_info_api'),  # 服务器负载信息api
+
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)  # 设置访问静态文件

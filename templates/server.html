@@ -1,0 +1,209 @@
+{% extends "admin/base_site.html" %}
+
+{% block content %}
+        <!-- ECharts -->
+    <script src="/static/js/echarts.min.js"></script>
+    <script src="/static/js/shine.js"></script>
+
+        <div id="cpu_memory_disk_network_echarts" style="width: 1000px;height:600px;">
+
+        </div>
+    <script>
+    var  server_info ;
+    var myChart = echarts.init(document.getElementById('cpu_memory_disk_network_echarts'))
+    option = {
+        tooltip : {
+            formatter: "{a} <br/>{c} {b}"
+        },
+        toolbox: {
+            show: true,
+            feature: {
+                restore: {show: true},
+                saveAsImage: {show: true}
+            }
+        },
+        series : [
+            {
+                name: 'CPU使用率',
+                type: 'gauge',
+                z: 3,
+                min: 0,
+                max: 100,
+                splitNumber: 10,
+                center: ['50%', '30%'],    // 默认全局居中
+                radius: '50%',
+                axisLine: {            // 坐标轴线
+                    lineStyle: {       // 属性lineStyle控制线条样式
+                        width: 10
+                    }
+                },
+                axisTick: {            // 坐标轴小标记
+                    length: 15,        // 属性length控制线长
+                    lineStyle: {       // 属性lineStyle控制线条样式
+                        color: 'auto'
+                    }
+                },
+                splitLine: {           // 分隔线
+                    length: 20,         // 属性length控制线长
+                    lineStyle: {       // 属性lineStyle（详见lineStyle）控制线条样式
+                        color: 'auto'
+                    }
+                },
+                title : {
+                    textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+                        fontWeight: 'bolder',
+                        fontSize: 20,
+                        fontStyle: 'italic'
+                    }
+                },
+                detail : {
+                    textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+                        fontWeight: 'bolder'
+                    }
+                },
+                data:[{value: 0, name: 'CPU％'}]
+            },
+            {
+                name: '内存使用率',
+                type: 'gauge',
+                center: ['28%', '35%'],    // 默认全局居中
+                radius: '35%',
+                min:0,
+                max:100,
+                endAngle:45,
+                splitNumber:10,
+                axisLine: {            // 坐标轴线
+                    lineStyle: {       // 属性lineStyle控制线条样式
+                        width: 8
+                    }
+                },
+                axisTick: {            // 坐标轴小标记
+                    length:12,        // 属性length控制线长
+                    lineStyle: {       // 属性lineStyle控制线条样式
+                        color: 'auto'
+                    }
+                },
+                splitLine: {           // 分隔线
+                    length:20,         // 属性length控制线长
+                    lineStyle: {       // 属性lineStyle（详见lineStyle）控制线条样式
+                        color: 'auto'
+                    }
+                },
+                pointer: {
+                    width:5
+                },
+                title: {
+                    offsetCenter: [0, '-30%'],       // x, y，单位px
+                },
+                detail: {
+                    textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+                        fontWeight: 'bolder'
+                    }
+                },
+                data:[{value: 0, name: 'Memory %'}]
+            },
+            {
+                name: '网络状况',
+                type: 'gauge',
+                center: ['70%', '35%'],    // 默认全局居中
+                radius: '25%',
+                min: 0,
+                max: 5,
+                startAngle: 135,
+                endAngle: 2,
+                splitNumber: 5,
+                axisLine: {            // 坐标轴线
+                    lineStyle: {       // 属性lineStyle控制线条样式
+                        width: 8
+                    }
+                },
+                axisTick: {            // 坐标轴小标记
+                    length:12,        // 属性length控制线长
+                    lineStyle: {       // 属性lineStyle控制线条样式
+                        color: 'auto'
+                    }
+                },
+                splitLine: {           // 分隔线
+                    length:20,         // 属性length控制线长
+                    lineStyle: {       // 属性lineStyle（详见lineStyle）控制线条样式
+                        color: 'auto'
+                    }
+                },
+                pointer: {
+                    width:2
+                },
+                title : {
+                    show: false
+                },
+                detail : {
+                    show: false
+                },
+                data:[{value: 0, name: 'NetWork MB'}]
+            },
+            {
+                name: '硬盘使用率',
+                type: 'gauge',
+                center : ['70%', '35%'],    // 默认全局居中
+                radius : '25%',
+                min: 0,
+                max: 100,
+                startAngle: -2,
+                endAngle: -135,
+                splitNumber: 2,
+                axisLine: {            // 坐标轴线
+                    lineStyle: {       // 属性lineStyle控制线条样式
+                        width: 8
+                    }
+                },
+                axisTick: {            // 坐标轴小标记
+                    length:12,        // 属性length控制线长
+                    lineStyle: {       // 属性lineStyle控制线条样式
+                        color: 'auto'
+                    }
+                },
+                splitLine: {           // 分隔线
+                    length:20,         // 属性length控制线长
+                    lineStyle: {       // 属性lineStyle（详见lineStyle）控制线条样式
+                        color: 'auto'
+                    }
+                },
+                pointer: {
+                    width:2
+                },
+                title: {
+                    show: false
+                },
+                detail: {
+                    show: false
+                },
+                data:[{value: 0, name: 'Disk %'}]
+            }
+        ]
+    };
+    myChart.setOption(option, true);
+    </script>
+
+
+
+    <script>
+    var data = 0
+    timeTicket = setInterval(function () {
+        $.ajax({
+            type:'GET',
+            url:'/admin/server-info-api',
+            dataType:'json',
+            success:function(json)
+                {
+                     server_info = eval(json);
+                }
+        });
+        option.series[0].data[0].value = (server_info.cpu*100).toFixed(2) - 0;
+        option.series[1].data[0].value = (server_info.memory*100).toFixed(2) - 0;
+        option.series[2].data[0].value = (server_info.network*10).toFixed(2) - 0;
+        option.series[3].data[0].value = (server_info.disk*100).toFixed(2) - 0;
+        myChart.setOption(option, true);
+    }, 3000);
+    </script>
+
+{% endblock %}
+
