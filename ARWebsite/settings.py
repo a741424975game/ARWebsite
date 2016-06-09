@@ -37,6 +37,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'suit',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -45,6 +46,19 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'MyApp',
 ]
+
+SUIT_CONFIG = {
+    'ADMIN_NAME': u'ARManager网站后台管理',
+    'MENU': (
+
+        # Keep original label and models
+        'sites',
+
+        # Rename app and set icon
+        {'app': 'auth', 'label': u'授权管理', 'icon': 'icon-lock'},
+        {'app': 'Myapp', 'label': u'ARManager', 'models': ('Bundle',)},
+    ),
+}
 
 MIDDLEWARE_CLASSES = [
     'django.middleware.security.SecurityMiddleware',

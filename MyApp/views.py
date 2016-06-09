@@ -9,7 +9,7 @@ from django.core.paginator import Paginator
 from MyApp.qrCode import generate_qrcode
 from MyApp.handle import *
 from MyApp.echarts import *
-from MyApp.jieba_tags import *
+# from MyApp.jieba_tags import *
 from forms import *
 
 # 输出日志信息
@@ -206,7 +206,7 @@ def view_model(request):
             if bundle_id is not None and Bundle.objects.filter(id=bundle_id):
                 model = Bundle.objects.get(id=bundle_id)
                 comments_list = Bundle.objects.get(id=bundle_id).comment_set.all().order_by('-datetime')
-                tags = jieba_tags(comments_list)
+                # tags = jieba_tags(comments_list)
                 qrCodePath = model.QRCode.url
                 imageTargetPath = model.imageTarget.url
                 dailyVC = DailyVC(bundle_id)

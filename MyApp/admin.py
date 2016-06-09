@@ -1,7 +1,6 @@
 from django.contrib import admin
 from MyApp.models import *
 
-
 class BundleAdmin(admin.ModelAdmin):
     list_display = ('name', 'upload_datetime',)
     readonly_fields = ('likes', 'scan_times', 'comments', 'upload_datetime', 'last_edit_datetime')
