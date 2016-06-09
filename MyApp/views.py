@@ -6,11 +6,11 @@ from django.http import HttpResponse
 from django.contrib.auth import logout, login, authenticate
 from django.contrib.auth.hashers import make_password
 from django.core.paginator import Paginator
-from django.template import RequestContext
 from MyApp.qrCode import generate_qrcode
 from MyApp.handle import *
 from MyApp.echarts import *
-# from MyApp.jieba_tags import *
+from MyApp.jieba_tags import *
+from MyApp.psutil_getServerInfo import *
 from forms import *
 
 import random
@@ -209,7 +209,7 @@ def view_model(request):
             if bundle_id is not None and Bundle.objects.filter(id=bundle_id):
                 model = Bundle.objects.get(id=bundle_id)
                 comments_list = Bundle.objects.get(id=bundle_id).comment_set.all().order_by('-datetime')
-                # tags = jieba_tags(comments_list)
+                tags = jieba_tags(comments_list)
                 qrCodePath = model.QRCode.url
                 imageTargetPath = model.imageTarget.url
                 dailyVC = DailyVC(bundle_id)
@@ -362,11 +362,7 @@ def server(request):
 
 def server_info_api(request):
     try:
-        cpu = random.random()
-        memory = random.random()
-        disk = random.random()
-        network = random.random()
-        server_info = {'cpu': cpu, 'memory': memory, 'disk': disk, 'network': network}
+        server_info = get_server_info()
     except Exception as e:
         logger.error(e)
     return HttpResponse(json.dumps(server_info))

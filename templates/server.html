@@ -103,14 +103,14 @@
                 data:[{value: 0, name: 'Memory %'}]
             },
             {
-                name: '网络状况',
+                name: '网络状况(上传与下行)',
                 type: 'gauge',
                 center: ['70%', '35%'],    // 默认全局居中
                 radius: '25%',
                 min: 0,
-                max: 5,
+                max: 50,
                 startAngle: 135,
-                endAngle: 2,
+                endAngle: 1,
                 splitNumber: 5,
                 axisLine: {            // 坐标轴线
                     lineStyle: {       // 属性lineStyle控制线条样式
@@ -141,15 +141,15 @@
                 data:[{value: 0, name: 'NetWork MB'}]
             },
             {
-                name: '硬盘使用率',
+                name: '硬盘读写(读取与写入)',
                 type: 'gauge',
                 center : ['70%', '35%'],    // 默认全局居中
                 radius : '25%',
                 min: 0,
-                max: 100,
-                startAngle: -2,
+                max: 200,
+                startAngle: -3,
                 endAngle: -135,
-                splitNumber: 2,
+                splitNumber: 4,
                 axisLine: {            // 坐标轴线
                     lineStyle: {       // 属性lineStyle控制线条样式
                         width: 8
@@ -176,7 +176,7 @@
                 detail: {
                     show: false
                 },
-                data:[{value: 0, name: 'Disk %'}]
+                data:[{value: 0, name: 'Disk MB'}]
             }
         ]
     };
@@ -197,12 +197,12 @@
                      server_info = eval(json);
                 }
         });
-        option.series[0].data[0].value = (server_info.cpu*100).toFixed(2) - 0;
-        option.series[1].data[0].value = (server_info.memory*100).toFixed(2) - 0;
-        option.series[2].data[0].value = (server_info.network*10).toFixed(2) - 0;
-        option.series[3].data[0].value = (server_info.disk*100).toFixed(2) - 0;
+        option.series[0].data[0].value = (server_info.cpu).toFixed(2) - 0;
+        option.series[1].data[0].value = (server_info.memory).toFixed(2) - 0;
+        option.series[2].data[0].value = (server_info.network).toFixed(2) - 0;
+        option.series[3].data[0].value = (server_info.disk).toFixed(2) - 0;
         myChart.setOption(option, true);
-    }, 3000);
+    }, 2000);
     </script>
 
 {% endblock %}
