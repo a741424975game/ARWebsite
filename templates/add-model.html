@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}AR Manager - Create Model{% endblock %}
+{% block title %}AR Manager - 创建模型{% endblock %}
 
 {% block css %}
 	<link href="/static/css/bootstrap.min.css" rel="stylesheet">
@@ -17,21 +17,21 @@
         <li class=''>
           <a href='index.html'>
             <i class="fa fa-dashboard"></i>
-            Dashboard
+            首页
           </a>
         </li>
         <li class='active'>
-          <a href='models.html'><i class="fa fa-puzzle-piece"></i>Models</a>
+          <a href='models.html'><i class="fa fa-puzzle-piece"></i>模型</a>
         </li>
         <li class=''>
-          <a href='#'><i class="fa fa-user"></i>Account</a>
+          <a href='#'><i class="fa fa-user"></i>账户</a>
           <ul>
-            <li><a href='my-account.html'>My Account</a></li>
-            <li><a href='edit-profile.html'>Edit Profile</a></li>
+            <li><a href='my-account.html'>我的账户</a></li>
+            <li><a href='edit-profile.html'>修改资料</a></li>
           </ul>
         </li>
         <li class=''>
-          <a href='help.html'><i class="fa fa-file-text"></i>Help</a>
+          <a href='help.html'><i class="fa fa-file-text"></i>文档</a>
         </li>
       </ul>
     </div>
@@ -40,7 +40,7 @@
 {% block sub_nav %}
 	<div class="sub-nav hidden-sm hidden-xs">
       <ul>
-        <li><a href="" class="heading">Models</a></li>
+        <li><a href="" class="heading">模型</a></li>
       </ul>
       <div class="custom-search hidden-sm hidden-xs">
         <input type="text" class="search-query" placeholder="Search here ...">
@@ -56,9 +56,9 @@
 	    <div class="widget">
 	      <div class="widget-header">
 	        <div class="title">
-	          Create Model
+	          创建模型
 	          <span class="mini-title">
-	            Fill the form to create new Model
+	            请填写以下内容
 	          </span>
 	        </div>
 	      </div>
@@ -66,21 +66,21 @@
             <form class="form-horizontal no-margin" method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
               <div class="form-group">
-                <label for="modelName" class="col-sm-2 control-label">Model Name</label>
+                <label for="modelName" class="col-sm-2 control-label">名字</label>
                 <div class="col-sm-10">
                   {{ uploadForm.modelName }}
                     <span>{{ uploadForm.modelName.errors }}</span>
                 </div>
               </div>
               <div class="form-group">
-                <label for="note" class="col-sm-2 control-label">Note</label>
+                <label for="note" class="col-sm-2 control-label">备注</label>
                 <div class="col-sm-10">
                   {{ uploadForm.note }}
                     <span>{{ uploadForm.note.errors }}</span>
                 </div>
               </div>
               <div class="form-group">
-                <label for="modelFile" class="col-sm-2 control-label">Select Model</label>
+                <label for="modelFile" class="col-sm-2 control-label">上传模型</label>
                 <div class="col-sm-10">
               		{{ uploadForm.model }}
                     <span>{{ uploadForm.model.errors }}</span>
@@ -104,7 +104,7 @@
 {#              </div>#}
               <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
-                  <button type="submit" class="btn btn-info">Create Model</button>
+                  <button type="submit" class="btn btn-info">确认创建</button>
                 </div>
               </div>
             </form>

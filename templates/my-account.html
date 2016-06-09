@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}AR Manager - My Account{% endblock %}
+{% block title %}AR Manager - 我的账户{% endblock %}
 
 {% block css %}
     <link href="/static/css/bootstrap.min.css" rel="stylesheet">
@@ -18,21 +18,21 @@
         <li class=''>
           <a href='index.html'>
             <i class="fa fa-dashboard"></i>
-            Dashboard
+            首页
           </a>
         </li>
         <li class=''>
-          <a href='models.html'><i class="fa fa-puzzle-piece"></i>Models</a>
+          <a href='models.html'><i class="fa fa-puzzle-piece"></i>模型</a>
         </li>
         <li class='active'>
-          <a href='#'><i class="fa fa-user"></i>Account</a>
+          <a href='#'><i class="fa fa-user"></i>账户</a>
           <ul>
-            <li><a href='my-account.html'>My Account</a></li>
-            <li><a href='edit-profile.html'>Edit Profile</a></li>
+            <li><a href='my-account.html'>我的账户</a></li>
+            <li><a href='edit-profile.html'>修改资料</a></li>
           </ul>
         </li>
         <li class=''>
-          <a href='help.html'><i class="fa fa-file-text"></i>Help</a>
+          <a href='help.html'><i class="fa fa-file-text"></i>文档</a>
         </li>
       </ul>
     </div>
@@ -43,15 +43,15 @@
     <!-- Sub Nav End -->
     <div class="sub-nav hidden-sm hidden-xs">
       <ul>
-        <li><a href="" class="heading">Account</a></li>
+        <li><a href="" class="heading">账户</a></li>
         <li class="hidden-sm hidden-xs">
           <a href="" class="selected">
-            My Account
+            我的账户
           </a>
         </li>
         <li class="hidden-sm hidden-xs">
           <a href="edit-profile.html">
-            Edit Profile
+            修改资料
           </a>
         </li>
       </ul>
@@ -70,7 +70,7 @@
         <div class="widget no-margin">
           <div class="widget-header">
             <div class="title">
-              My Account
+              我的账户
             </div>
             <span class="tools">
               <i class="fa fa-cogs"></i>
@@ -82,38 +82,38 @@
                 <div class="thumbnail">
                   <img alt="300x200" src="/static/img/profile.png">
                   <br>
-                  <h4 class="center-align-text">Avatar</h4>
+                  <h4 class="center-align-text">头像</h4>
                 </div>
                 <br>
               </div>
               <div class="col-lg-9 col-md-8 col-sm-12 col-xs-12">
                 <h5>
-                  Account Information
+                  基本信息
                 </h5>
                 <hr>
                 <div class="widget-body">
                   <div class="stylish-lists">
                     <dl class="dl-horizontal no-margin">
                       <dt  class="text-info">
-                        User Name
+                        用户名
                       </dt>
                       <dd>
                         {{ request.user.username }}
                       </dd>
                       <dt  class="text-info">
-                        Email
+                        邮箱
                       </dt>
                       <dd>
                         {{ request.user.email }}
                       </dd>
                       <dt  class="text-info">
-                        Registration Date
+                        注册时间
                       </dt>
                       <dd>
                         {{ request.user.date_joined }}
                       </dd>
                       <dt  class="text-info">
-                        Last Login
+                        上次登陆
                       </dt>
                       <dd>
                         {{ request.user.last_login }}

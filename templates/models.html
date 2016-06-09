@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}AR Manager - Models{% endblock %}
+{% block title %}AR Manager - 模型{% endblock %}
 
 {% block css %}
 	<link href="/static/css/bootstrap.min.css" rel="stylesheet">
@@ -18,21 +18,21 @@
         <li class=''>
           <a href='index.html'>
             <i class="fa fa-dashboard"></i>
-            Dashboard
+            首页
           </a>
         </li>
         <li class='active'>
-          <a href='#'><i class="fa fa-puzzle-piece"></i>Models</a>
+          <a href='#'><i class="fa fa-puzzle-piece"></i>模型</a>
         </li>
         <li class=''>
-          <a href='#'><i class="fa fa-user"></i>Account</a>
+          <a href='#'><i class="fa fa-user"></i>账户</a>
           <ul>
-            <li><a href='my-account.html'>My Account</a></li>
-            <li><a href='edit-profile.html'>Edit Profile</a></li>
+            <li><a href='my-account.html'>我的账户</a></li>
+            <li><a href='edit-profile.html'>修改资料</a></li>
           </ul>
         </li>
         <li class=''>
-          <a href='help.html'><i class="fa fa-file-text"></i>Help</a>
+          <a href='help.html'><i class="fa fa-file-text"></i>文档</a>
         </li>
       </ul>
     </div>
@@ -41,7 +41,7 @@
 {% block sub_nav %}
 	<div class="sub-nav hidden-sm hidden-xs">
       <ul>
-        <li><a href="" class="heading">Models</a></li>
+        <li><a href="" class="heading">模型</a></li>
       </ul>
       <div class="custom-search hidden-sm hidden-xs">
         <input type="text" class="search-query" placeholder="Search here ...">
@@ -57,7 +57,7 @@
 	    <div class="widget">
 	      <div class="widget-header">
 	        <div class="title">
-	          All Models
+	          模型列表
 	        </div>
 	        <span class="tools">
 	          <i class="fa fa-cogs"></i>
@@ -66,10 +66,10 @@
 	      <div class="widget-body">
 	        <div class="col-lg-12 col-md-12">
 	          <div class="btn-group">
-	            <a href="add-model.html"><button type="button" class="btn btn-success" data-original-title="" title="">Add</button></a>
+	            <a href="add-model.html"><button type="button" class="btn btn-success" data-original-title="" title="">新增</button></a>
 	          </div>
 	          <div class="btn-group">
-	            <a href="#" id="deleteAll"><button type="button" class="btn btn-danger" data-original-title="" title="">Delete</button></a>
+	            <a href="#" id="deleteAll"><button type="button" class="btn btn-danger" data-original-title="" title="">删除</button></a>
 	          </div>
 	        </div>
 	        <hr />
@@ -80,22 +80,22 @@
 	                <input type="checkbox" id="checkAll" class="no-margin" />
 	              </th>
 	              <th style="width:25%">
-	                Name
+	                名字
 	              </th>
 	              <th style="width:15%" class="hidden-xs">
-	                Visits
+	                浏览量
 	              </th>
 	              <th style="width:15%" class="hidden-xs">
-	                Comments
+	                评论数
 	              </th>
 	              <th style="width:15%" class="hidden-xs">
-	                Likes
+	                获赞数
 	              </th>
 	              <th style="width:15%" class="hidden-xs">
-	                Datetime
+	                创建时间
 	              </th>
 	              <th style="width:15%" class="hidden-xs">
-	                Actions
+	                操作
 	              </th>
 	            </tr>
 	          </thead>

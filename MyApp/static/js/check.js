@@ -39,8 +39,8 @@ $(function () {
 		$("#toggleCSS").href = "/static/css/alertify.core.css";
 		alertify.set({
 		  	labels: {
-		    ok: "OK",
-		    cancel: "Cancel"
+		    ok: "确认",
+		    cancel: "取消"
 	  		},
 		delay: 2500,
 		buttonReverse: false,
@@ -51,12 +51,12 @@ $(function () {
 	// 删除全部确认
 	$('#deleteAll').click(function () {
 	    reset();
-	    alertify.confirm("Please confirm to delete all bundles", function (e) {
+	    alertify.confirm("请确认删除所选模型", function (e) {
 	      if (e) {
 	      	deleteBundles();
-	        alertify.success("Delete success!");
+	        alertify.success("删除成功!");
 	      } else {
-	        alertify.error("Cancel!");
+	        alertify.error("取消操作!");
 	      }
 	    });
 	    return false;
@@ -66,12 +66,12 @@ $(function () {
   	$('.deleteOne').click(function () {
   		var url = $(this).attr("href");
   		reset();
-  		alertify.confirm("Please confirm to delete this bundle", function (e) {
+  		alertify.confirm("请确认删除该模型", function (e) {
 	      if (e) {
 	      	deleteBundle(url);
-	        alertify.success("Delete success!");
+	        alertify.success("删除成功!");
 	      } else {
-	        alertify.error("Cancel!");
+	        alertify.error("取消操作!");
 	      }
 	    });
 	    return false;

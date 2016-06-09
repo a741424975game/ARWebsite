@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Blue Moon - Responsive Admin Dashboard</title>
+    <title>AR Manager - 登录</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-    <meta name="description" content="Blue Moon - Responsive Admin Dashboard" />
-    <meta name="keywords" content="Notifications, Admin, Dashboard, Bootstrap3, Sass, transform, CSS3, HTML5, Web design, UI Design, Responsive Dashboard, Responsive Admin, Admin Theme, Best Admin UI, Bootstrap Theme, Wrapbootstrap, Bootstrap, bootstrap.gallery" />
-    <meta name="author" content="Bootstrap Gallery" />
+    <meta name="description" content="AR Manager" />
+    <meta name="keywords" content="AR, Goods, Data" />
+    <meta name="author" content="TinyDemon" />
     <link rel="shortcut icon" href="/static/img/favicon.ico">
     
     <link href="/static/css/bootstrap.min.css" rel="stylesheet">
@@ -39,25 +39,25 @@
                 <div class="header">
                   <div class="row">
                     <div class="col-md-12 col-lg-12">
-                      <h3>Login<img src="/static/img/logo1.png" alt="Logo" class="pull-right"></h3>
-                      <p>Fill out the form below to login.</p>
+                      <h3>登录<img src="/static/img/logo1.png" alt="Logo" class="pull-right"></h3>
+                      <p>请登录后开始管理您的模型</p>
                     </div>
                   </div>
                 </div>
                 <div class="content">
                   <div class="form-group">
-                    <label for="userName">User Name</label>
+                    <label for="userName">用户名</label>
                     {{ loginForm.username }}
                   </div>
                   <div class="form-group">
-                    <label for="Password1">Password</label>
+                    <label for="Password1">密码</label>
                     {{ loginForm.password }}
                       <span>{{ loginFailed }}</span>
                   </div>
                 </div>
                 <div class="actions">
                   <input class="btn btn-danger" name="Login" type="submit" value="Login">
-                  <a class="link" href="register.html">Create new account</a>
+                  <a class="link" href="register.html">创建新账户</a>
                   <div class="clearfix"></div>
                 </div>
               </form>

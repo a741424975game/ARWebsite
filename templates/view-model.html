@@ -18,21 +18,21 @@
         <li class=''>
           <a href='index.html'>
             <i class="fa fa-dashboard"></i>
-            Dashboard
+            首页
           </a>
         </li>
         <li class='active'>
-          <a href='models.html'><i class="fa fa-puzzle-piece"></i>Models</a>
+          <a href='models.html'><i class="fa fa-puzzle-piece"></i>模型</a>
         </li>
         <li class=''>
-          <a href='my-account.html'><i class="fa fa-user"></i>Account</a>
+          <a href='my-account.html'><i class="fa fa-user"></i>账户</a>
           <ul>
-            <li><a href='my-account.html'>My Account</a></li>
-            <li><a href='edit-profile.html'>Edit Profile</a></li>
+            <li><a href='my-account.html'>我的账户</a></li>
+            <li><a href='edit-profile.html'>修改资料</a></li>
           </ul>
         </li>
         <li class=''>
-          <a href='help.html'><i class="fa fa-file-text"></i>Help</a>
+          <a href='help.html'><i class="fa fa-file-text"></i>文档</a>
         </li>
       </ul>
     </div>
@@ -41,7 +41,7 @@
 {% block sub_nav %}
 	<div class="sub-nav hidden-sm hidden-xs">
       <ul>
-        <li><a href="" class="heading">Models</a></li>
+        <li><a href="" class="heading">模型</a></li>
       </ul>
       <div class="custom-search hidden-sm hidden-xs">
         <input type="text" class="search-query" placeholder="Search here ...">
@@ -57,11 +57,11 @@
         <div class="widget no-margin">
           <div class="widget-header">
             <div class="title">
-              Model Information
+              模型信息
             </div>
             <span class="tools">
               <a href="#" class="fa fa-edit btn btn-info">
-                Edit
+                编辑
               </a>
             </span>
           </div>
@@ -85,26 +85,26 @@
               </div>
               <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                 <h5>
-                  Basic Information
+                  基本信息
                 </h5>
                 <hr>
                 <div class="widget-body">
                   <div class="stylish-lists">
                     <dl class="dl-horizontal no-margin">
                       <dt  class="text-info">
-                        Model Name
+                        名字
                       </dt>
                       <dd>
                         {{ model.name }}
                       </dd>
                       <dt  class="text-info">
-                        Note
+                        备注
                       </dt>
                       <dd>
                         {{ model.note }}
                       </dd>
                       <dt  class="text-info">
-                        Creation Time
+                        创建时间
                       </dt>
                       <dd>
                         {{ model.upload_datetime }}
@@ -116,7 +116,7 @@
                 <div class="col-lg-6 col-md-12 col-sm-12">
                   <div class="mini-widget">
                     <div class="mini-widget-heading clearfix">
-                      <div class="pull-left">Total Visits</div>
+                      <div class="pull-left">总浏览量</div>
                     </div>
                     <div class="mini-widget-body clearfix">
                       <div class="pull-left">
@@ -132,7 +132,7 @@
                 <div class="col-lg-6 col-md-12 col-sm-12">
                   <div class="mini-widget">
                     <div class="mini-widget-heading clearfix">
-                      <div class="pull-left">Likes</div>
+                      <div class="pull-left">总获赞数</div>
                     </div>
                     <div class="mini-widget-body clearfix">
                       <div class="pull-left">
@@ -163,7 +163,7 @@
         <div class="widget">
           <div class="widget-header">
             <div class="title">
-              Daily Visits vs Comments
+              日浏览量与评论数对比
             </div>
           </div>
           <div class="widget-body">
@@ -180,7 +180,7 @@
         <div class="widget">
           <div class="widget-header">
             <div class="title">
-              Area Visits
+              浏览量区域分布图
             </div>
             <span class="tools">
               <a href="#" class="fa fa-search-plus scale-big">
@@ -204,7 +204,7 @@
         <div class="widget">
           <div class="widget-header">
             <div class="title">
-              Daily Overview
+              每日占比
             </div>
           </div>
           <div class="widget-body">
@@ -221,7 +221,7 @@
         <div class="widget">
           <div class="widget-header">
             <div class="title">
-              Monthly Visits vs Comments
+              月浏览量与评论数对比
             </div>
           </div>
           <div class="widget-body">
@@ -242,7 +242,7 @@
         <div class="widget">
           <div class="widget-header">
             <div class="title">
-              Area Visits Rank
+              区域访问量排行
             </div>
           </div>
           <div class="widget-body">
@@ -258,7 +258,7 @@
         <div class="widget">
           <div class="widget-header">
             <div class="title">
-              Tags
+              评论关键词
             </div>
           </div>
           <div class="widget-body">
@@ -273,7 +273,7 @@
         <div class="widget">
           <div class="widget-header">
             <div class="title">
-              All Comments
+              全部评论
             </div>
           </div>
           <div class="widget-body">
