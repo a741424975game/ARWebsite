@@ -1037,7 +1037,10 @@ function drawLargeMap() {
 		var option = {
                 title : {
                     text: 'Visits',
-                    left: 'center'
+                    left: 'center',
+					textStyle:{
+						color:'white'
+					},
                 },
                 tooltip : {
                     trigger: 'item'
@@ -1048,7 +1051,10 @@ function drawLargeMap() {
                     left: 'left',
                     top: 'bottom',
                     text:['高','低'],           // 文本，默认为数值文本
-                    calculable : true
+                    calculable : true,
+					textStyle:{
+						color:'white'
+					}
                 },
                 toolbox: {
                     show: true,
@@ -1060,7 +1066,13 @@ function drawLargeMap() {
                         dataView : {show: true, readOnly: false},
                         restore : {show: true},
                         saveAsImage : {show: true}
-                    }
+                    },
+					iconStyle: {
+						normal: {
+							color: '#CEE7F0',
+							borderColor: '#1A91CF',
+						},
+					},
                 },
                 series: [
                     {
@@ -1080,7 +1092,8 @@ function drawLargeMap() {
                     },
 					itemStyle:{
 						normal:{
-						  areaColor:'#CEE7F0'
+						  	areaColor:'#CEE7F0',
+							borderColor:'#1A91CF',
 						}
 					},
                     roam: true,
