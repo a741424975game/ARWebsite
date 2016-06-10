@@ -16,7 +16,6 @@ from MyApp.jieba_tags import *
 from MyApp.psutil_getServerInfo import *
 from forms import *
 
-import random
 
 # 输出日志信息
 logger = logging.getLogger('MyApp.views')
