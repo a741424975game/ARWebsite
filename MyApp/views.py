@@ -1,11 +1,14 @@
 # -*- coding: utf-8 -*-
 import logging
 import requests
+from django.contrib.admin.views.decorators import staff_member_required
 from django.shortcuts import render, redirect, render_to_response
 from django.http import HttpResponse
 from django.contrib.auth import logout, login, authenticate
 from django.contrib.auth.hashers import make_password
 from django.core.paginator import Paginator
+from django.template import RequestContext
+
 from MyApp.qrCode import generate_qrcode
 from MyApp.handle import *
 from MyApp.echarts import *
@@ -350,6 +353,7 @@ def page404(request):
     return render(request, '404.html')
 
 
+@staff_member_required
 def server(request):
     try:
         context = {
@@ -357,7 +361,7 @@ def server(request):
         }
     except Exception as e:
         logger.error(e)
-    return render(request, 'server.html', locals())
+    return render_to_response('server.html', context, context_instance=RequestContext(request))
 
 
 def server_info_api(request):
