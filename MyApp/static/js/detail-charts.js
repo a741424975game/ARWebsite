@@ -554,10 +554,6 @@ function areaVisits() {
 			"浙江":"zhejiang"
 		}
 		var option = {
-                title : {
-                    text: 'Visits',
-                    left: 'center'
-                },
                 tooltip : {
                     trigger: 'item'
                 },
@@ -1035,13 +1031,6 @@ function drawLargeMap() {
 			"浙江":"zhejiang"
 		}
 		var option = {
-                title : {
-                    text: 'Visits',
-                    left: 'center',
-					textStyle:{
-						color:'white'
-					},
-                },
                 tooltip : {
                     trigger: 'item'
                 },
