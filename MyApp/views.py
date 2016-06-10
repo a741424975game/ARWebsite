@@ -356,7 +356,7 @@ def page404(request):
 def server(request):
     try:
         context = {
-            'title': u'服务器负载情况',
+            'title': u'服务器监控',
         }
     except Exception as e:
         logger.error(e)
