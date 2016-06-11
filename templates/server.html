@@ -17,7 +17,9 @@
       <td id="cpu_memory_disk_network_echarts" style="height:300px;"></td>
             <script>
     var  server_info ;
-    var cpu_memory_disk_network_echarts = echarts.init(document.getElementById('cpu_memory_disk_network_echarts'), 'shine')
+    var element = document.getElementById('cpu_memory_disk_network_echarts');
+    var element_width = element.offsetWidth
+    var cpu_memory_disk_network_echarts = echarts.init(element, 'shine')
     cpu_memory_disk_network_echarts_option = {
         tooltip : {
             formatter: "{a} <br/>{c} {b}"
@@ -38,7 +40,7 @@
                 max: 100,
                 splitNumber: 10,
                 center: ['50%', '55%'],    // 默认全局居中
-                radius: '100%',
+                radius: '150px',
                 axisLine: {            // 坐标轴线
                     lineStyle: {       // 属性lineStyle控制线条样式
                         width: 10
@@ -73,8 +75,8 @@
             {
                 name: '内存使用率',
                 type: 'gauge',
-                center: ['36%', '60%'],    // 默认全局居中
-                radius: '70%',
+                center: [(element_width*0.5-220).toString(), '60%'],    // 默认全局居中
+                radius: '105px',
                 min:0,
                 max:100,
                 endAngle:45,
@@ -112,8 +114,8 @@
             {
                 name: '网络状况(上传与下行)',
                 type: 'gauge',
-                center: ['62%', '60%'],    // 默认全局居中
-                radius: '50%',
+                center: [(element_width*0.5+180).toString(), '60%'],    // 默认全局居中
+                radius: '75px',
                 min: 0,
                 max: 50,
                 startAngle: 135,
@@ -150,8 +152,8 @@
             {
                 name: '硬盘读写(读取与写入)',
                 type: 'gauge',
-                center : ['62%', '60%'],    // 默认全局居中
-                radius : '50%',
+                center : [(element_width*0.5+180).toString(), '60%'],    // 默认全局居中
+                radius : '75px',
                 min: 0,
                 max: 200,
                 startAngle: -3,
