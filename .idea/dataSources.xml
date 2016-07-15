@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" hash="2734102158">
+    <data-source source="LOCAL" name="Django default" uuid="3f4496e4-d13e-404b-9cd3-c88eefea7880">
+      <driver-ref>mysql</driver-ref>
+      <synchronize>true</synchronize>
+      <imported>true</imported>
+      <remarks>$PROJECT_DIR$/ARWebsite/settings.py</remarks>
+      <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://127.0.0.1:3306/db_arwebsite</jdbc-url>
+      <explain-plan-config>
+        <provider>com.intellij.database.plan.ExplainPlanProvider.NullExplainPlanProvider</provider>
+      </explain-plan-config>
+      <driver-properties>
+        <property name="autoReconnect" value="true" />
+        <property name="zeroDateTimeBehavior" value="convertToNull" />
+        <property name="tinyInt1isBit" value="false" />
+        <property name="characterEncoding" value="utf8" />
+        <property name="characterSetResults" value="utf8" />
+        <property name="yearIsDateType" value="false" />
+      </driver-properties>
+    </data-source>
+  </component>
+</project>
