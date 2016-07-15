@@ -269,7 +269,7 @@ def ar_config_info_api(request):
                 config_info = bundle.config_info
                 return HttpResponse(config_info)
         else:
-            return HttpResponse('Download')
+            return render(request, 'download.html', locals())
     except Exception as e:
         logger.error(e)
     return HttpResponse('error')
