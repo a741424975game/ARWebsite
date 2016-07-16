@@ -236,6 +236,11 @@ def edit_profile(request):
     return render(request, 'edit-profile.html', locals())
 
 
+#  下载页面
+def download(request):
+    return render(request, 'download.html', locals())
+
+
 # 帮助页面
 def help_page(request):
     return render(request, 'help.html', locals())
