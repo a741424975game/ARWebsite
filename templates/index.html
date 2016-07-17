@@ -187,9 +187,70 @@
 	          </div>
 	        </div>
 	      </div>
-	  </div>
-  </div>
-  <!-- Row End -->
+	  	</div>
+  	  </div>
+  	  <!-- Row End -->
+
+  	  <!-- Row Start -->
+	  <div class="row">
+	    <div class="col-lg-8 col-md-8 col-sm-4 col-xs-12">
+	      <div class="widget">
+	        <div class="widget-header">
+	          <div class="title">
+	            好评率高的商品
+	          </div>
+	        </div>
+	        <div class="widget-body">
+		        <div class="chart-height-lg">
+		        	<table class="table table-responsive table-striped table-bordered table-hover no-margin">
+			          <thead>
+			            <tr>
+			              <th style="width:25%">
+			                名称
+			              </th>
+			              <th style="width:15%" class="hidden-xs">
+			                浏览量
+			              </th>
+			              <th style="width:15%" class="hidden-xs">
+			                评论数
+			              </th>
+			              <th style="width:15%" class="hidden-xs">
+			                获赞数
+			              </th>
+			              <th style="width:20%" class="hidden-xs">
+			                创建时间
+			              </th>
+			              <th style="width:10%" class="hidden-xs">
+			                操作
+			              </th>
+			            </tr>
+			          </thead>
+			          <tbody>
+			            {% for model in models_list %}
+							{% include "goods.html" %}
+						{% endfor %}
+			          </tbody>
+			        </table>
+		        </div>
+	        </div>
+	      </div>
+	    </div>
+	    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+	      <div class="widget">
+	        <div class="widget-header">
+	          <div class="title">
+	            关注度排行榜
+	          </div>
+	        </div>
+	        <div class="widget-body">
+	          <div id="heat-rank" class="chart-height-lg"></div>
+                <script>
+                </script>
+	        </div>
+	      </div>
+	    </div>
+  	  </div>
+  	  <!-- Row End -->
 {% endblock %}
 
 {% block js %}

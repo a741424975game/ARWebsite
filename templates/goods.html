@@ -1,0 +1,24 @@
+<tr>
+	<td>
+		<span class="name">
+		  {{ model.name }}
+		</span>
+	</td>
+	<td>
+		{{ model.scan_times }}
+	</td>
+	<td>
+		{{ model.comments }}
+	</td>
+	<td>
+		{{ model.likes }}
+	</td>
+	<td>
+		{{ model.upload_datetime }}
+	</td>
+	<td class="hidden-phone">
+		<a href="view-model.html?bundle_id={{ model.id }}" class="btn btn-info btn-xs" data-original-title="" title="">
+		  查看
+		</a>
+	</td>
+</tr>
