@@ -236,6 +236,11 @@ def edit_profile(request):
     return render(request, 'edit-profile.html', locals())
 
 
+#  下载页面
+def download(request):
+    return render(request, 'download.html', locals())
+
+
 # 帮助页面
 def help_page(request):
     return render(request, 'help.html', locals())
@@ -269,7 +274,7 @@ def ar_config_info_api(request):
                 config_info = bundle.config_info
                 return HttpResponse(config_info)
         else:
-            return HttpResponse('Download')
+            return render(request, 'download.html', locals())
     except Exception as e:
         logger.error(e)
     return HttpResponse('error')
