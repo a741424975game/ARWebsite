@@ -35,7 +35,7 @@ class Bundle(models.Model):
 
 
 class CommentStatistics(models.Model):
-    id_bundle = models.ForeignKey(Bundle, models.DO_NOTHING, db_column='id_Bundle', blank=True, null=True,
+    id_bundle = models.ForeignKey(Bundle, models.CASCADE, db_column='id_Bundle', blank=True, null=True,
                                   verbose_name='AR模型')  # Field name made lowercase.
     datetime = models.DateField(blank=True, null=True, verbose_name='时间', )
     amount = models.IntegerField(blank=True, null=True, verbose_name='数量', default=1)
@@ -50,7 +50,7 @@ class CommentStatistics(models.Model):
 
 
 class Comment(models.Model):
-    id_bundle = models.ForeignKey(Bundle, models.DO_NOTHING, db_column='id_Bundle', blank=True, null=True,
+    id_bundle = models.ForeignKey(Bundle, models.CASCADE, db_column='id_Bundle', blank=True, null=True,
                                   verbose_name='AR模型')  # Field name made lowercase.
     id_location = models.ForeignKey('Locations', models.DO_NOTHING, db_column='id_Location', blank=True,
                                     null=True, verbose_name='地区')  # Field name made lowercase.
@@ -97,7 +97,7 @@ class Comment(models.Model):
 
 
 class KeywordsStatistics(models.Model):
-    id_bundle = models.ForeignKey(Bundle, models.DO_NOTHING, db_column='id_Bundle', blank=True, null=True,
+    id_bundle = models.ForeignKey(Bundle, models.CASCADE, db_column='id_Bundle', blank=True, null=True,
                                   verbose_name='AR模型')
     keywords = models.CharField(blank=True, null=True, max_length=30, verbose_name='关键字')
     amount = models.IntegerField(blank=True, null=True, default=1, verbose_name='数量')
@@ -112,7 +112,7 @@ class KeywordsStatistics(models.Model):
 
 
 class CommentLocation(models.Model):
-    id_bundle = models.ForeignKey(Bundle, models.DO_NOTHING, db_column='id_Bundle', blank=True, null=True,
+    id_bundle = models.ForeignKey(Bundle, models.CASCADE, db_column='id_Bundle', blank=True, null=True,
                                   verbose_name='AR模型')  # Field name made lowercase.
     id_location = models.ForeignKey('Locations', models.DO_NOTHING, db_column='id_Location', blank=True,
                                     null=True, verbose_name='地区')  # Field name made lowercase.
@@ -128,7 +128,7 @@ class CommentLocation(models.Model):
 
 
 class ScanStatistics(models.Model):
-    id_bundle = models.ForeignKey(Bundle, models.DO_NOTHING, db_column='id_Bundle', blank=True, null=True,
+    id_bundle = models.ForeignKey(Bundle, models.CASCADE, db_column='id_Bundle', blank=True, null=True,
                                   verbose_name='AR模型')  # Field name made lowercase.
     datetime = models.DateField(blank=True, null=True, verbose_name='时间')
     amount = models.IntegerField(blank=True, null=True, verbose_name='数量', default=1)
@@ -181,8 +181,14 @@ class Scan(models.Model):
         db_table = 'scan'
 
 
+# class ScanOperatingRecord(models.Model):
+#     id_scan = models.ForeignKey(Scan, models.DO_NOTHING, db_column='id_Scan', blank=True, null=True,
+#                                 on_delete=models.CASCADE,
+#                                 verbose_name='扫描记录')  # Field name made lowercase.
+
+
 class ScanLocation(models.Model):
-    id_bundle = models.ForeignKey(Bundle, models.DO_NOTHING, db_column='id_Bundle', blank=True, null=True,
+    id_bundle = models.ForeignKey(Bundle, models.CASCADE, db_column='id_Bundle', blank=True, null=True,
                                   verbose_name='AR模型')  # Field name made lowercase.
     id_location = models.ForeignKey('Locations', models.DO_NOTHING, db_column='id_Location', blank=True,
                                     null=True, verbose_name='地区')  # Field name made lowercase.
@@ -203,7 +209,7 @@ class Locations(models.Model):
     county = models.CharField(max_length=30, blank=True, null=True, verbose_name='县级')
 
     def __unicode__(self):
-            return self.province + self.city + self.county
+        return self.province + self.city + self.county
 
     class Meta:
         verbose_name = '地理位置'

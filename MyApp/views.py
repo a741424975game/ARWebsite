@@ -169,13 +169,6 @@ def delete_model(request):
             bundles_id = request.GET.getlist('bundles_id')
             if bundle_id is not None and Bundle.objects.filter(id=bundle_id):  # 需要整理
                 model = Bundle.objects.get(id=bundle_id)
-                Bundle.objects.get(id=bundle_id).comment_set.all().delete()
-                Bundle.objects.get(id=bundle_id).keywordsstatistics_set.all().delete()
-                Bundle.objects.get(id=bundle_id).commentstatistics_set.all().delete()
-                Bundle.objects.get(id=bundle_id).commentlocation_set.all().delete()
-                Bundle.objects.get(id=bundle_id).scan_set.all().delete()
-                Bundle.objects.get(id=bundle_id).scanstatistics_set.all().delete()
-                Bundle.objects.get(id=bundle_id).scanlocation_set.all().delete()
                 model.model.delete(save=True)
                 model.QRCode.delete(save=True)
                 model.imageTarget.delete(save=True)
@@ -184,13 +177,6 @@ def delete_model(request):
                 for bundle_id in bundles_id:
                     if bundle_id is not None and Bundle.objects.filter(id=bundle_id):  # 需要整理
                         model = Bundle.objects.get(id=bundle_id)
-                        Bundle.objects.get(id=bundle_id).comment_set.all().delete()
-                        Bundle.objects.get(id=bundle_id).keywordsstatistics_set.all().delete()
-                        Bundle.objects.get(id=bundle_id).commentstatistics_set.all().delete()
-                        Bundle.objects.get(id=bundle_id).commentlocation_set.all().delete()
-                        Bundle.objects.get(id=bundle_id).scan_set.all().delete()
-                        Bundle.objects.get(id=bundle_id).scanstatistics_set.all().delete()
-                        Bundle.objects.get(id=bundle_id).scanlocation_set.all().delete()
                         model.model.delete(save=True)
                         model.QRCode.delete(save=True)
                         model.imageTarget.delete(save=True)
