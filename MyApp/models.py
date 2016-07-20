@@ -5,6 +5,8 @@ from django.db import models
 from django.utils import timezone
 import uuid
 
+from MyApp.jieba_tags import *
+
 
 class Bundle(models.Model):
     id_user = models.ForeignKey(User, models.DO_NOTHING, db_column='id_User', blank=True, null=True,
@@ -58,6 +60,14 @@ class Comment(models.Model):
         super(self.__class__, self).save(*args, **kwargs)
         self.id_bundle.comments += 1
         self.id_bundle.save()
+        tags = jieba_tags(self.content)
+        for tag in tags:
+            if KeywordsStatistics.objects.filter(id_bundle=self.id_bundle, keywords=tag):
+                keywords_statistics = KeywordsStatistics.objects.get(id_bundle=self.id_bundle, keywords=tag)
+                keywords_statistics.amount += 1
+            else:
+                keywords_statistics = KeywordsStatistics.objects.create(id_bundle=self.id_bundle, keywords=tag)
+            keywords_statistics.save()
         if CommentStatistics.objects.filter(id_bundle=self.id_bundle, datetime=timezone.localtime(timezone.now())):
             comment_statistics = CommentStatistics.objects.get(id_bundle=self.id_bundle,
                                                                datetime=timezone.localtime(timezone.now()))
@@ -80,6 +90,21 @@ class Comment(models.Model):
         verbose_name = '评论'
         verbose_name_plural = verbose_name
         db_table = 'comment'
+
+
+class KeywordsStatistics(models.Model):
+    id_bundle = models.ForeignKey(Bundle, models.DO_NOTHING, db_column='id_Bundle', blank=True, null=True,
+                                  verbose_name='AR模型')
+    keywords = models.CharField(blank=True, null=True, max_length=30, verbose_name='关键字')
+    amount = models.IntegerField(blank=True, null=True, default=1, verbose_name='数量')
+
+    def __unicode__(self):
+        return self.keywords
+
+    class Meta:
+        verbose_name = '关键字'
+        verbose_name_plural = verbose_name
+        db_table = 'keywords'
 
 
 class CommentLocation(models.Model):

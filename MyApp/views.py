@@ -12,7 +12,6 @@ from django.template import RequestContext
 from MyApp.qrCode import generate_qrcode
 from MyApp.handle import *
 from MyApp.echarts import *
-from MyApp.jieba_tags import *
 from MyApp.psutil_getServerInfo import *
 from forms import *
 
@@ -210,8 +209,8 @@ def view_model(request):
             bundle_id = request.GET.get('bundle_id')
             if bundle_id is not None and Bundle.objects.filter(id=bundle_id):
                 model = Bundle.objects.get(id=bundle_id)
-                comments_list = Bundle.objects.get(id=bundle_id).comment_set.all().order_by('-datetime')
-                tags = jieba_tags(comments_list)
+                comments_list = model.comment_set.all().order_by('-datetime')
+                tags = model.keywordsstatistics_set.all().order_by('-amount')
                 qrCodePath = model.QRCode.url
                 imageTargetPath = model.imageTarget.url
                 dailyVC = DailyVC(bundle_id)

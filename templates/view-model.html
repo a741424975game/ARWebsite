@@ -264,7 +264,7 @@
           <div class="widget-body">
             <div id="keywords" class="chart-height-lg">
             {% for tag in tags %}
-              <span class="label label-info">{{ tag }}</span>
+              <span class="label label-info">{{ tag.keywords|safe }}({{ tag.amount|safe }})</span>
             {% endfor %}
             </div>
           </div>
