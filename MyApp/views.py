@@ -38,6 +38,7 @@ def index(request):
         comments_list = []
         recently_months_visits = MonthlyVisits(request.user.username)
         region_rank = RegionRank(request.user.username)
+        bundle_positive_rank = {}
         for bundle in User.objects.get(username=request.user.username).bundle_set.all():
             likes += bundle.likes
             scan_statistics = bundle.scanstatistics_set.all()
@@ -52,6 +53,17 @@ def index(request):
                 total_visits += each_statistics.amount
             for each_statistics in comments_statistics:
                 comments_amount += each_statistics.amount
+            comments = bundle.comment_set.all()
+            positive = 0
+            for each_comment in comments:
+                if each_comment.sentiment >= 0.55:
+                    positive += 1
+            bundle_positive_rank[bundle.id] = float(positive)/float(bundle.comments)
+        bundle_positive_rank = sorted(bundle_positive_rank.iteritems(), key=lambda p: p[1], reverse=True)
+        temp = bundle_positive_rank
+        bundle_positive_rank = []
+        for each in temp:
+            bundle_positive_rank.append(Bundle.objects.get(id=each[0]))
     except Exception as e:
         logger.error(e)
     return render(request, 'index.html', locals())
@@ -158,6 +170,7 @@ def delete_model(request):
             if bundle_id is not None and Bundle.objects.filter(id=bundle_id):  # 需要整理
                 model = Bundle.objects.get(id=bundle_id)
                 Bundle.objects.get(id=bundle_id).comment_set.all().delete()
+                Bundle.objects.get(id=bundle_id).keywordsstatistics_set.all().delete()
                 Bundle.objects.get(id=bundle_id).commentstatistics_set.all().delete()
                 Bundle.objects.get(id=bundle_id).commentlocation_set.all().delete()
                 Bundle.objects.get(id=bundle_id).scan_set.all().delete()
@@ -172,6 +185,7 @@ def delete_model(request):
                     if bundle_id is not None and Bundle.objects.filter(id=bundle_id):  # 需要整理
                         model = Bundle.objects.get(id=bundle_id)
                         Bundle.objects.get(id=bundle_id).comment_set.all().delete()
+                        Bundle.objects.get(id=bundle_id).keywordsstatistics_set.all().delete()
                         Bundle.objects.get(id=bundle_id).commentstatistics_set.all().delete()
                         Bundle.objects.get(id=bundle_id).commentlocation_set.all().delete()
                         Bundle.objects.get(id=bundle_id).scan_set.all().delete()

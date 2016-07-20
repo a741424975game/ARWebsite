@@ -1,6 +1,7 @@
 from django.contrib import admin
 from MyApp.models import *
 
+
 class BundleAdmin(admin.ModelAdmin):
     list_display = ('name', 'upload_datetime',)
     readonly_fields = ('likes', 'scan_times', 'comments', 'upload_datetime', 'last_edit_datetime')
@@ -9,6 +10,10 @@ class BundleAdmin(admin.ModelAdmin):
 class CommentStatisticsAdmin(admin.ModelAdmin):
     list_display = ('datetime', 'id_bundle', 'amount',)
     readonly_fields = ('datetime', 'amount',)
+
+
+class KeywordsStatisticsAdmin(admin.ModelAdmin):
+    list_display = ('id_bundle', 'keywords', 'amount',)
 
 
 class CommentLocationAdmin(admin.ModelAdmin):
@@ -42,6 +47,7 @@ class LocationsAdmin(admin.ModelAdmin):
 
 admin.site.register(Bundle, BundleAdmin)
 admin.site.register(CommentStatistics, CommentStatisticsAdmin)
+admin.site.register(KeywordsStatistics, KeywordsStatisticsAdmin)
 admin.site.register(Comment, CommentAdmin)
 admin.site.register(CommentLocation, CommentLocationAdmin)
 admin.site.register(ScanStatistics, ScanStatisticsAdmin)

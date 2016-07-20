@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from django.db import models
 from django.utils import timezone
 import uuid
+from snownlp import SnowNLP
 
 from MyApp.jieba_tags import *
 
@@ -55,8 +56,11 @@ class Comment(models.Model):
                                     null=True, verbose_name='地区')  # Field name made lowercase.
     content = models.TextField(blank=True, null=True, verbose_name='内容')
     datetime = models.DateTimeField(blank=True, null=True, verbose_name='时间', auto_now_add=True)
+    sentiment = models.FloatField(blank=True, null=True, verbose_name='情感值')
 
     def save(self, *args, **kwargs):
+        content = SnowNLP(self.content)
+        self.sentiment = content.sentiments
         super(self.__class__, self).save(*args, **kwargs)
         self.id_bundle.comments += 1
         self.id_bundle.save()
@@ -200,7 +204,6 @@ class Locations(models.Model):
 
     def __unicode__(self):
             return self.province + self.city + self.county
-
 
     class Meta:
         verbose_name = '地理位置'
