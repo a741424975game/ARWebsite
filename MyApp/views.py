@@ -8,12 +8,13 @@ from django.contrib.auth import logout, login, authenticate
 from django.contrib.auth.hashers import make_password
 from django.core.paginator import Paginator
 from django.template import RequestContext
+from forms import *
 
 from MyApp.qrCode import generate_qrcode
 from MyApp.handle import *
 from MyApp.echarts import *
 from MyApp.psutil_getServerInfo import *
-from forms import *
+
 
 
 # 输出日志信息
@@ -269,9 +270,11 @@ def ar_config_info_api(request):
                                                      county=data['data']['county'],
                                                      )
                 bundle = Bundle.objects.get(id=bundle_id)
-                Scan.objects.create(id_bundle=bundle, id_location=location)
-                config_info = bundle.config_info
-                return HttpResponse(config_info)
+                scan_id = Scan.objects.create(id_bundle=bundle, id_location=location).id
+                config_info = json.loads(bundle.config_info)
+                config_info['scanId'] = scan_id
+                config_info_json = json.dumps(config_info)
+                return HttpResponse(config_info_json)
         else:
             return render(request, 'download.html', locals())
     except Exception as e:
@@ -283,18 +286,30 @@ def ar_config_info_api(request):
 def ar_comment_api(request):
     try:
         bundle_id = request.GET.get('bundle_id')
+        scan_id = request.GET.get('scan_id')
         comment = request.GET.get('comment')
         ip = request.META['REMOTE_ADDR']
-        if ip is not None and comment and bundle_id is not None and Bundle.objects.filter(id=bundle_id):
-            url = 'http://ip.taobao.com/service/getIpInfo.php?ip=' + ip
-            response = requests.get(url)
-            data = location_handle(response.json())
-            location = Locations.objects.get(province=data['data']['region'],
-                                             city=data['data']['city'],
-                                             county=data['data']['county'],
-                                             )
-            bundle = Bundle.objects.get(id=bundle_id)
-            Comment.objects.create(id_bundle=bundle, id_location=location, content=comment)
+        if ip is not None and comment is not None and bundle_id is not None and scan_id is not None:
+            if Bundle.objects.filter(id=bundle_id):
+                url = 'http://ip.taobao.com/service/getIpInfo.php?ip=' + ip
+                response = requests.get(url)
+                data = location_handle(response.json())
+                location = Locations.objects.get(province=data['data']['region'],
+                                                 city=data['data']['city'],
+                                                 county=data['data']['county'],
+                                                 )
+                bundle = Bundle.objects.get(id=bundle_id)
+                comment_db = Comment.objects.create(id_bundle=bundle, id_location=location, content=comment)
+                if ScanOperatingRecord.objects.filter(id_scan=Scan.objects.get(id=scan_id)):
+                    scan_operating_record = ScanOperatingRecord.objects.get(id_scan=Scan.objects.get(id=scan_id))
+                    if scan_operating_record.commented == 0.0:
+                        scan_operating_record.commented = comment_db.sentiment
+                else:
+                    scan_operating_record = ScanOperatingRecord.objects.create(id_scan=Scan.objects.get(id=scan_id))
+                    scan_operating_record.commented = comment_db.sentiment
+                scan_operating_record.save()
+            else:
+                return HttpResponse('error')
         else:
             return HttpResponse('error')
     except Exception as e:
@@ -328,10 +343,32 @@ def get_ar_comment_api(request):
 def ar_like_api(request):
     try:
         bundle_id = request.GET.get('bundle_id')
-        if bundle_id is not None and Bundle.objects.filter(id=bundle_id):
-            bundle = Bundle.objects.get(id=bundle_id)
-            bundle.likes += 1
-            bundle.save()
+        scan_id = request.GET.get('scan_id')
+        like = request.GET.get('like')
+        if bundle_id is not None and scan_id is not None and Bundle.objects.filter(id=bundle_id):
+            if like == '1':
+                bundle = Bundle.objects.get(id=bundle_id)
+                bundle.likes += 1
+                bundle.save()
+                if ScanOperatingRecord.objects.filter(id_scan=Scan.objects.get(id=scan_id)):
+                    scan_operating_record = ScanOperatingRecord.objects.get(id_scan=Scan.objects.get(id=scan_id))
+                    if scan_operating_record.liked == 0:
+                        scan_operating_record.liked = 1;
+                else:
+                    scan_operating_record = ScanOperatingRecord.objects.create(id_scan=Scan.objects.get(id=scan_id))
+                    scan_operating_record.liked = 1;
+                scan_operating_record.save()
+            else:
+                bundle = Bundle.objects.get(id=bundle_id)
+                bundle.likes -= 1
+                bundle.save()
+                if ScanOperatingRecord.objects.filter(id_scan=Scan.objects.get(id=scan_id)):
+                    scan_operating_record = ScanOperatingRecord.objects.get(id_scan=Scan.objects.get(id=scan_id))
+                    if scan_operating_record.liked == 1:
+                        scan_operating_record.liked = 0;
+                else:
+                    scan_operating_record = ScanOperatingRecord.objects.create(id_scan=Scan.objects.get(id=scan_id))
+                scan_operating_record.save()
         else:
             return HttpResponse('error')
     except Exception as e:

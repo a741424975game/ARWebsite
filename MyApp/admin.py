@@ -45,6 +45,10 @@ class LocationsAdmin(admin.ModelAdmin):
     list_display = ('province', 'city', 'county',)
 
 
+class ScanOperatingRecordAdmin(admin.ModelAdmin):
+    list_display = ('id_scan', 'commented', 'liked', 'product_link_clicked',)
+
+
 admin.site.register(Bundle, BundleAdmin)
 admin.site.register(CommentStatistics, CommentStatisticsAdmin)
 admin.site.register(KeywordsStatistics, KeywordsStatisticsAdmin)
@@ -54,3 +58,4 @@ admin.site.register(ScanStatistics, ScanStatisticsAdmin)
 admin.site.register(Scan, ScanAdmin)
 admin.site.register(ScanLocation, ScanLocationAdmin)
 admin.site.register(Locations, LocationsAdmin)
+admin.site.register(ScanOperatingRecord, ScanOperatingRecordAdmin)

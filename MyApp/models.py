@@ -8,11 +8,14 @@ from snownlp import SnowNLP
 
 from MyApp.jieba_tags import *
 
+# 数据库中所有列都允许为空, 需要修改
+
 
 class Bundle(models.Model):
     id_user = models.ForeignKey(User, models.DO_NOTHING, db_column='id_User', blank=True, null=True,
                                 verbose_name='用户名')  # Field name made lowercase.
     config_info = models.TextField(blank=True, null=True, verbose_name='AR模型的配置信息')
+    product_link = models.TextField(blank=True, null=True, verbose_name='商品链接')
     QRCode = models.ImageField(blank=True, null=True, verbose_name='二维码', upload_to='QRCodes',
                                default='QRCodes/' + str(uuid.uuid1()) + 'qrcode.png')
     model = models.FileField(blank=True, null=True, verbose_name='模型文件', upload_to='bundles')
@@ -181,10 +184,20 @@ class Scan(models.Model):
         db_table = 'scan'
 
 
-# class ScanOperatingRecord(models.Model):
-#     id_scan = models.ForeignKey(Scan, models.DO_NOTHING, db_column='id_Scan', blank=True, null=True,
-#                                 on_delete=models.CASCADE,
-#                                 verbose_name='扫描记录')  # Field name made lowercase.
+class ScanOperatingRecord(models.Model):
+    id_scan = models.ForeignKey(Scan, models.DO_NOTHING, db_column='id_Scan', blank=True, null=True,
+                                verbose_name='扫描记录')  # Field name made lowercase.
+    commented = models.FloatField(blank=True, null=True, verbose_name='已评论', default=0)
+    liked = models.IntegerField(blank=True, null=True, verbose_name='已点赞', default=0)
+    product_link_clicked = models.IntegerField(blank=True, null=True, verbose_name='已点击商品链接', default=0)
+
+    def __unicode__(self):
+        return self.id_scan.id_bundle.name
+
+    class Meta:
+        verbose_name = '扫描后操作记录'
+        verbose_name_plural = verbose_name
+        db_table = 'scan_operating_Record'
 
 
 class ScanLocation(models.Model):
