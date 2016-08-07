@@ -1,26 +1,26 @@
 <tr>
 	<td>
 		<span class="name">
-		  {{ model.name }}
+		  {{ model.0.name }}
 		</span>
 	</td>
 	<td>
-		{{ model.scan_times }}
+		{{ model.0.scan_times }}
 	</td>
 	<td>
-		{{ model.comments }}
+		{{ model.0.comments }}
 	</td>
 	<td>
-		{{ model.likes }}
+		{{ model.0.likes }}
 	</td>
 	<td>
-		{{ model.awesome }}
+		{{ model.1 }}
 	</td>
 	<td>
-		{{ model.upload_datetime }}
+		{{ model.0.upload_datetime }}
 	</td>
 	<td class="hidden-phone">
-		<a href="view-model.html?bundle_id={{ model.id }}" class="btn btn-info btn-xs" data-original-title="" title="">
+		<a href="view-model.html?bundle_id={{ model.0.id }}" class="btn btn-info btn-xs" data-original-title="" title="">
 		  查看
 		</a>
 	</td>

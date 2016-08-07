@@ -15,8 +15,6 @@ from MyApp.handle import *
 from MyApp.echarts import *
 from MyApp.psutil_getServerInfo import *
 
-
-
 # 输出日志信息
 logger = logging.getLogger('MyApp.views')
 
@@ -59,12 +57,15 @@ def index(request):
             for each_comment in comments:
                 if each_comment.sentiment >= 0.55:
                     positive += 1
-            bundle_positive_rank[bundle.id] = float(positive)/float(bundle.comments)
+            if bundle.comments != 0:
+                bundle_positive_rank[bundle.id] = float(positive) / float(bundle.comments)
+            else:
+                bundle_positive_rank[bundle.id] = 0.0
         bundle_positive_rank = sorted(bundle_positive_rank.iteritems(), key=lambda p: p[1], reverse=True)
         temp = bundle_positive_rank
         bundle_positive_rank = []
         for each in temp:
-            bundle_positive_rank.append(Bundle.objects.get(id=each[0]))
+            bundle_positive_rank.append((Bundle.objects.get(id=each[0]), each[1]))
     except Exception as e:
         logger.error(e)
     return render(request, 'index.html', locals())
@@ -144,11 +145,14 @@ def add_model(request):
                     bundle = Bundle.objects.create(id_user=request.user,
                                                    name=uploadForm.cleaned_data["modelName"],
                                                    model=uploadForm.cleaned_data["model"],
+                                                   imageTarget=uploadForm.cleaned_data["imageTarget"],
                                                    note=uploadForm.cleaned_data["note"],
+                                                   product_link=uploadForm.cleaned_data["productLink"]
                                                    )
                     api = api_url_maker(str(bundle.id))  # 自定义的方法
                     generate_qrcode(api, str(bundle.QRCode)[8:])  # 去除路径只保留文件名
-                    bundle.imageTarget = bundle.QRCode
+                    if bundle.imageTarget.name is None:
+                        bundle.imageTarget = bundle.QRCode
                     config_info_json_data = ar_config_info_handle(bundle)
                     bundle.config_info = config_info_json_data
                     bundle.save()
@@ -337,6 +341,28 @@ def get_ar_comment_api(request):
         logger.error(e)
         return HttpResponse('error')
     return HttpResponse(comments)
+
+
+# 商品链接被点击
+def product_link_clicked_api(request):
+    try:
+        scan_id = request.GET.get('scan_id')
+        if scan_id is not None:
+            if ScanOperatingRecord.objects.filter(id_scan=Scan.objects.get(id=scan_id)):
+                scan_operating_record = ScanOperatingRecord.objects.get(id_scan=Scan.objects.get(id=scan_id))
+                if scan_operating_record.product_link_clicked == 0:
+                    scan_operating_record.product_link_clicked = 1
+            else:
+                scan_operating_record = ScanOperatingRecord.objects.create(id_scan=Scan.objects.get(id=scan_id))
+                scan_operating_record.product_link_clicked = 1;
+            scan_operating_record.save()
+
+        else:
+            return HttpResponse('error')
+    except Exception as e:
+        logger.error(e)
+        return HttpResponse('error')
+    return HttpResponse('success')
 
 
 # 点赞api

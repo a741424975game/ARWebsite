@@ -150,7 +150,7 @@ class ScanStatistics(models.Model):
 
 
 class Scan(models.Model):
-    id_bundle = models.ForeignKey(Bundle, models.DO_NOTHING, db_column='id_Bundle', blank=True, null=True,
+    id_bundle = models.ForeignKey(Bundle, models.CASCADE, db_column='id_Bundle', blank=True, null=True,
                                   verbose_name='AR模型')  # Field name made lowercase.
     id_location = models.ForeignKey('Locations', models.DO_NOTHING, db_column='id_Location', blank=True,
                                     null=True, verbose_name='地区')  # Field name made lowercase.
@@ -185,7 +185,7 @@ class Scan(models.Model):
 
 
 class ScanOperatingRecord(models.Model):
-    id_scan = models.ForeignKey(Scan, models.DO_NOTHING, db_column='id_Scan', blank=True, null=True,
+    id_scan = models.ForeignKey(Scan, models.CASCADE, db_column='id_Scan', blank=True, null=True,
                                 verbose_name='扫描记录')  # Field name made lowercase.
     commented = models.FloatField(blank=True, null=True, verbose_name='已评论', default=0)
     liked = models.IntegerField(blank=True, null=True, verbose_name='已点赞', default=0)
