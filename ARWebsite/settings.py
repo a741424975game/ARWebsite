@@ -19,6 +19,13 @@ SITE_URL = 'http://armanager.imwork.net'
 # QRCODE_PATH = 'uploads\\QRCodes\\'  # Windows
 QRCODE_LOGO = 'MyApp/static/img/ARLogo.png'  # Unix
 QRCODE_PATH = 'uploads/QRCodes/'  # Unix
+# 关注度阀值
+CONCERNED_THRESHOLD_VALUE = {
+    'SCAN': 0.15,
+    'COMMENT': 0.20,
+    'LIKE': 0.25,
+    'PRODUCT_LINK_CLICKED': 0.40,
+}
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -153,7 +160,7 @@ LOGGING = {
     'formatters': {
         'standard': {
             'format': '%(asctime)s [%(threadName)s:%(thread)d] [%(name)s:%(lineno)d] [%(module)s:%(funcName)s] [%(levelname)s]- %(message)s'}
-    # 日志格式
+        # 日志格式
     },
     'filters': {
     },

@@ -59,10 +59,10 @@ class UploadForm(forms.Form):
                "required": "required",}),
         max_length=30, error_messages={"required": "modelName 不能为空",})
 
-    note = forms.CharField(widget=forms.Textarea(
+    note = forms.CharField(required=False, widget=forms.Textarea(
         attrs={"class": "form-control", "id": "modelNote", "type": "text", "placeholder": "描述",}))
 
-    product_link = forms.CharField(required=False, widget=forms.TextInput(
+    productLink = forms.CharField(required=False, widget=forms.TextInput(
         attrs={"class": "form-control", "id": "productLink", "type": "text", "placeholder": "商品链接(若无可以留空)",}
     ))
 
