@@ -3,7 +3,7 @@
 {% block title %}AR Manager - 首页{% endblock %}
 
 {% block css %}
-	<link href="/static/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
     <link href="/static/css/new.css" rel="stylesheet">
     <link href="/static/css/charts-graphs.css" rel="stylesheet">
     <!-- Datepicker CSS -->
@@ -13,247 +13,269 @@
 {% endblock %}
 
 {% block top_nav %}
-	<div id='cssmenu'>
-      <ul>
-        <li class='active'>
-          <a href='#'>
-            <i class="fa fa-dashboard"></i>
-            首页
-          </a>
-        </li>
-        <li class=''>
-          <a href='models.html'><i class="fa fa-puzzle-piece"></i>模型</a>
-        </li>
-        <li class=''>
-          <a href='#'><i class="fa fa-user"></i>账户</a>
-          <ul>
-            <li><a href='my-account.html'>我的账户</a></li>
-            <li><a href='edit-profile.html'>修改资料</a></li>
-          </ul>
-        </li>
-        <li class=''>
-          <a href='help.html'><i class="fa fa-file-text"></i>文档</a>
-        </li>
-      </ul>
+    <div id='cssmenu'>
+        <ul>
+            <li class='active'>
+                <a href='#'>
+                    <i class="fa fa-dashboard"></i>
+                    首页
+                </a>
+            </li>
+            <li class=''>
+                <a href='models.html'><i class="fa fa-puzzle-piece"></i>模型</a>
+            </li>
+            <li class=''>
+                <a href='#'><i class="fa fa-user"></i>账户</a>
+                <ul>
+                    <li><a href='my-account.html'>我的账户</a></li>
+                    <li><a href='edit-profile.html'>修改资料</a></li>
+                </ul>
+            </li>
+            <li class=''>
+                <a href='help.html'><i class="fa fa-file-text"></i>文档</a>
+            </li>
+        </ul>
     </div>
 {% endblock %}
 
 {% block sub_nav %}
-	<div class="sub-nav hidden-sm hidden-xs">
-      <ul>
-        <li><a href="" class="heading">首页</a></li>
-      </ul>
-      <div class="custom-search hidden-sm hidden-xs">
-        <input type="text" class="search-query" placeholder="Search here ...">
-        <i class="fa fa-search"></i>
-      </div>
+    <div class="sub-nav hidden-sm hidden-xs">
+        <ul>
+            <li><a href="" class="heading">首页</a></li>
+        </ul>
+        <div class="custom-search hidden-sm hidden-xs">
+            <input type="text" class="search-query" placeholder="Search here ...">
+            <i class="fa fa-search"></i>
+        </div>
     </div>
 {% endblock %}
 
 {% block main %}
-	<!-- Row starts -->
-	<div class="row">
-	    <div class="col-lg-3 col-md-3 col-sm-6">
-	      <div class="mini-widget">
-	        <div class="mini-widget-heading clearfix">
-	          <div class="pull-left">日浏览量</div>
-	        </div>
-	        <div class="mini-widget-body clearfix">
-	          <div class="pull-left">
-	            <i class="fa fa-eye"></i>
-	          </div>
-	          <div class="pull-right number">{{ daily_visits }}</div>
-	        </div>
-	<!--                 <div class="mini-widget-footer center-align-text">
-	          <span>Better than last week</span>
-	        </div> -->
-	      </div>
-	    </div>
-	    <div class="col-lg-3 col-md-3 col-sm-6">
-	      <div class="mini-widget">
-	        <div class="mini-widget-heading clearfix">
-	          <div class="pull-left">总浏览量</div>
-	        </div>
-	        <div class="mini-widget-body clearfix">
-	          <div class="pull-left">
-	            <i class="fa fa-globe"></i>
-	          </div>
-	          <div class="pull-right number">{{ total_visits }}</div>
-	        </div>
-	<!--                 <div class="mini-widget-footer center-align-text">
-	          <span>Better than last week</span>
-	        </div> -->
-	      </div>
-	    </div>
-	    <div class="col-lg-3 col-md-3 col-sm-6">
-	      <div class="mini-widget">
-	        <div class="mini-widget-heading clearfix">
-	          <div class="pull-left">总评论数</div>
-	        </div>
-	        <div class="mini-widget-body clearfix">
-	          <div class="pull-left">
-	            <i class="fa fa-comments"></i>
-	          </div>
-	          <div class="pull-right number">{{ comments_amount }}</div>
-	        </div>
-	<!--                 <div class="mini-widget-footer center-align-text">
-	          <span>Better than last week</span>
-	        </div> -->
-	      </div>
-	    </div>
-	    <div class="col-lg-3 col-md-3 col-sm-6">
-	      <div class="mini-widget">
-	        <div class="mini-widget-heading clearfix">
-	          <div class="pull-left">总获赞数</div>
-	        </div>
-	        <div class="mini-widget-body clearfix">
-	          <div class="pull-left">
-	            <i class="fa fa-thumbs-up"></i>
-	          </div>
-	          <div class="pull-right number">{{ likes }}</div>
-	        </div>
-	<!--                 <div class="mini-widget-footer center-align-text">
-	          <span>Better than last week</span>
-	        </div> -->
-	      </div>
-	    </div>
-	  </div>
-	  <!-- Row ends -->
+    <!-- Row starts -->
+    <div class="row">
+        <div class="col-lg-3 col-md-3 col-sm-6">
+            <div class="mini-widget">
+                <div class="mini-widget-heading clearfix">
+                    <div class="pull-left">日浏览量</div>
+                </div>
+                <div class="mini-widget-body clearfix">
+                    <div class="pull-left">
+                        <i class="fa fa-eye"></i>
+                    </div>
+                    <div class="pull-right number">{{ daily_visits }}</div>
+                </div>
+                <!--                 <div class="mini-widget-footer center-align-text">
+                          <span>Better than last week</span>
+                        </div> -->
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-6">
+            <div class="mini-widget">
+                <div class="mini-widget-heading clearfix">
+                    <div class="pull-left">总浏览量</div>
+                </div>
+                <div class="mini-widget-body clearfix">
+                    <div class="pull-left">
+                        <i class="fa fa-globe"></i>
+                    </div>
+                    <div class="pull-right number">{{ total_visits }}</div>
+                </div>
+                <!--                 <div class="mini-widget-footer center-align-text">
+                          <span>Better than last week</span>
+                        </div> -->
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-6">
+            <div class="mini-widget">
+                <div class="mini-widget-heading clearfix">
+                    <div class="pull-left">总评论数</div>
+                </div>
+                <div class="mini-widget-body clearfix">
+                    <div class="pull-left">
+                        <i class="fa fa-comments"></i>
+                    </div>
+                    <div class="pull-right number">{{ comments_amount }}</div>
+                </div>
+                <!--                 <div class="mini-widget-footer center-align-text">
+                          <span>Better than last week</span>
+                        </div> -->
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-6">
+            <div class="mini-widget">
+                <div class="mini-widget-heading clearfix">
+                    <div class="pull-left">总获赞数</div>
+                </div>
+                <div class="mini-widget-body clearfix">
+                    <div class="pull-left">
+                        <i class="fa fa-thumbs-up"></i>
+                    </div>
+                    <div class="pull-right number">{{ likes }}</div>
+                </div>
+                <!--                 <div class="mini-widget-footer center-align-text">
+                          <span>Better than last week</span>
+                        </div> -->
+            </div>
+        </div>
+    </div>
+    <!-- Row ends -->
 
-	  <!-- Row Start -->
-	  <div class="row">
-	    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-	      <div class="widget">
-	        <div class="widget-header">
-	          <div class="title">
-	            月浏览量
-	          </div>
-	        </div>
-	        <div class="widget-body">
-	          <div id="monthly-visits" class="chart-height-lg"></div>
-                <script>
-                    var recently_months = {{ recently_months_visits.recently_months|safe }};
-                    var recently_months_visits_amount = {{ recently_months_visits.recently_months_visits_amount }};
-                </script>
-	        </div>
-	      </div>
-	    </div>
-	    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-	      <div class="widget">
-	        <div class="widget-header">
-	          <div class="title">
-	            区域总访问量排行
-	          </div>
-	        </div>
-	        <div class="widget-body">
-	          <div id="region-rank" class="chart-height-lg"></div>
-                <script>
-                    var area_visits_ranking = {{ region_rank.area_visits_ranking|safe }};
-                    var area_visits_ranking_data = {{ region_rank.area_visits_ranking_data|safe }};
-                </script>
-	        </div>
-	      </div>
-	    </div>
-	    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-	      <div class="widget">
-	        <div class="widget-header">
-	          <div class="title">
-	            最近评论
-	          </div>
-	        </div>
-	        <div class="widget-body">
-	          <div class="wrapper">
-	            <div id="scrollbar">
-	              <div class="scrollbar">
-	                <div class="track">
-	                  <div class="thumb">
-	                    <div class="end">
-	                    </div>
-	                  </div>
-	                </div>
-	              </div>
-	              <div class="viewport">
-	                <div class="overview">
-	                  <div class="featured-articles-container">
-	                    <div class="articles">
-	                    {% for comment in comments_list %}
-							{% include "comment.html" %}
-						{% endfor %}
-	                    </div>
-	                  </div>
-	                </div>
-	              </div>
-	            </div>
-	          </div>
-	        </div>
-	      </div>
-	  	</div>
-  	  </div>
-  	  <!-- Row End -->
+    <!-- Row Start -->
+    <div class="row">
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+            <div class="widget">
+                <div class="widget-header">
+                    <div class="title">
+                        月浏览量
+                    </div>
+                </div>
+                <div class="widget-body">
+                    <div id="monthly-visits" class="chart-height-lg"></div>
+                    <script>
+                        var recently_months = {{ recently_months_visits.recently_months|safe }};
+                        var recently_months_visits_amount = {{ recently_months_visits.recently_months_visits_amount }};
+                    </script>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+            <div class="widget">
+                <div class="widget-header">
+                    <div class="title">
+                        区域总访问量排行
+                    </div>
+                </div>
+                <div class="widget-body">
+                    <div id="region-rank" class="chart-height-lg"></div>
+                    <script>
+                        var area_visits_ranking = {{ region_rank.area_visits_ranking|safe }};
+                        var area_visits_ranking_data = {{ region_rank.area_visits_ranking_data|safe }};
+                    </script>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+            <div class="widget">
+                <div class="widget-header">
+                    <div class="title">
+                        最近评论
+                    </div>
+                </div>
+                <div class="widget-body">
+                    <div class="wrapper">
+                        <div id="scrollbar">
+                            <div class="scrollbar">
+                                <div class="track">
+                                    <div class="thumb">
+                                        <div class="end">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="viewport">
+                                <div class="overview">
+                                    <div class="featured-articles-container">
+                                        <div class="articles">
+                                            {% for comment in comments_list %}
+                                                {% include "comment.html" %}
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Row End -->
 
-  	  <!-- Row Start -->
-	  <div class="row">
-	    <div class="col-lg-8 col-md-8 col-sm-4 col-xs-12">
-	      <div class="widget">
-	        <div class="widget-header">
-	          <div class="title">
-	            好评率高的商品
-	          </div>
-	        </div>
-	        <div class="widget-body">
-		        <div class="chart-height-lg">
-		        	<table class="table table-responsive table-striped table-bordered table-hover no-margin">
-			          <thead>
-			            <tr>
-			              <th style="width:25%">
-			                名称
-			              </th>
-			              <th style="width:15%" class="hidden-xs">
-			                浏览量
-			              </th>
-			              <th style="width:10%" class="hidden-xs">
-			                评论数
-			              </th>
-			              <th style="width:10%" class="hidden-xs">
-			                获赞数
-			              </th>
-			              <th style="width:10%" class="hidden-xs">
-			                好评率
-			              </th>
-			              <th style="width:20%" class="hidden-xs">
-			                创建时间
-			              </th>
-			              <th style="width:10%" class="hidden-xs">
-			                操作
-			              </th>
-			            </tr>
-			          </thead>
-			          <tbody>
-			            {% for model in bundle_positive_rank %}
-							{% include "goods.html" %}
-						{% endfor %}
-			          </tbody>
-			        </table>
-		        </div>
-	        </div>
-	      </div>
-	    </div>
-	    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-	      <div class="widget">
-	        <div class="widget-header">
-	          <div class="title">
-	            关注度排行榜
-	          </div>
-	        </div>
-	        <div class="widget-body">
-	          <div id="heat-rank" class="chart-height-lg"></div>
-                <script>
-                </script>
-	        </div>
-	      </div>
-	    </div>
-  	  </div>
-  	  <!-- Row End -->
+    <!-- Row Start -->
+    <div class="row">
+        <div class="col-lg-8 col-md-8 col-sm-4 col-xs-12">
+            <div class="widget">
+                <div class="widget-header">
+                    <div class="title">
+                        好评率高的商品
+                    </div>
+                </div>
+                <div class="widget-body">
+                    <div class="chart-height-lg">
+                        <table class="table table-responsive table-striped table-bordered table-hover no-margin">
+                            <thead>
+                            <tr>
+                                <th style="width:20%">
+                                    名称
+                                </th>
+                                <th style="width:10%" class="hidden-xs">
+                                    浏览量
+                                </th>
+                                <th style="width:10%" class="hidden-xs">
+                                    评论数
+                                </th>
+                                <th style="width:10%" class="hidden-xs">
+                                    获赞数
+                                </th>
+                                <th style="width:10%" class="hidden-xs">
+                                    好评率
+                                </th>
+                                <th style="width:10%" class="hidden-xs">
+                                    关注度
+                                </th>
+                                <th style="width:20%" class="hidden-xs">
+                                    创建时间
+                                </th>
+                                <th style="width:10%" class="hidden-xs">
+                                    操作
+                                </th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for model in bundle_positive_rank %}
+                                {% include "goods.html" %}
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+            <div class="widget">
+                <div class="widget-header">
+                    <div class="title">
+                        关注度排行榜
+                    </div>
+                </div>
+                <div class="widget-body">
+                    <div class="chart-height-lg">
+                        <table class="table table-responsive table-striped table-bordered table-hover no-margin">
+                            <thead>
+                            <tr>
+                                <th style="width:50%">
+                                    名称
+                                </th>
+                                <th style="width:25%" class="hidden-xs">
+                                    关注度
+                                </th>
+                                <th style="width:25%" class="hidden-xs">
+                                    操作
+                                </th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for model in bundle_focus_list %}
+                                {% include "focus.html" %}
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Row End -->
 {% endblock %}
 
 {% block js %}
@@ -267,33 +289,33 @@
 
     <!-- Tiny Scrollbar JS -->
     <script src="/static/js/tiny-scrollbar.js"></script>
-    
+
     <!-- jQuery UI JS -->
     <script src="/static/js/jquery-ui-v1.10.3.js"></script>
 
     <!-- Custom JS -->
     <script src="/static/js/menu.js"></script>
-    
-    <script src="/static/js/index-charts.js"></script>
-    
-    <script type="text/javascript">
-      //ScrollUp
-      $(function () {
-        $.scrollUp({
-          scrollName: 'scrollUp', // Element ID
-          topDistance: '300', // Distance from top before showing element (px)
-          topSpeed: 300, // Speed back to top (ms)
-          animation: 'fade', // Fade, slide, none
-          animationInSpeed: 400, // Animation in speed (ms)
-          animationOutSpeed: 400, // Animation out speed (ms)
-          scrollText: 'Top', // Text for element
-          activeOverlay: false, // Set CSS color to display scrollUp active point, e.g '#00FFFF'
-        });
-      });
 
-      //Tiny Scrollbar
-      $('#scrollbar').tinyscrollbar();
-      
-      $('#scrollbar-two').tinyscrollbar();
+    <script src="/static/js/index-charts.js"></script>
+
+    <script type="text/javascript">
+        //ScrollUp
+        $(function () {
+            $.scrollUp({
+                scrollName: 'scrollUp', // Element ID
+                topDistance: '300', // Distance from top before showing element (px)
+                topSpeed: 300, // Speed back to top (ms)
+                animation: 'fade', // Fade, slide, none
+                animationInSpeed: 400, // Animation in speed (ms)
+                animationOutSpeed: 400, // Animation out speed (ms)
+                scrollText: 'Top', // Text for element
+                activeOverlay: false, // Set CSS color to display scrollUp active point, e.g '#00FFFF'
+            });
+        });
+
+        //Tiny Scrollbar
+        $('#scrollbar').tinyscrollbar();
+
+        $('#scrollbar-two').tinyscrollbar();
     </script>
 {% endblock %}

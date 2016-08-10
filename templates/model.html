@@ -1,31 +1,38 @@
 <tr>
-	<td>
-		<input type="checkbox" name="selectFlag" class="no-margin" />
-		<span class="hidden">{{ model.id }}</span>
-	</td>
-	<td>
+    <td>
+        <input type="checkbox" name="selectFlag" class="no-margin"/>
+        <span class="hidden">{{ model.id }}</span>
+    </td>
+    <td>
 		<span class="name">
 		  {{ model.name }}
 		</span>
-	</td>
-	<td>
-		{{ model.scan_times }}
-	</td>
-	<td>
-		{{ model.comments }}
-	</td>
-	<td>
-		{{ model.likes }}
-	</td>
-	<td>
-		{{ model.upload_datetime }}
-	</td>
-	<td class="hidden-phone">
-		<a href="view-model.html?bundle_id={{ model.id }}" class="btn btn-info btn-xs" data-original-title="" title="">
-		  查看
-		</a>
-		<a href="delete.html?bundle_id={{ model.id }}" class="btn btn-danger btn-xs deleteOne" data-original-title="" title="">
-		  删除
-		</a>
-	</td>
+    </td>
+    <td>
+        {{ model.scan_times }}
+    </td>
+    <td>
+        {{ model.comments }}
+    </td>
+    <td>
+        {{ model.likes }}
+    </td>
+    <td>
+        {{ model.feedback_rate }}
+    </td>
+    <td>
+        {{ model.concerned_rate }}
+    </td>
+    <td>
+        {{ model.upload_datetime }}
+    </td>
+    <td class="hidden-phone">
+        <a href="view-model.html?bundle_id={{ model.id }}" class="btn btn-info btn-xs" data-original-title="" title="">
+            查看
+        </a>
+        <a href="delete.html?bundle_id={{ model.id }}" class="btn btn-danger btn-xs deleteOne" data-original-title=""
+           title="">
+            删除
+        </a>
+    </td>
 </tr>

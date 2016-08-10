@@ -37,7 +37,7 @@ def index(request):
         comments_list = []
         recently_months_visits = MonthlyVisits(request.user.username)
         region_rank = RegionRank(request.user.username)
-        bundle_positive_rank = {}
+        bundle_positive_rank = []
         for bundle in User.objects.get(username=request.user.username).bundle_set.all():
             likes += bundle.likes
             scan_statistics = bundle.scanstatistics_set.all()
@@ -52,20 +52,8 @@ def index(request):
                 total_visits += each_statistics.amount
             for each_statistics in comments_statistics:
                 comments_amount += each_statistics.amount
-            comments = bundle.comment_set.all()
-            positive = 0
-            for each_comment in comments:
-                if each_comment.sentiment >= 0.55:
-                    positive += 1
-            if bundle.comments != 0:
-                bundle_positive_rank[bundle.id] = float(positive) / float(bundle.comments)
-            else:
-                bundle_positive_rank[bundle.id] = 0.0
-        bundle_positive_rank = sorted(bundle_positive_rank.iteritems(), key=lambda p: p[1], reverse=True)
-        temp = bundle_positive_rank
-        bundle_positive_rank = []
-        for each in temp:
-            bundle_positive_rank.append((Bundle.objects.get(id=each[0]), each[1]))
+        bundle_positive_rank = Bundle.objects.filter().order_by('-feedback_rate')[0:6]
+        bundle_focus_list = Bundle.objects.filter().order_by('-concerned_rate')[0:6]
     except Exception as e:
         logger.error(e)
     return render(request, 'index.html', locals())
@@ -150,7 +138,8 @@ def add_model(request):
                                                    product_link=uploadForm.cleaned_data["productLink"]
                                                    )
                     api = api_url_maker(str(bundle.id))  # 自定义的方法
-                    generate_qrcode(api, str(bundle.QRCode)[8:])  # 去除路径只保留文件名
+                    bundle.QRCode.name = str(bundle.QRCode)[0:8] + str(bundle.id) + str(bundle.QRCode)[8:]
+                    generate_qrcode(api, str(bundle.QRCode)[8:])
                     if bundle.imageTarget.name is None:
                         bundle.imageTarget = bundle.QRCode
                     config_info_json_data = ar_config_info_handle(bundle)
@@ -304,12 +293,16 @@ def ar_comment_api(request):
                                                  )
                 bundle = Bundle.objects.get(id=bundle_id)
                 comment_db = Comment.objects.create(id_bundle=bundle, id_location=location, content=comment)
-                if ScanOperatingRecord.objects.filter(id_scan=Scan.objects.get(id=scan_id)):
-                    scan_operating_record = ScanOperatingRecord.objects.get(id_scan=Scan.objects.get(id=scan_id))
+                if ScanOperatingRecord.objects.filter(id_scan=Scan.objects.get(id=scan_id),
+                                                      id_bundle=Bundle.objects.get(id=bundle_id)):
+                    scan_operating_record = ScanOperatingRecord.objects.get(id_scan=Scan.objects.get(id=scan_id),
+                                                                            id_bundle=Bundle.objects.get(id=bundle_id))
                     if scan_operating_record.commented == 0.0:
                         scan_operating_record.commented = comment_db.sentiment
                 else:
-                    scan_operating_record = ScanOperatingRecord.objects.create(id_scan=Scan.objects.get(id=scan_id))
+                    scan_operating_record = ScanOperatingRecord.objects.create(id_scan=Scan.objects.get(id=scan_id),
+                                                                               id_bundle=Bundle.objects.get(
+                                                                                   id=bundle_id))
                     scan_operating_record.commented = comment_db.sentiment
                 scan_operating_record.save()
             else:
@@ -346,14 +339,18 @@ def get_ar_comment_api(request):
 # 商品链接被点击
 def product_link_clicked_api(request):
     try:
+        bundle_id = request.GET.get('bundle_id')
         scan_id = request.GET.get('scan_id')
-        if scan_id is not None:
-            if ScanOperatingRecord.objects.filter(id_scan=Scan.objects.get(id=scan_id)):
-                scan_operating_record = ScanOperatingRecord.objects.get(id_scan=Scan.objects.get(id=scan_id))
+        if bundle_id is not None and scan_id is not None and Bundle.objects.filter(id=bundle_id):
+            if ScanOperatingRecord.objects.filter(id_scan=Scan.objects.get(id=scan_id),
+                                                  id_bundle=Bundle.objects.get(id=bundle_id)):
+                scan_operating_record = ScanOperatingRecord.objects.get(id_scan=Scan.objects.get(id=scan_id),
+                                                                        id_bundle=Bundle.objects.get(id=bundle_id))
                 if scan_operating_record.product_link_clicked == 0:
                     scan_operating_record.product_link_clicked = 1
             else:
-                scan_operating_record = ScanOperatingRecord.objects.create(id_scan=Scan.objects.get(id=scan_id))
+                scan_operating_record = ScanOperatingRecord.objects.create(id_scan=Scan.objects.get(id=scan_id),
+                                                                           id_bundle=Bundle.objects.get(id=bundle_id))
                 scan_operating_record.product_link_clicked = 1;
             scan_operating_record.save()
 
@@ -376,24 +373,32 @@ def ar_like_api(request):
                 bundle = Bundle.objects.get(id=bundle_id)
                 bundle.likes += 1
                 bundle.save()
-                if ScanOperatingRecord.objects.filter(id_scan=Scan.objects.get(id=scan_id)):
-                    scan_operating_record = ScanOperatingRecord.objects.get(id_scan=Scan.objects.get(id=scan_id))
+                if ScanOperatingRecord.objects.filter(id_scan=Scan.objects.get(id=scan_id),
+                                                      id_bundle=Bundle.objects.get(id=bundle_id)):
+                    scan_operating_record = ScanOperatingRecord.objects.get(id_scan=Scan.objects.get(id=scan_id),
+                                                                            id_bundle=Bundle.objects.get(id=bundle_id))
                     if scan_operating_record.liked == 0:
                         scan_operating_record.liked = 1;
                 else:
-                    scan_operating_record = ScanOperatingRecord.objects.create(id_scan=Scan.objects.get(id=scan_id))
+                    scan_operating_record = ScanOperatingRecord.objects.create(id_scan=Scan.objects.get(id=scan_id),
+                                                                               id_bundle=Bundle.objects.get(
+                                                                                   id=bundle_id))
                     scan_operating_record.liked = 1;
                 scan_operating_record.save()
             else:
                 bundle = Bundle.objects.get(id=bundle_id)
                 bundle.likes -= 1
                 bundle.save()
-                if ScanOperatingRecord.objects.filter(id_scan=Scan.objects.get(id=scan_id)):
-                    scan_operating_record = ScanOperatingRecord.objects.get(id_scan=Scan.objects.get(id=scan_id))
+                if ScanOperatingRecord.objects.filter(id_scan=Scan.objects.get(id=scan_id),
+                                                      id_bundle=Bundle.objects.get(id=bundle_id)):
+                    scan_operating_record = ScanOperatingRecord.objects.get(id_scan=Scan.objects.get(id=scan_id),
+                                                                            id_bundle=Bundle.objects.get(id=bundle_id))
                     if scan_operating_record.liked == 1:
                         scan_operating_record.liked = 0;
                 else:
-                    scan_operating_record = ScanOperatingRecord.objects.create(id_scan=Scan.objects.get(id=scan_id))
+                    scan_operating_record = ScanOperatingRecord.objects.create(id_scan=Scan.objects.get(id=scan_id),
+                                                                               id_bundle=Bundle.objects.get(
+                                                                                   id=bundle_id))
                 scan_operating_record.save()
         else:
             return HttpResponse('error')

@@ -13,8 +13,8 @@ def ar_comment_api_url_maker(bundle_id):
     return url
 
 
-def product_link_clicked_api_url_maker():
-    url = settings.SITE_URL + '/product-link-clicked-api'
+def product_link_clicked_api_url_maker(bundle_id):
+    url = settings.SITE_URL + '/product-link-clicked-api?bundle_id=' + bundle_id
     return url
 
 
@@ -49,7 +49,7 @@ def ar_config_info_handle(bundle):
     prefab_url = prefab_url_maker(bundle.model)
     ar_comment_api_url = ar_comment_api_url_maker(bundle_id)
     product_link_url = bundle.product_link
-    product_link_clicked_api = product_link_clicked_api_url_maker()
+    product_link_clicked_api = product_link_clicked_api_url_maker(bundle_id)
     get_ar_comment_api_url = get_ar_comment_api_url_maker(bundle_id)
     ar_like_api_url = ar_like_api_url_maker(bundle_id)
     get_ar_like_api_url = get_ar_like_api_url_maker(bundle_id)
