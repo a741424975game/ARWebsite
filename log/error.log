@@ -4,3 +4,13 @@
 2016-06-04 18:00:40,253 [Thread-8:123145323335680] [MyApp.views:131] [views:add_model] [ERROR]- global name 'QRCODE_LOGO' is not defined
 2016-06-04 18:00:45,418 [Thread-10:123145323335680] [MyApp.views:203] [views:view_model] [ERROR]- The 'imageTarget' attribute has no file associated with it.
 2016-06-04 18:07:43,593 [Thread-13:123145323335680] [MyApp.views:131] [views:add_model] [ERROR]- [Errno 2] No such file or directory: 'uploads/QRCodes/1198dc07-2a3c-11e6-aa91-ac87a316b12fqrcode.png'
+2016-08-11 09:34:46,520 [Thread-306:-1783112896] [MyApp.views:274] [views:ar_config_info_api] [ERROR]- No JSON object could be decoded
+2016-08-11 09:38:08,893 [Thread-340:-1832629440] [MyApp.views:181] [views:delete_model] [ERROR]- The 'model' attribute has no file associated with it.
+2016-08-11 09:38:13,739 [Thread-343:-1832629440] [MyApp.views:181] [views:delete_model] [ERROR]- The 'model' attribute has no file associated with it.
+2016-08-11 09:40:09,750 [Thread-382:-1832629440] [MyApp.views:181] [views:delete_model] [ERROR]- The 'model' attribute has no file associated with it.
+2016-08-11 12:21:58,994 [Thread-557:-1857807552] [MyApp.views:334] [views:get_ar_comment_api] [ERROR]- That page contains no results
+2016-08-11 12:22:19,862 [Thread-564:-1857807552] [MyApp.views:334] [views:get_ar_comment_api] [ERROR]- That page contains no results
+2016-08-12 02:20:42,456 [uWSGIWorker2Core0:-1222735552] [MyApp.views:334] [views:get_ar_comment_api] [ERROR]- That page contains no results
+2016-08-12 02:20:50,771 [uWSGIWorker2Core0:-1222735552] [MyApp.views:334] [views:get_ar_comment_api] [ERROR]- That page contains no results
+2016-08-12 02:20:58,637 [uWSGIWorker5Core0:-1222735552] [MyApp.views:334] [views:get_ar_comment_api] [ERROR]- That page contains no results
+2016-08-12 02:21:02,450 [uWSGIWorker2Core0:-1222735552] [MyApp.views:334] [views:get_ar_comment_api] [ERROR]- That page contains no results

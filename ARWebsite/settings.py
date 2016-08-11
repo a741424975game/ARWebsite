@@ -37,9 +37,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'aw7k^+24sy8o67tde+%^+lzs1i!y#y9i#ke41e@aw*er-2&b&h'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+	'armanager.imwork.net',
+]
 
 # Application definition
 
@@ -146,6 +148,8 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
+
+STATIC_ROOT = '/home/ubuntu/ARWebsite/MyApp/static/'
 
 STATIC_URL = '/static/'
 
