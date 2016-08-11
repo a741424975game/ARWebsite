@@ -9,6 +9,7 @@ from snownlp import SnowNLP
 
 from MyApp.jieba_tags import *
 from ARWebsite.settings import CONCERNED_THRESHOLD_VALUE
+from MyApp.handle import ar_config_info_handle
 
 
 # 数据库中所有列都允许为空, 需要修改
@@ -35,6 +36,12 @@ class Bundle(models.Model):
 
     def __unicode__(self):
         return self.name
+
+    def save(self, *args, **kwargs):
+        if self.imageTarget.name is not None:
+            config_info_json_data = ar_config_info_handle(self)
+            self.config_info = config_info_json_data
+        super(self.__class__, self).save(*args, **kwargs)
 
     class Meta:
         verbose_name = 'AR模型'

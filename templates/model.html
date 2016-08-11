@@ -18,7 +18,7 @@
         {{ model.likes }}
     </td>
     <td>
-        {{ model.feedback_rate }}
+        {% widthratio model.feedback_rate 1 100 %}%
     </td>
     <td>
         {{ model.concerned_rate }}
