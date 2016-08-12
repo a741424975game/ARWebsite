@@ -151,6 +151,8 @@ USE_TZ = True
 
 STATIC_ROOT = '/home/ubuntu/ARWebsite/MyApp/static/'
 
+MEDIA_ROOT = '/home/ubuntu/ARWebsite/uploads/'
+
 STATIC_URL = '/static/'
 
 MEDIA_URL = '/uploads/'
