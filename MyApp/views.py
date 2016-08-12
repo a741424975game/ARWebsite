@@ -247,21 +247,29 @@ def ar_config_info_api(request):
         is_ar_scanner = request.GET.get('is_ar_scanner')
         if is_ar_scanner is not None:
             if ip is not None and bundle_id is not None and Bundle.objects.filter(id=bundle_id):
-                url = 'http://ip.taobao.com/service/getIpInfo.php?ip=' + ip
-                response = requests.get(url)
-                data = location_handle(response.json())
-                if not Locations.objects.filter(province=data['data']['region'], city=data['data']['city'],
-                                                county=data['data']['county'], ):
-                    location = Locations.objects.create(province=data['data']['region'],
-                                                        city=data['data']['city'],
-                                                        county=data['data']['county'],
-                                                        )
-                    location.save()
-                else:
-                    location = Locations.objects.get(province=data['data']['region'],
-                                                     city=data['data']['city'],
-                                                     county=data['data']['county'],
-                                                     )
+                try:
+                    url = 'http://ip.taobao.com/service/getIpInfo.php?ip=' + ip
+                    response = requests.get(url)
+                    data = location_handle(response.json())
+                    if not Locations.objects.filter(province=data['data']['region'], city=data['data']['city'],
+                                                    county=data['data']['county'], ):
+                        location = Locations.objects.create(province=data['data']['region'],
+                                                            city=data['data']['city'],
+                                                            county=data['data']['county'],
+                                                            )
+                        location.save()
+                    else:
+                        location = Locations.objects.get(province=data['data']['region'],
+                                                         city=data['data']['city'],
+                                                         county=data['data']['county'],
+                                                         )
+                except Exception as e:
+                    logger.error(e)
+                    if Locations.objects.filter(province="", city="", county=""):
+                        location = Locations.objects.filter(province="", city="", county="").first()
+                    else:
+                        location = Locations.objects.create(province="", city="", county="")
+                        location.save()
                 bundle = Bundle.objects.get(id=bundle_id)
                 scan_id = Scan.objects.create(id_bundle=bundle, id_location=location).id
                 config_info = json.loads(bundle.config_info)
