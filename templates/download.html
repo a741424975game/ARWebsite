@@ -29,8 +29,11 @@
 			<a href="#about" class="btn btn-primary btn-lg"><span class="fa fa-apple"></span> &nbsp;iPhone&nbsp;版下载</a>
 			<br /><br />
 			<a href="#about" class="btn btn-success btn-lg"><span class="fa fa-android"></span> Android&nbsp;版下载</a>
-			<p class="shop">or</p>
+            {% if product_link %}
+            <p class="shop">or</p>
 			<a href="#about"><span class="fa fa-shopping-cart"></span> 查看商品详情</a>
+            {% endif %}
+
 		</div>	
     </section>
 	<!-- /Section: intro -->

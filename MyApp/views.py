@@ -276,7 +276,11 @@ def ar_config_info_api(request):
                 config_info['scanId'] = scan_id
                 config_info_json = json.dumps(config_info)
                 return HttpResponse(config_info_json)
-        else:
+        elif Bundle.objects.filter(id=bundle_id):
+            bundle = Bundle.objects.get(id=bundle_id)
+            product_link = bundle.product_link
+            if product_link == "":
+                product_link = None
             return render(request, 'download.html', locals())
     except Exception as e:
         logger.error(e)
