@@ -1,19 +1,20 @@
 # -*- coding: utf-8 -*-
 import logging
+
 import requests
 from django.contrib.admin.views.decorators import staff_member_required
-from django.shortcuts import render, redirect, render_to_response
-from django.http import HttpResponse
 from django.contrib.auth import logout, login, authenticate
 from django.contrib.auth.hashers import make_password
 from django.core.paginator import Paginator
+from django.http import HttpResponse
+from django.shortcuts import render, redirect, render_to_response
 from django.template import RequestContext
-from forms import *
 
-from MyApp.qrCode import generate_qrcode
-from MyApp.handle import *
 from MyApp.echarts import *
+from MyApp.handle import *
 from MyApp.psutil_getServerInfo import *
+from MyApp.qrCode import generate_qrcode
+from forms import *
 
 # 输出日志信息
 logger = logging.getLogger('MyApp.views')
@@ -153,6 +154,42 @@ def add_model(request):
     except Exception as e:
         logger.error(e)
     return render(request, 'add-model.html', locals())
+
+
+# 编辑模型
+def edit_model(request):
+    try:
+        if request.user.is_authenticated():
+            bundle_id = request.GET.get('bundle_id')
+            bundles_id = request.GET.getlist('bundles_id')
+            if bundle_id is not None and Bundle.objects.filter(id=bundle_id):
+                bundle = Bundle.objects.get(id=bundle_id)
+                if request.method == 'POST':
+                    edit_form = EditForm(request.POST, request.FILES)
+                    if edit_form.is_valid():
+                        if edit_form.cleaned_data["modelName"]:
+                            bundle.name = edit_form.cleaned_data["modelName"]
+                        if edit_form.cleaned_data["note"]:
+                            bundle.note = edit_form.cleaned_data["note"]
+                        if edit_form.cleaned_data["productLink"]:
+                            bundle.product_link = edit_form.cleaned_data["productLink"]
+                        if edit_form.cleaned_data["model"]:
+                            bundle.model = edit_form.cleaned_data["model"]
+                        if edit_form.cleaned_data["imageTarget"]:
+                            bundle.imageTarget = edit_form.cleaned_data["imageTarget"]
+                            bundle.save()
+                        return redirect('view-model.html?bundle_id=' + str(bundle.id))
+                    else:
+                        edit_form = EditForm()
+                else:
+                    edit_form = EditForm()
+            else:
+                return redirect('404.html')
+        else:
+            return redirect('login.html')
+    except Exception as e:
+        logger.error(e)
+    return render(request, 'edit-model.html', locals())
 
 
 # 删除模型
