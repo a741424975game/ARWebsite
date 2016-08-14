@@ -200,17 +200,17 @@ def delete_model(request):
             bundles_id = request.GET.getlist('bundles_id')
             if bundle_id is not None and Bundle.objects.filter(id=bundle_id):  # 需要整理
                 model = Bundle.objects.get(id=bundle_id)
-                model.model.delete(save=True)
-                model.QRCode.delete(save=True)
-                model.imageTarget.delete(save=True)
+                # model.model.delete(save=True)
+                # model.QRCode.delete(save=True)
+                # model.imageTarget.delete(save=True)
                 model.delete()
             elif bundles_id is not None:
                 for bundle_id in bundles_id:
                     if bundle_id is not None and Bundle.objects.filter(id=bundle_id):  # 需要整理
                         model = Bundle.objects.get(id=bundle_id)
-                        model.model.delete(save=True)
-                        model.QRCode.delete(save=True)
-                        model.imageTarget.delete(save=True)
+                        # model.model.delete(save=True)
+                        # model.QRCode.delete(save=True)
+                        # model.imageTarget.delete(save=True)
                         model.delete()
             else:
                 return redirect('login.html')
