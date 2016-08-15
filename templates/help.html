@@ -3,7 +3,7 @@
 {% block title %}AR Manager - Help{% endblock %}
 
 {% block css %}
-  <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
 
     <link href="/static/css/new.css" rel="stylesheet">
     <!-- Important. For Theming change primary-color variable in main.css  -->
@@ -12,218 +12,222 @@
 {% endblock %}
 
 {% block top_nav %}
-  <!-- Top Nav Start -->
+    <!-- Top Nav Start -->
     <div id='cssmenu'>
-      <ul>
-        <li class=''>
-          <a href='index.html'>
-            <i class="fa fa-dashboard"></i>
-            首页
-          </a>
-        </li>
-        <li class=''>
-          <a href='models.html'><i class="fa fa-puzzle-piece"></i>模型</a>
-        </li>
-        <li class=''>
-          <a href='#'><i class="fa fa-user"></i>账户</a>
-          <ul>
-            <li><a href='my-account.html'>我的账户</a></li>
-            <li><a href='edit-profile.html'>修改资料</a></li>
-          </ul>
-        </li>
-        <li class='active'>
-          <a href=''><i class="fa fa-file-text"></i>文档</a>
-        </li>
-      </ul>
+        <ul>
+            <li class=''>
+                <a href='index.html'>
+                    <i class="fa fa-dashboard"></i>
+                    首页
+                </a>
+            </li>
+            <li class=''>
+                <a href='models.html'><i class="fa fa-puzzle-piece"></i>模型</a>
+            </li>
+            <li class=''>
+                <a href='#'><i class="fa fa-user"></i>账户</a>
+                <ul>
+                    <li><a href='my-account.html'>我的账户</a></li>
+                    <li><a href='edit-profile.html'>修改资料</a></li>
+                </ul>
+            </li>
+            <li class='active'>
+                <a href=''><i class="fa fa-file-text"></i>文档</a>
+            </li>
+        </ul>
     </div>
     <!-- Top Nav End -->
 {% endblock %}
 
 {% block sub_nav %}
-  <!-- Sub Nav End -->
+    <!-- Sub Nav End -->
     <div class="sub-nav hidden-sm hidden-xs">
-      <ul>
-        <li><a href="" class="heading">文档</a></li>
-      </ul>
-      <div class="custom-search hidden-sm hidden-xs">
-        <input type="text" class="search-query" placeholder="Search here ...">
-        <i class="fa fa-search"></i>
-      </div>
+        <ul>
+            <li><a href="" class="heading">文档</a></li>
+        </ul>
+        <div class="custom-search hidden-sm hidden-xs">
+            <input type="text" class="search-query" placeholder="Search here ...">
+            <i class="fa fa-search"></i>
+        </div>
     </div>
     <!-- Sub Nav End -->
 {% endblock %}
 
 {% block main %}
 
-  <!-- Row Start -->
-  <div class="row">
-    <div class="col-lg-12 col-md-12">
-      <div class="widget no-margin">
-        <div class="widget-header">
-          <div class="title">
-            FAQ's
-          </div>
+    <!-- Row Start -->
+    <div class="row">
+        <div class="col-lg-12 col-md-12">
+            <div class="widget no-margin">
+                <div class="widget-header">
+                    <div class="title">
+                        FAQ's
+                    </div>
           <span class="tools">
             <i class="fa fa-cogs"></i>
           </span>
+                </div>
+                <div class="widget-body">
+                    <div class="panel-group" id="accordion">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                                        所有网站上提供的服务是收费的吗?
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapseOne" class="panel-collapse collapse in">
+                                <div class="panel-body">
+                                    目前是免费的, 后期会推出定制化的收费服务。
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseFoue">
+                                        展示所需的商品模型怎么获得?
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapseFoue" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    目前商品的模型需要商家提供,商家只需要将常见格式的3D模型文件提交到服务器即可,后期会增加模型在线修改的功能。
+                                    或者可以直接使用手机下载以下软件扫描商品建立模型:
+                                    <a href="http://www.123dapp.com/catch">123D Catch</a>或
+                                    <a href="http://www.trnio.com/">Trnio</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+                                        我要使用这些服务需要很强的技术能力吗?
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapseTwo" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    完全不需要。
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+                                        网站上的数据是否是安全的,会不会泄漏出去?
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapseThree" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    网站上的所有数据都是经过加密的,无需担心泄漏数据。
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseFive">
+                                        网站后台那些漂亮的数据是怎么来的?
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapseFive" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    是通过我们的APP获取的原始数据经过加工处理得到的结果,然后以图表形式展示出来的。
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseSix">
+                                        如果我没有安装APP直接扫描二维码会发生什么?
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapseSix" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    如果手机里没有安装APP直接扫描二维码,会跳转到下载页面,如果不下载还可以直接点击相应链接跳转到商品对应的购买页面。
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseSeven">
+                                        我通过哪些数据可以知道我发布的内容是否受欢迎?
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapseSeven" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    您可以通过好评率和关注度等多种数据进行综合评价,值越高表明越好。
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseEight">
+                                        使用你们的服务有什么好处?
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapseEight" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    方便传播,数据可视化,展示的内容高度自定义,以及优质的免费服务。
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="widget-body">
-          <div class="panel-group" id="accordion">
-            <div class="panel panel-default">
-              <div class="panel-heading">
-                <h4 class="panel-title">
-                  <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
-                    所有网站上提供的服务是收费的吗?
-                  </a>
-                </h4>
-              </div>
-              <div id="collapseOne" class="panel-collapse collapse in">
-                <div class="panel-body">
-                  目前是免费的, 后期会推出定制化的收费服务。
-                </div>
-              </div>
-            </div>
-            <div class="panel panel-default">
-              <div class="panel-heading">
-                <h4 class="panel-title">
-                  <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
-                    我要使用这些服务需要很强的技术能力吗?
-                  </a>
-                </h4>
-              </div>
-              <div id="collapseTwo" class="panel-collapse collapse">
-                <div class="panel-body">
-                  完全不需要。
-                </div>
-              </div>
-            </div>
-            <div class="panel panel-default">
-              <div class="panel-heading">
-                <h4 class="panel-title">
-                  <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
-                    网站上的数据是否是安全的,会不会泄漏出去?
-                  </a>
-                </h4>
-              </div>
-              <div id="collapseThree" class="panel-collapse collapse">
-                <div class="panel-body">
-                  网站上的所有数据都是经过加密的,无需担心泄漏数据。
-                </div>
-              </div>
-            </div>
-            <div class="panel panel-default">
-              <div class="panel-heading">
-                <h4 class="panel-title">
-                  <a data-toggle="collapse" data-parent="#accordion" href="#collapseFoue">
-                    展示所需的商品模型怎么获得?
-                  </a>
-                </h4>
-              </div>
-              <div id="collapseFoue" class="panel-collapse collapse">
-                <div class="panel-body">
-                  目前商品的模型需要商家提供,商家只需要将常见格式的3D模型文件提交到服务器即可,后期会增加模型在线修改的功能。
-                </div>
-              </div>
-            </div>
-            <div class="panel panel-default">
-              <div class="panel-heading">
-                <h4 class="panel-title">
-                  <a data-toggle="collapse" data-parent="#accordion" href="#collapseFive">
-                    网站后台那些漂亮的数据是怎么来的?
-                  </a>
-                </h4>
-              </div>
-              <div id="collapseFive" class="panel-collapse collapse">
-                <div class="panel-body">
-                  是通过我们的APP获取的原始数据经过加工处理得到的结果,然后以图表形式展示出来的。
-                </div>
-              </div>
-            </div>
-            <div class="panel panel-default">
-              <div class="panel-heading">
-                <h4 class="panel-title">
-                  <a data-toggle="collapse" data-parent="#accordion" href="#collapseSix">
-                    如果我没有安装APP直接扫描二维码会发生什么?
-                  </a>
-                </h4>
-              </div>
-              <div id="collapseSix" class="panel-collapse collapse">
-                <div class="panel-body">
-                  如果手机里没有安装APP直接扫描二维码,会跳转到下载页面,如果不下载还可以直接点击相应链接跳转到商品对应的购买页面。
-                </div>
-              </div>
-            </div>
-            <div class="panel panel-default">
-              <div class="panel-heading">
-                <h4 class="panel-title">
-                  <a data-toggle="collapse" data-parent="#accordion" href="#collapseSeven">
-                    我通过哪些数据可以知道我发布的内容是否受欢迎?
-                  </a>
-                </h4>
-              </div>
-              <div id="collapseSeven" class="panel-collapse collapse">
-                <div class="panel-body">
-                  您可以通过好评率和关注度等多种数据进行综合评价,值越高表明越好。
-                </div>
-              </div>
-            </div>
-            <div class="panel panel-default">
-              <div class="panel-heading">
-                <h4 class="panel-title">
-                  <a data-toggle="collapse" data-parent="#accordion" href="#collapseEight">
-                    使用你们的服务有什么好处?
-                  </a>
-                </h4>
-              </div>
-              <div id="collapseEight" class="panel-collapse collapse">
-                <div class="panel-body">
-                  方便传播,数据可视化,展示的内容高度自定义,以及优质的免费服务。
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
-  </div>
-  <!-- Row End -->
+    <!-- Row End -->
 
 {% endblock %}
 
 {% block js %}
-  <script src="/static/js/jquery.js"></script>
+    <script src="/static/js/jquery.js"></script>
     <script src="/static/js/bootstrap.min.js"></script>
     <script src="/static/js/jquery.scrollUp.js"></script>
 
     <!-- Custom JS -->
     <script src="/static/js/menu.js"></script>
-    
+
     <script type="text/javascript">
-      //ScrollUp
-      $(function () {
-        $.scrollUp({
-          scrollName: 'scrollUp', // Element ID
-          topDistance: '300', // Distance from top before showing element (px)
-          topSpeed: 300, // Speed back to top (ms)
-          animation: 'fade', // Fade, slide, none
-          animationInSpeed: 400, // Animation in speed (ms)
-          animationOutSpeed: 400, // Animation out speed (ms)
-          scrollText: 'Top', // Text for element
-          activeOverlay: false, // Set CSS color to display scrollUp active point, e.g '#00FFFF'
+        //ScrollUp
+        $(function () {
+            $.scrollUp({
+                scrollName: 'scrollUp', // Element ID
+                topDistance: '300', // Distance from top before showing element (px)
+                topSpeed: 300, // Speed back to top (ms)
+                animation: 'fade', // Fade, slide, none
+                animationInSpeed: 400, // Animation in speed (ms)
+                animationOutSpeed: 400, // Animation out speed (ms)
+                scrollText: 'Top', // Text for element
+                activeOverlay: false, // Set CSS color to display scrollUp active point, e.g '#00FFFF'
+            });
         });
-      });
 
-      //Tooltip
-      $('a').tooltip('hide');
+        //Tooltip
+        $('a').tooltip('hide');
 
-      //Popover
-      $('.popover-pop').popover('hide');
+        //Popover
+        $('.popover-pop').popover('hide');
 
-      //Dropdown
-      $('.dropdown-toggle').dropdown();
+        //Dropdown
+        $('.dropdown-toggle').dropdown();
 
-      $('#myCollapsible').collapse({
-        toggle: false
-      })
+        $('#myCollapsible').collapse({
+            toggle: false
+        })
     </script>
 {% endblock %}
